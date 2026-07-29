@@ -33,7 +33,7 @@ const structuredData = {
       applicationCategory: 'ShoppingApplication',
       description: site.description,
       url: site.url,
-      installUrl: [site.appStoreUrl, site.playTestingUrl],
+      installUrl: [site.appStoreUrl, site.playStoreUrl],
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
     },
   ],
@@ -61,7 +61,9 @@ const structuredData = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <link rel="icon" type="image/png" href="/app-icon.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap.xml" />
 

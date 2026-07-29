@@ -10,13 +10,13 @@ const ieStores = ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 
       <h1>Stop guessing where your basket is cheapest.</h1>
       <p class="hero__sub">
         Scan a barcode or snap your receipt, build your basket, and {site.name} shows
-        what it would cost at the major supermarkets across the UK &amp; Ireland —
-        and what you've saved.
+        what it would cost at the major supermarkets across Ireland, the UK,
+        Belgium and the Netherlands — and what you've saved.
       </p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="#get">Get the app</a>
         <a class="btn btn--ghost" href="#how">See how it works</a>
-        <span class="hero__note">On iPhone now — Android in beta</span>
+        <span class="hero__note">Free on iPhone &amp; Android</span>
       </div>
     </div>
   </section>
@@ -41,7 +41,7 @@ const ieStores = ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 
         </div>
         <div class="why__card">
           <h3>{site.name} does the legwork</h3>
-          <p>Scan a barcode or snap a receipt and {site.name} compares <em>your</em> actual basket across the major UK &amp; Irish supermarkets in seconds — from prices real shoppers share. No trekking, no guesswork: just where your shop is genuinely cheapest.</p>
+          <p>Scan a barcode or snap a receipt and {site.name} compares <em>your</em> actual basket across the major supermarkets in seconds — from prices real shoppers share. No trekking, no guesswork: just where your shop is genuinely cheapest.</p>
         </div>
       </div>
     </div>
@@ -129,9 +129,10 @@ const ieStores = ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 
         drop a store, so the totals are always honest.
       </p>
       <p class="stores__note">
-        Shopping in the UK? {site.name} compares the big UK chains too — Tesco,
-        Sainsbury's, Asda, Morrisons, Aldi, Lidl, M&amp;S and more. Belgium and the
-        Netherlands are joining too.
+        Shopping in the UK, Belgium or the Netherlands? {site.name} compares the
+        big chains there too — Sainsbury's, Asda and Morrisons in the UK;
+        Delhaize, Carrefour and Jumbo in Belgium; Albert Heijn, Jumbo and Plus in
+        the Netherlands — with Aldi and Lidl across them all.
       </p>
     </div>
   </section>
@@ -182,7 +183,7 @@ const ieStores = ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 
 
       <h3>Bronze — where you start</h3>
       <ul>
-        <li>Compare your basket across UK &amp; Irish supermarkets</li>
+        <li>Compare your basket across supermarkets in Ireland, the UK, Belgium and the Netherlands</li>
         <li>Scan barcodes to check and record prices</li>
         <li><strong>Help identify products</strong> — add a missing name, brand or size</li>
         <li><strong>Save &amp; share money-off coupons</strong> to scan at the till</li>
@@ -217,16 +218,16 @@ const ieStores = ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 
       <div class="beta__card">
         <h2>Get {site.name}.</h2>
         <p class="beta__sub">
-          {site.name} is free on iPhone, and in beta on Android. Tap your
-          platform to install it and start comparing your shop.
+          {site.name} is free on iPhone and Android, in Ireland, the UK, Belgium
+          and the Netherlands. Tap your platform to install it and start
+          comparing your shop.
         </p>
         <div class="hero__cta">
           <a class="btn btn--primary" href={site.appStoreUrl}>iPhone&nbsp;— App&nbsp;Store</a>
-          <a class="btn btn--ghost" href={site.playTestingUrl}>Android&nbsp;— Google&nbsp;Play&nbsp;beta</a>
+          <a class="btn btn--ghost" href={site.playStoreUrl}>Android&nbsp;— Google&nbsp;Play</a>
         </div>
         <p class="beta__hint">
-          On Android, tap &ldquo;Become a tester&rdquo; then Install. Questions?
-          <a href={`mailto:${site.email}`}>{site.email}</a>
+          Questions? <a href={`mailto:${site.email}`}>{site.email}</a>
         </p>
       </div>
     </div>

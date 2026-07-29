@@ -8,20 +8,20 @@ export const site = {
   tagline: 'Stop guessing where your basket is cheapest.',
   description:
     'Scan barcodes and receipts, build a basket, and see what it costs across ' +
-    'the major supermarkets in the UK & Ireland. Save money-off coupons and ' +
-    'scan them at the till.',
+    'the major supermarkets in Ireland, the UK, Belgium and the Netherlands. ' +
+    'Save money-off coupons and scan them at the till.',
 
   // Contact. NOTE: the tallywise.eu mailbox/MX still needs setting up — until
   // then this address will bounce. Swap to feedback@zavvyapp.com if you want a
   // working inbox before the domain migration completes.
   email: 'feedback@tallywise.eu',
 
-  // Store links. iOS is LIVE on the App Store (UK + IE); Android is still in
-  // closed testing on Google Play.
+  // Store links. Both apps are LIVE — iOS on the App Store and Android on
+  // Google Play — published in Ireland, the UK, Belgium and the Netherlands.
   appStoreId: '6769136808',
   appStoreUrl: 'https://apps.apple.com/app/id6769136808',
-  playTestingUrl:
-    'https://play.google.com/apps/testing/com.monkeylittle.zavvy',
+  playStoreUrl:
+    'https://play.google.com/store/apps/details?id=com.monkeylittle.zavvy',
   bundleId: 'com.monkeylittle.zavvy',
 
   // JSON-LD sameAs / social. Empty until real accounts exist.
