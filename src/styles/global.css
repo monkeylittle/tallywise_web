@@ -1,0 +1,391 @@
+/* Tallywise website — matches the app design system (lib/app/zappy_tokens
+   .dart, source: colors_and_type.css). Palette: "tech-forward" — deep NAVY
+   as the brand/dark, ONE sky-blue accent for CTAs/highlights, cool white/grey
+   neutrals (never warm/cream). Display type: Fredoka (rounded); body: DM Sans.
+   Sentence case, no emoji. */
+:root {
+  /* Neutrals — cool, clean */
+  --bg:        #F5F7FC;   /* faint cool page tint */
+  --card:      #FFFFFF;   /* white card surface */
+  --bg-sunk:   #EDF1FA;
+
+  /* Ink — near-navy text scale */
+  --ink:       #12152A;
+  --ink2:      #454B66;
+  --ink3:      #767C99;
+  --ink4:      #ABB0C7;
+
+  /* Brand navy */
+  --navy:      #1B2140;
+  --navy-deep: #12172E;
+
+  /* Accent — sky blue (the one colour that pops) */
+  --sky:       #4F9EF5;
+  --sky-deep:  #2F7ED8;
+  --sky-soft:  #D6E9FD;
+
+  /* Semantic */
+  --success:   #2FAE6B;
+
+  /* Lines */
+  --line:      #E1E5F1;
+  --line-strong: #C7CDE3;
+
+  --radius:    20px;
+  --shadow:    0 1px 2px rgba(18,21,42,0.04), 0 12px 32px rgba(18,21,42,0.07);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display type — Fredoka, rounded, sentence case (no italic). */
+h1, h2, h3, .display {
+  font-family: 'Fredoka', 'DM Sans', system-ui, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--sky-deep); }
+a:hover { color: var(--navy); }
+
+img { max-width: 100%; }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--sky);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 0 0 10px 0;
+  z-index: 100;
+}
+.skip-link:focus { left: 0; color: #fff; }
+
+/* ── Nav ─────────────────────────────────────────── */
+.nav {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: 'Fredoka', 'DM Sans', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 21px;
+}
+/* The Tallywise app icon (navy tile, receipt + sky check). */
+.logo {
+  display: block;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav__links a {
+  color: var(--ink3);
+  text-decoration: none;
+  margin-left: 28px;
+  font-weight: 500;
+}
+.nav__links a:hover { color: var(--ink); }
+
+/* ── Hero ────────────────────────────────────────── */
+.hero {
+  padding: 104px 0 88px;
+  background:
+    radial-gradient(circle at 18% -10%, rgba(79,158,245,0.14), transparent 55%),
+    radial-gradient(circle at 92% 24%, rgba(27,33,64,0.06), transparent 55%);
+}
+.hero__inner { max-width: 780px; }
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 3.9rem);
+  line-height: 1.05;
+  margin: 0 0 22px;
+  color: var(--ink);
+}
+.hero__sub {
+  font-size: 1.18rem;
+  color: var(--ink2);
+  margin: 0 0 34px;
+  max-width: 600px;
+}
+.hero__cta {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.hero__note {
+  color: var(--ink3);
+  font-size: 0.95rem;
+}
+
+/* ── Buttons ─────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: transform 0.06s ease, background 0.15s ease;
+}
+.btn--primary {
+  background: var(--sky);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.btn--primary:hover { background: var(--sky-deep); color: #fff; transform: translateY(-1px); }
+.btn--primary:active { transform: translateY(0); }
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.btn--ghost:hover { border-color: var(--sky); color: var(--sky-deep); transform: translateY(-1px); }
+
+/* ── Sections ────────────────────────────────────── */
+section { padding: 84px 0; }
+section h2 {
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  margin: 0 0 44px;
+  color: var(--ink);
+}
+
+/* ── Steps ───────────────────────────────────────── */
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.steps li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+.step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: var(--sky);
+  color: #fff;
+  border-radius: 11px;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin-bottom: 16px;
+}
+.steps h3 { margin: 0 0 8px; font-size: 1.3rem; color: var(--ink); }
+.steps p { margin: 0; color: var(--ink2); }
+
+/* ── Feature grids ───────────────────────────────── */
+.why__lead {
+  font-size: 1.18rem;
+  color: var(--ink2);
+  max-width: 720px;
+  margin: -20px 0 40px;
+}
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.why__card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+/* The payoff card (last) carries the sky accent so the eye lands on the
+   solution, not just the two problem cards. */
+.why__card--accent,
+.why__grid--payoff .why__card:last-child {
+  background: rgba(79, 158, 245, 0.07);
+  border-color: var(--sky-soft);
+}
+.why__card h3 { margin: 0 0 10px; font-size: 1.3rem; color: var(--ink); }
+.why__card p { margin: 0; color: var(--ink2); }
+.why__card em { color: var(--sky-deep); font-style: normal; font-weight: 600; }
+
+/* ── Screenshots (raw app screens — framed by CSS) ── */
+.shots__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.shot { margin: 0; text-align: center; }
+.shot img {
+  width: 100%;
+  height: auto;
+  max-width: 260px;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 18px 44px rgba(18, 21, 42, 0.16);
+}
+.shot figcaption {
+  margin-top: 18px;
+  color: var(--ink3);
+  font-size: 0.98rem;
+}
+@media (max-width: 720px) {
+  .shots__grid { grid-template-columns: 1fr; gap: 44px; max-width: 300px; margin: 0 auto; }
+}
+
+/* ── Stores ──────────────────────────────────────── */
+.stores__grid {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.stores__grid li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+.stores__note {
+  color: var(--ink3);
+  max-width: 660px;
+}
+
+/* ── Blog list ───────────────────────────────────── */
+.blog__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 28px;
+  max-width: 760px;
+}
+.blog__list > li {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+.blog__list h3 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+.blog__list h3 a { color: inherit; text-decoration: none; }
+.blog__list h3 a:hover { text-decoration: underline; }
+.blog__list p { margin: 0 0 6px; color: var(--ink2); }
+.blog__meta {
+  font-size: 0.85rem;
+  color: var(--ink3);
+  letter-spacing: 0.02em;
+}
+
+/* ── FAQ ─────────────────────────────────────────── */
+.faq__list {
+  margin: 0;
+  display: grid;
+  gap: 22px;
+}
+.faq__list > div {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+.faq__list dt {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.22rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.faq__list dd { margin: 0; color: var(--ink2); }
+
+/* ── Get-the-app / CTA card ──────────────────────── */
+.beta__card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 44px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.beta__card h2 { margin: 0 0 14px; }
+.beta__sub { color: var(--ink2); margin: 0 0 28px; }
+.beta__hint { margin: 18px 0 0; color: var(--ink3); font-size: 0.92rem; }
+
+/* ── Prose (legal / support pages) ───────────────── */
+.prose p, .prose li { color: var(--ink2); }
+.prose h2 { margin-top: 8px; }
+.prose ul { padding-left: 20px; }
+.prose li { margin: 6px 0; }
+
+/* ── Footer ──────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 36px 0;
+  color: var(--ink3);
+  font-size: 0.95rem;
+}
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer a { color: var(--ink3); text-decoration: none; }
+.footer a:hover { color: var(--sky-deep); }
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+}

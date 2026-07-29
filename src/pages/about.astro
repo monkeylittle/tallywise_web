@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppCta from '../components/AppCta.astro';
+import { site } from '../site';
+---
+<BaseLayout
+  title={`About ${site.name} — built in Dublin, for shoppers`}
+  description="Who builds Tallywise, why it exists, how to get in touch, and how to get the app on iOS or Android."
+>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1>About {site.name}.</h1>
+      <p class="hero__sub">
+        A small, independent app built in Dublin to make grocery shopping across
+        the UK &amp; Ireland a fairer game for the people doing it.
+      </p>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container prose">
+      <h2>Why we built it.</h2>
+      <p>The price of a weekly shop climbed hard through 2022 and 2023, and the gaps between supermarkets widened with it. The same basket can cost noticeably more or less depending only on where you buy it — and nobody has the time to drive between three shops with a clipboard.</p>
+      <p>{site.name} is the version of that clipboard that fits in your pocket. Scan what you already buy and the app does the compare-and-contrast work behind the scenes, using prices real shoppers have recorded — not screen-scraped supermarket sites, which are often out of date and against terms anyway.</p>
+
+      <h2>How we work.</h2>
+      <ul>
+        <li><strong>On-device first.</strong> Scanning, OCR and parsing run on your phone. Receipt images only leave the phone if you save the receipt to your history; coupon barcodes never leave the device unless you choose to share them.</li>
+        <li><strong>Free, with paid coming later.</strong> The core comparison and coupon features are free and stay free. Membership tiers (Bronze, Silver, eventually Gold) earn you more — and a paid tier will fund the lights without holding the basics behind a paywall.</li>
+        <li><strong>Honest comparison.</strong> We never silently drop a missing item from a totals comparison to make a shop look cheaper. Own-brand items show "not available here" at every other shop, not a blank cell.</li>
+        <li><strong>No advertising SDKs.</strong> {site.name} doesn't sell your data and doesn't carry ad-network code. The only third-party analytics in the app is Google Analytics for product improvement — full detail in the <a href="/privacy/">Privacy Policy</a>.</li>
+      </ul>
+
+      <h2>Who's behind it.</h2>
+      <p>{site.name} is operated by <strong>MonkeyLittle</strong>, an independent software business based in Dublin. The product currently has one full-time builder, supported by a small group of beta testers across Ireland and the UK who keep us honest about what works and what doesn't.</p>
+
+      <h2>Get in touch.</h2>
+      <p>For anything at all — <a href={`mailto:${site.email}`}>{site.email}</a>. Bug reports, feature requests, "your scanner missed this receipt", "your privacy policy doesn't cover X" — we read everything and reply within a few days. For scan misreads, tapping <strong>Report a problem</strong> inside the app attaches the receipt photo and parsed text — that's the fastest way to fix a parser.</p>
+    </div>
+  </section>
+
+  <AppCta heading={`Get ${site.name}.`} />
+</BaseLayout>

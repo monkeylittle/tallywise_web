@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../site';
+---
+<BaseLayout
+  title={`${site.name} — Privacy Policy`}
+  description="How Tallywise handles your data — on-device scanning, what we collect, how it's used, and your choices."
+>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1>Privacy Policy</h1>
+      <p class="hero__sub">Last updated 29 July 2026. {site.name} is operated by MonkeyLittle. Questions: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container prose">
+      <h2>The short version</h2>
+      <p>Scanning runs <strong>on your device</strong>. We collect the minimum needed to compare basket prices and keep your account. We don't sell your data and there are no advertising SDKs. We do use <strong>Google Analytics</strong> to understand how the app is used so we can improve it — never your receipt contents.</p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li><strong>Account</strong> — your email address, via our sign-in provider (Amazon Cognito), including when you use Google or Apple sign-in.</li>
+        <li><strong>Shopping data</strong> — the baskets you build, barcodes you scan, line items parsed from receipts, the prices you record, and your savings totals. Prices you record are contributed to {site.name}'s shared price data so the comparison works for everyone (see our Terms).</li>
+        <li><strong>Product details you suggest</strong> — if you add or correct a product's name, brand or pack size, your suggestion is stored against your account and, once another shopper submits matching details, used to update that product's entry in {site.name}'s <strong>shared catalogue</strong>, which is visible to all users. We don't display your identity alongside it.</li>
+        <li><strong>Coupons</strong> — money-off vouchers you save (their barcode/number, value, conditions and validity dates, and the shop) are stored with your account so you can present them at the till. If you choose to <strong>give a coupon away</strong>, those coupon details are placed in a shared pool and become <strong>visible to and claimable by other {site.name} users</strong>; see "Sharing coupons" below. We also keep a per-account tally of the coupon value you've given versus received, to keep sharing fair.</li>
+        <li><strong>Receipt &amp; coupon images and scan text</strong> — receipts, coupons and barcodes are read <strong>on your device</strong>. When you <strong>save a scanned receipt</strong> to your history, its image, the recognised text and the parsed result are sent to us — to build your receipt history and to improve scanning accuracy. Tapping <strong>"Report a problem"</strong> additionally sends a short note (and, for a scan you didn't save, the image) so we can investigate a specific misread. For a shop we don't yet support, you can optionally tap <strong>"Try a smart read"</strong>, which sends the receipt's recognised <em>text</em> (not the image) to our cloud to parse it — only when you choose to. Card data printed on receipts is removed first (see below).</li>
+        <li><strong>Approximate location</strong> — used on your device to pick the right country/currency and the nearest store. We don't send your GPS coordinates to our servers; but if you record a price or save a receipt, the resulting store name and branch may be stored with that submission.</li>
+        <li><strong>Push notifications</strong> — if you allow notifications, we store a device push token (via Firebase Cloud Messaging / Apple Push Notification service) so we can send price-drop alerts on items you've scanned. We delete the token when you sign out, and you can turn notifications off in your device settings at any time.</li>
+        <li><strong>Usage analytics</strong> — via Google Analytics (Firebase), we collect app-usage events (screens viewed and actions such as scanning a receipt or recording a price) plus basic device/app info (device model, OS, app version, and a random install identifier). This is used to understand how {site.name} is used and improve it, and <strong>never includes your receipt contents, the prices you record, or your email</strong>.</li>
+      </ul>
+
+      <h2>Payment details on receipts</h2>
+      <p>Receipts can print a card scheme, masked card number, and payment identifiers. {site.name} <strong>automatically removes these before anything is stored or transmitted</strong> — card data is never retained, even in a problem report.</p>
+
+      <h2>How we use it</h2>
+      <p>To provide the price comparison and savings features, operate your account, investigate scans you report so the app gets more accurate, and analyse aggregate usage (via Google Analytics) to see which features are used and improve them. We don't use your data for advertising or profiling.</p>
+
+      <h2>Sharing</h2>
+      <p>We don't sell your data. We use infrastructure providers to run and improve the service on our behalf: <strong>Amazon Web Services</strong> (hosting, EU/Ireland region) and <strong>Google</strong> (Google Analytics / Firebase, for usage analytics). We disclose data only if required by law.</p>
+
+      <h2>Sharing coupons</h2>
+      <p>If you choose to give a coupon away, the coupon's details (value, conditions, validity dates, the shop, and the barcode/number needed to redeem it) are added to a shared pool that other {site.name} users can browse and claim. This is something <strong>you opt into per coupon</strong> — coupons you simply save stay private to your account. We don't share your identity alongside a pooled coupon. A coupon you give away leaves your wallet and may be claimed by someone else; you can take it back while it's still in the pool.</p>
+
+      <h2>Storage &amp; security</h2>
+      <p>Data is stored on AWS in the EU (Ireland), encrypted in transit (HTTPS/TLS) and at rest. Problem reports are kept only as long as needed to diagnose and improve scanning.</p>
+
+      <h2>Your choices</h2>
+      <p>You can <strong>export your data</strong> (your receipts, to a CSV) and <strong>delete your account and all its data</strong> directly in the app under <strong>Settings</strong> — no email needed. You can also request access, correction, or deletion, or object to your usage data being used for analytics, by emailing <a href={`mailto:${site.email}`}>{site.email}</a>. You can revoke camera, photo, location, or notification permissions in your device settings at any time (scanning needs the camera to work).</p>
+
+      <h2>Children</h2>
+      <p>{site.name} is not directed at children and is intended for users aged 18 and over.</p>
+
+      <h2>Changes</h2>
+      <p>We'll update this page if our practices change and revise the date above.</p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,14 @@
+---
+import { site, nav } from '../site';
+---
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="nav__brand" href="/">
+      <img class="logo" src="/app-icon.png" alt="" width="38" height="38" />
+      <span>{site.name}</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+  </div>
+</header>

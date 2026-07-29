@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppCta from '../components/AppCta.astro';
+import { site } from '../site';
+---
+<BaseLayout
+  title={`Save & share money-off coupons — ${site.name}`}
+  description="Save Dunnes Stores money-off vouchers to your phone and scan them at the till. Give the ones you won't use away, and claim one when you need it."
+>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1>Never lose a money-off coupon again.</h1>
+      <p class="hero__sub">
+        Those vouchers printed at the bottom of your Dunnes Stores receipt go
+        straight into a drawer and expire there. {site.name} keeps yours in your
+        pocket — and lets you give the ones you won't use to another shopper.
+      </p>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="container">
+      <h2>How it works.</h2>
+      <div class="why__grid">
+        <div class="why__card">
+          <h3>1. Snap or import the voucher</h3>
+          <p>Point {site.name} at a printed coupon — or paste a screenshot of an in-app voucher from the Dunnes Stores app. {site.name} reads the amount (€5 off, €10 off…), the spend it needs, the dates it's valid, and the barcode.</p>
+        </div>
+        <div class="why__card">
+          <h3>2. Show it at the till</h3>
+          <p>Open your wallet, tap the coupon, and {site.name} fills the screen with the same barcode the cashier would scan from the printed slip. No more "I had one, I think it's in the car…"</p>
+        </div>
+        <div class="why__card">
+          <h3>3. Or give it away</h3>
+          <p>Got one you know you won't use? Tap the gift icon and it moves to <strong>Up for grabs</strong> — a shared pool any {site.name} shopper can browse. They tap Claim, it lands in their wallet. You can take it back any time before someone else does.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container prose">
+      <h2>Keeping the sharing fair.</h2>
+      <p>A shared pool only works if it doesn't get drained by a handful of people. {site.name} tracks the value of what you've given away versus what you've claimed; if you've taken much more than you've shared, claiming pauses until you give one back. The balance is private — nobody else sees it, and the limit is generous so casual use never bumps into it.</p>
+      <p>We never link your name or email to a coupon in the pool — only the coupon's own details (value, conditions, dates, barcode) travel.</p>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2>Common questions.</h2>
+      <dl class="faq__list">
+        <div>
+          <dt>Which shops are supported?</dt>
+          <dd>Dunnes Stores money-off vouchers for now (the on-receipt and in-app variants). Other chains will follow as we get calibration data for their voucher formats.</dd>
+        </div>
+        <div>
+          <dt>Will a coupon someone gave me work at the till?</dt>
+          <dd>Usually — but coupons are issued by the retailer, not by {site.name}. They're typically single-use and time-limited. We can't verify that a shared coupon hasn't already been used; if a coupon's been used or refused, claim a different one.</dd>
+        </div>
+        <div>
+          <dt>What about my privacy?</dt>
+          <dd>Nothing about you is attached to a coupon you give away — only the coupon's own value, dates and barcode. See the <a href="/privacy/">Privacy Policy</a> for the full picture.</dd>
+        </div>
+        <div>
+          <dt>Is the barcode an exact match for the original?</dt>
+          <dd>Yes. {site.name} renders the same barcode the printed voucher carries, full-screen and high contrast, so the cashier's scanner reads it just like the slip.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <AppCta heading="Try it on your next Dunnes shop." />
+</BaseLayout>

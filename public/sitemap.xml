@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hand-maintained until @astrojs/sitemap is re-enabled (Node ≤22).
+     Add a <url> entry when you add a page. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://tallywise.eu/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://tallywise.eu/how-it-works/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tallywise.eu/coupons/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tallywise.eu/savings/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tallywise.eu/about/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://tallywise.eu/support/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://tallywise.eu/privacy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://tallywise.eu/terms/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../site';
+
+const ieStores = ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 'SPAR', 'Centra', 'Mace'];
+---
+<BaseLayout title={`${site.name} — compare your grocery basket across UK & Irish supermarkets`}>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1>Stop guessing where your basket is cheapest.</h1>
+      <p class="hero__sub">
+        Scan a barcode or snap your receipt, build your basket, and {site.name} shows
+        what it would cost at the major supermarkets across the UK &amp; Ireland —
+        and what you've saved.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#get">Get the app</a>
+        <a class="btn btn--ghost" href="#how">See how it works</a>
+        <span class="hero__note">On iPhone now — Android in beta</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="container">
+      <h2>Why {site.name}, why now?</h2>
+      <p class="why__lead">
+        Grocery bills have climbed hard these past few years, and a weekly
+        shop can cost noticeably more or less depending only on where you
+        buy it. Every euro and pound stretches less than it used to — so
+        paying over the odds for the same items stings more than ever.
+      </p>
+      <div class="why__grid why__grid--payoff">
+        <div class="why__card">
+          <h3>Prices never sit still</h3>
+          <p>The same basket costs different amounts at different shops, and those prices move week to week. Whatever was cheapest last month might not be this month — and there's no way to eyeball that.</p>
+        </div>
+        <div class="why__card">
+          <h3>Shopping around is a chore</h3>
+          <p>Comparing by hand means juggling apps, leaflets and memory, or driving shop to shop. Most of us don't have the time, so we stick to one store and quietly overpay — week after week.</p>
+        </div>
+        <div class="why__card">
+          <h3>{site.name} does the legwork</h3>
+          <p>Scan a barcode or snap a receipt and {site.name} compares <em>your</em> actual basket across the major UK &amp; Irish supermarkets in seconds — from prices real shoppers share. No trekking, no guesswork: just where your shop is genuinely cheapest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="container">
+      <h2>From a barcode — or a receipt — to the cheapest basket.</h2>
+      <ol class="steps">
+        <li>
+          <span class="step__num">1</span>
+          <h3>Scan</h3>
+          <p>Scan a product barcode, snap a shopping receipt, or photograph a shelf-edge price label. {site.name} reads it on your device and pulls out the items and prices.</p>
+        </li>
+        <li>
+          <span class="step__num">2</span>
+          <h3>Build your basket</h3>
+          <p>Keep the basket you'd actually buy. Adjust quantities, fix a line, or remove items.</p>
+        </li>
+        <li>
+          <span class="step__num">3</span>
+          <h3>Compare &amp; save</h3>
+          <p>See the running total at every supermarket you could shop at — and a tally of what you've saved.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="coupons" id="coupons">
+    <div class="container">
+      <h2>Never lose a money-off coupon again.</h2>
+      <p class="why__lead">
+        Those vouchers printed at the bottom of your receipt? {site.name} saves
+        them to your phone and shows the barcode right at the till — so the
+        coupon's in your pocket, not crumpled in a drawer past its date.
+      </p>
+      <div class="why__grid">
+        <div class="why__card">
+          <h3>Snap &amp; save</h3>
+          <p>Point {site.name} at a coupon — or it's picked up automatically when you snap a receipt. It reads the value, the spend it needs and the dates it's valid.</p>
+        </div>
+        <div class="why__card">
+          <h3>Scan at the till</h3>
+          <p>Open your wallet and {site.name} shows the coupon's barcode full-screen, ready for the checkout scanner — the printed voucher reproduced exactly.</p>
+        </div>
+        <div class="why__card">
+          <h3>Give one away, grab one you need</h3>
+          <p>Won't use a coupon before it expires? Pop it in the shared pool for someone else. Need one for your shop? Claim one a neighbour has given away — fair give-and-take, so it stays a community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shots" id="shots">
+    <div class="container">
+      <h2>See it in your hand.</h2>
+      <div class="shots__grid">
+        <figure class="shot">
+          <img src="/assets/screenshots/scan.png" width="592" height="1280"
+               loading="lazy" alt={`${site.name} scan screen — scan a barcode or snap a receipt.`} />
+          <figcaption>Scan a barcode, or snap a receipt.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="/assets/screenshots/receipt.png" width="592" height="1280"
+               loading="lazy" alt={`${site.name} receipt screen — parsed items and prices from a shopping receipt.`} />
+          <figcaption>Your receipt, read on-device into items.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="/assets/screenshots/spend.png" width="592" height="1280"
+               loading="lazy" alt={`${site.name} spend screen — your weekly grocery spend over time, by category.`} />
+          <figcaption>See where your grocery spend goes.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="stores" id="stores">
+    <div class="container">
+      <h2>Wherever you shop.</h2>
+      <ul class="stores__grid">
+        {ieStores.map((s) => <li>{s}</li>)}
+      </ul>
+      <p class="stores__note">
+        Own-brand items only show prices where they're stocked — we never silently
+        drop a store, so the totals are always honest.
+      </p>
+      <p class="stores__note">
+        Shopping in the UK? {site.name} compares the big UK chains too — Tesco,
+        Sainsbury's, Asda, Morrisons, Aldi, Lidl, M&amp;S and more. Belgium and the
+        Netherlands are joining too.
+      </p>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2>Common questions.</h2>
+      <dl class="faq__list">
+        <div>
+          <dt>Is {site.name} free?</dt>
+          <dd>Yes — {site.name} is free to use.</dd>
+        </div>
+        <div>
+          <dt>Where do the prices come from?</dt>
+          <dd>From real shopping. {site.name} builds its price picture from the receipts and scans people share across the supermarkets — so the more the community scans, the sharper your comparison.</dd>
+        </div>
+        <div>
+          <dt>What happens to my receipts?</dt>
+          <dd>Receipts are read on your device. When you <strong>save</strong> a receipt to your history, its image and the parsed details are sent to your account — so you can see it later and so we can improve scanning. A scan you don't save stays on your phone unless you tap &ldquo;Report a problem&rdquo;. Either way, any card details printed on a receipt are stripped automatically before anything is sent.</dd>
+        </div>
+        <div>
+          <dt>What about own-brand items?</dt>
+          <dd>Own-brand items usually have store-specific barcodes, so the same product won't always exist at another shop to compare against. You can still track its price history at the store that sells it — so you'll know when it goes up or drops, even when there's no like-for-like rival to line it up beside.</dd>
+        </div>
+        <div>
+          <dt>Does {site.name} work offline?</dt>
+          <dd>Yes. Scan a receipt or record a price with no signal and {site.name} saves it on your phone, then syncs it automatically the next time you're online — so a basement aisle or a dead spot at the till never loses your scan.</dd>
+        </div>
+        <div>
+          <dt>Can I get my data out?</dt>
+          <dd>Yes. Export your receipts to a CSV from the receipts list, and export or delete your account and data from Settings at any time — no email required.</dd>
+        </div>
+        <div>
+          <dt>A product's name or size looks wrong — can I fix it?</dt>
+          <dd>You can suggest a correction (name, brand or pack size) right from the product screen. Once another shopper confirms the same details, the shared product entry updates for everyone — the catalogue is built and kept honest by the community.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="membership" id="membership">
+    <div class="container">
+      <h2>Bronze &amp; Silver — free, earned by scanning.</h2>
+      <p>Every shopper starts as <strong>Bronze</strong>. Scan your shops
+        and tag the items as you go, and you'll climb to
+        <strong>Silver</strong> — both free. (Gold, a paid tier, is on the
+        way.)</p>
+
+      <h3>Bronze — where you start</h3>
+      <ul>
+        <li>Compare your basket across UK &amp; Irish supermarkets</li>
+        <li>Scan barcodes to check and record prices</li>
+        <li><strong>Help identify products</strong> — add a missing name, brand or size</li>
+        <li><strong>Save &amp; share money-off coupons</strong> to scan at the till</li>
+        <li>Track your trips, prices compared and receipts</li>
+        <li>Your last <strong>2 weeks</strong> of receipt history</li>
+      </ul>
+
+      <h3>Silver — for active members</h3>
+      <ul>
+        <li><strong>Price-drop alerts</strong> on items you've scanned — <em>now live</em></li>
+        <li><strong>Your full receipt history</strong> (Bronze sees 2 weeks) — <em>now live</em></li>
+        <li><strong>Your spend tracked over time</strong> — <em>now live</em></li>
+        <li>The cheapest shop for your basket <em>(coming soon)</em></li>
+        <li>Early access to new features <em>(coming soon)</em></li>
+      </ul>
+
+      <h3>Reaching &amp; keeping Silver</h3>
+      <p>Reach Silver by scanning <strong>4 receipts</strong> and tagging
+        <strong>10 barcodes</strong> from their line items
+        <strong>within two weeks</strong>. <strong>Helping identify products
+        counts too</strong> — when you add or correct an item's name, brand or
+        size and another shopper confirms it, it counts toward those 10 (up to
+        5 of them), so filling in the catalogue is rewarded. Silver reflects
+        your last two weeks of activity, so <strong>keep scanning to keep
+        it</strong> — let it lapse and you'll slip back to Bronze until you're
+        active again.</p>
+    </div>
+  </section>
+
+  <section class="beta" id="get">
+    <div class="container">
+      <div class="beta__card">
+        <h2>Get {site.name}.</h2>
+        <p class="beta__sub">
+          {site.name} is free on iPhone, and in beta on Android. Tap your
+          platform to install it and start comparing your shop.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href={site.appStoreUrl}>iPhone&nbsp;— App&nbsp;Store</a>
+          <a class="btn btn--ghost" href={site.playTestingUrl}>Android&nbsp;— Google&nbsp;Play&nbsp;beta</a>
+        </div>
+        <p class="beta__hint">
+          On Android, tap &ldquo;Become a tester&rdquo; then Install. Questions?
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

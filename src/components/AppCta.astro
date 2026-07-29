@@ -1,0 +1,20 @@
+---
+import { site } from '../site';
+interface Props {
+  heading: string;
+  sub?: string;
+}
+const { heading, sub = `${site.name} is free on iPhone, and in beta on Android.` } = Astro.props;
+---
+<section class="beta" id="get">
+  <div class="container">
+    <div class="beta__card">
+      <h2>{heading}</h2>
+      <p class="beta__sub">{sub}</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href={site.appStoreUrl}>iPhone&nbsp;— App&nbsp;Store</a>
+        <a class="btn btn--ghost" href={site.playTestingUrl}>Android&nbsp;— Google&nbsp;Play&nbsp;beta</a>
+      </div>
+    </div>
+  </div>
+</section>

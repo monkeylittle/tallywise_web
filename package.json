@@ -1,0 +1,17 @@
+{
+  "name": "tallywise_web",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tallywise marketing website (tallywise.eu)",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^4.16.0"
+  }
+}

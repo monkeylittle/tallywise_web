@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../site';
+---
+<BaseLayout
+  title={`${site.name} — Support`}
+  description="Help with Tallywise — common questions, reporting a scan, account help, and how to contact us."
+>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1>Support</h1>
+      <p class="hero__sub">
+        We're a small team. Email <a href={`mailto:${site.email}`}>{site.email}</a>
+        and we'll get back to you, usually within a few days.
+      </p>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2>Common questions.</h2>
+      <dl class="faq__list">
+        <div>
+          <dt>A receipt or barcode scanned incorrectly.</dt>
+          <dd>On the scan result screen, tap <strong>"Report a problem with this scan"</strong>. That sends us the receipt image, the recognised text, and the parsed result so we can fix the parser — it's the fastest way to get a scan corrected. You can also fix any line in the edit drawer before recording prices.</dd>
+        </div>
+        <div>
+          <dt>A price looks wrong or a store is missing.</dt>
+          <dd>Own-brand items often have store-specific barcodes and won't match across supermarkets — {site.name} shows "not available here" rather than hiding the gap. If a mainstream product looks mispriced, report the scan and we'll re-check it.</dd>
+        </div>
+        <div>
+          <dt>Sign-in or account help.</dt>
+          <dd>{site.name} uses email sign-in (plus Google and Apple). For password resets use the in-app "forgot password" flow. For anything else, email us.</dd>
+        </div>
+        <div>
+          <dt>Delete my account, or export my data.</dt>
+          <dd>You can do both in the app: <strong>Settings → Delete account</strong> removes your account and its data, and you can export your receipts to a CSV from the receipts list. You can also email <a href={`mailto:${site.email}`}>{site.email}</a> from your account address and we'll remove your account and associated data. See the <a href="/privacy/">Privacy Policy</a> for what we hold.</dd>
+        </div>
+        <div>
+          <dt>Permissions.</dt>
+          <dd>Scanning needs the camera; reading a saved receipt photo needs photo access; location is used to pick the right currency and the nearest store. Your GPS coordinates aren't sent to us, though the store and branch you're at may be saved with a price or receipt you record. You can change these in your device settings.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</BaseLayout>
