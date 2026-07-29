@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Deploy on every push to main…
+  push:
+    branches: [main]
+  # …and allow a manual run from the Actions tab.
+  workflow_dispatch:
+
+# Least-privilege token that can publish to Pages via OIDC.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push supersedes an in-flight one.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # withastro/action installs deps, runs `astro build`, and uploads the
+      # dist/ as a Pages artifact. Node 20 (Astro 4 supports Node 18/20/22 —
+      # NOT the local Node 25, which is why @astrojs/sitemap is left out).
+      - name: Build with Astro
+        uses: withastro/action@v3
+        with:
+          node-version: 20
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
