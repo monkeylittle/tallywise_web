@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AppCta from '../../components/AppCta.astro';
+import type { Lang } from '../../i18n/config';
+import { getContent } from '../../i18n/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = getContent(lang).howItWorks;
+---
+<BaseLayout lang={lang} page="howItWorks" title={c.title} description={c.description}>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 set:html={c.hero.h1} />
+      <p class="hero__sub" set:html={c.hero.sub} />
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container">
+      <ol class="steps">
+        {c.steps.map((step, i) => (
+          <li>
+            <span class="step__num">{i + 1}</span>
+            <h3 set:html={step.h} />
+            <p set:html={step.p} />
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="shots">
+    <div class="container">
+      <h2 set:html={c.shots.h2} />
+      <div class="shots__grid">
+        {['scan', 'receipt', 'spend'].map((name, i) => (
+          <figure class="shot">
+            <img src={`/assets/screenshots/${name}.png`} width="592" height="1280"
+                 loading="lazy" alt={c.shots.items[i].alt} />
+            <figcaption>{c.shots.items[i].caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <AppCta lang={lang} heading={c.ctaHeading} />
+</BaseLayout>

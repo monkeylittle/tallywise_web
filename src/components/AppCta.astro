@@ -1,19 +1,25 @@
 ---
 import { site } from '../site';
+import type { Lang } from '../i18n/config';
+import { getContent } from '../i18n/content';
+
 interface Props {
+  lang: Lang;
   heading: string;
   sub?: string;
 }
-const { heading, sub = `${site.name} is free on iPhone and Android.` } = Astro.props;
+const { lang, heading, sub } = Astro.props;
+const c = getContent(lang);
+const subLine = sub ?? c.ctaSub;
 ---
 <section class="beta" id="get">
   <div class="container">
     <div class="beta__card">
       <h2>{heading}</h2>
-      <p class="beta__sub">{sub}</p>
+      <p class="beta__sub">{subLine}</p>
       <div class="hero__cta">
-        <a class="btn btn--primary" href={site.appStoreUrl}>iPhone&nbsp;— App&nbsp;Store</a>
-        <a class="btn btn--ghost" href={site.playStoreUrl}>Android&nbsp;— Google&nbsp;Play</a>
+        <a class="btn btn--primary" href={site.appStoreUrl} set:html={c.buttons.iphone} />
+        <a class="btn btn--ghost" href={site.playStoreUrl} set:html={c.buttons.android} />
       </div>
     </div>
   </div>

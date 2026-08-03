@@ -1,0 +1,39 @@
+---
+// Shared body for the two legal pages (Privacy, Terms) — same structure, driven
+// by the `blocks` array in the content. Translated versions show a
+// "translation for convenience; English prevails" banner (content.legalNote).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Lang } from '../../i18n/config';
+import { getContent, resolve } from '../../i18n/content';
+
+interface LegalBlock { h?: string; ps?: string[]; list?: string[] }
+interface Props { lang: Lang; page: 'privacy' | 'terms' }
+
+const { lang, page } = Astro.props;
+const content = getContent(lang);
+const c = content[page];
+const note = content.legalNote;
+const blocks = c.blocks as LegalBlock[];
+const r = (s: string) => resolve(s, lang);
+---
+<BaseLayout lang={lang} page={page} title={c.title} description={c.description}>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 set:html={c.h1} />
+      <p class="hero__sub" set:html={r(c.heroSub)} />
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container prose">
+      {note && <p class="legal-note" set:html={r(note)} />}
+      {blocks.map((b) => (
+        <>
+          {b.h && <h2 set:html={b.h} />}
+          {b.ps && b.ps.map((p) => <p set:html={r(p)} />)}
+          {b.list && <ul>{b.list.map((li) => <li set:html={r(li)} />)}</ul>}
+        </>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

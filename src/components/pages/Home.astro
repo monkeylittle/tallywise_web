@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../site';
+import type { Lang } from '../../i18n/config';
+import { getContent } from '../../i18n/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = getContent(lang).home;
+
+// Store names stay literal across languages.
+const ieStores = ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 'SPAR', 'Centra', 'Mace'];
+---
+<BaseLayout lang={lang} page="home" title={c.title}>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1>{c.hero.h1}</h1>
+      <p class="hero__sub" set:html={c.hero.sub} />
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#get">{c.hero.ctaGet}</a>
+        <a class="btn btn--ghost" href="#how">{c.hero.ctaHow}</a>
+        <span class="hero__note" set:html={c.hero.note} />
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="container">
+      <h2 set:html={c.why.h2} />
+      <p class="why__lead" set:html={c.why.lead} />
+      <div class="why__grid why__grid--payoff">
+        {c.why.cards.map((card) => (
+          <div class="why__card">
+            <h3 set:html={card.h} />
+            <p set:html={card.p} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="container">
+      <h2 set:html={c.how.h2} />
+      <ol class="steps">
+        {c.how.steps.map((step, i) => (
+          <li>
+            <span class="step__num">{i + 1}</span>
+            <h3 set:html={step.h} />
+            <p set:html={step.p} />
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="coupons" id="coupons">
+    <div class="container">
+      <h2 set:html={c.couponsSec.h2} />
+      <p class="why__lead" set:html={c.couponsSec.lead} />
+      <div class="why__grid">
+        {c.couponsSec.cards.map((card) => (
+          <div class="why__card">
+            <h3 set:html={card.h} />
+            <p set:html={card.p} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="shots" id="shots">
+    <div class="container">
+      <h2 set:html={c.shots.h2} />
+      <div class="shots__grid">
+        {['scan', 'receipt', 'spend'].map((name, i) => (
+          <figure class="shot">
+            <img src={`/assets/screenshots/${name}.png`} width="592" height="1280"
+                 loading="lazy" alt={c.shots.items[i].alt} />
+            <figcaption>{c.shots.items[i].caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="stores" id="stores">
+    <div class="container">
+      <h2 set:html={c.stores.h2} />
+      <ul class="stores__grid">
+        {ieStores.map((s) => <li>{s}</li>)}
+      </ul>
+      <p class="stores__note" set:html={c.stores.note1} />
+      <p class="stores__note" set:html={c.stores.note2} />
+      <p class="stores__note" set:html={c.stores.note3} />
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 set:html={c.faq.h2} />
+      <dl class="faq__list">
+        {c.faq.items.map((item) => (
+          <div>
+            <dt set:html={item.q} />
+            <dd set:html={item.a} />
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="membership" id="membership">
+    <div class="container">
+      <h2 set:html={c.membership.h2} />
+      <p set:html={c.membership.intro} />
+
+      <h3 set:html={c.membership.bronzeH} />
+      <ul>{c.membership.bronze.map((li) => <li set:html={li} />)}</ul>
+
+      <h3 set:html={c.membership.silverH} />
+      <ul>{c.membership.silver.map((li) => <li set:html={li} />)}</ul>
+
+      <h3 set:html={c.membership.keepH} />
+      <p set:html={c.membership.keep} />
+    </div>
+  </section>
+
+  <section class="beta" id="get">
+    <div class="container">
+      <div class="beta__card">
+        <h2 set:html={c.get.h2} />
+        <p class="beta__sub" set:html={c.get.sub} />
+        <div class="hero__cta">
+          <a class="btn btn--primary" href={site.appStoreUrl} set:html={getContent(lang).buttons.iphone} />
+          <a class="btn btn--ghost" href={site.playStoreUrl} set:html={getContent(lang).buttons.android} />
+        </div>
+        <p class="beta__hint">
+          {c.get.hintLabel} <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

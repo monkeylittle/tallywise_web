@@ -2,18 +2,31 @@
 import { site } from '../site';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { DEFAULT_LANG, altsFor, htmlLang, pathFor, type Lang, type PageKey } from '../i18n/config';
+import { getContent } from '../i18n/content';
 import '../styles/global.css';
 
 interface Props {
+  lang: Lang;
+  page: PageKey;
   title: string;
   description?: string;
   /** Social-card image path (defaults to the scan screenshot). */
   image?: string;
 }
 
-const { title, description = site.description, image = '/assets/screenshots/scan.png' } = Astro.props;
+const { lang, page, title, description, image = '/assets/screenshots/scan.png' } = Astro.props;
+const c = getContent(lang);
+const desc = description ?? site.description;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL(image, site.url).href;
+
+// hreflang alternates for this page across every language, plus x-default (en).
+const alternates = altsFor(page).map((a) => ({
+  hreflang: htmlLang(a.lang),
+  href: new URL(a.href, site.url).href,
+}));
+const xDefault = new URL(pathFor(page, DEFAULT_LANG), site.url).href;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -31,7 +44,7 @@ const structuredData = {
       name: site.name,
       operatingSystem: 'iOS, Android',
       applicationCategory: 'ShoppingApplication',
-      description: site.description,
+      description: desc,
       url: site.url,
       installUrl: [site.appStoreUrl, site.playStoreUrl],
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
@@ -40,25 +53,28 @@ const structuredData = {
 };
 ---
 <!doctype html>
-<html lang={site.lang}>
+<html lang={htmlLang(lang)}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={desc} />
     <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
     <meta name="theme-color" content="#1B2140" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={htmlLang(lang)} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={desc} />
     <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -74,14 +90,14 @@ const structuredData = {
       rel="stylesheet"
     />
 
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <Nav />
+    <a class="skip-link" href="#main">{c.meta.skip}</a>
+    <Nav lang={lang} page={page} />
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

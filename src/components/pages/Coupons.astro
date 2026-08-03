@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AppCta from '../../components/AppCta.astro';
+import type { Lang } from '../../i18n/config';
+import { getContent, resolve } from '../../i18n/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = getContent(lang).coupons;
+const r = (s: string) => resolve(s, lang);
+---
+<BaseLayout lang={lang} page="coupons" title={c.title} description={c.description}>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 set:html={c.hero.h1} />
+      <p class="hero__sub" set:html={c.hero.sub} />
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="container">
+      <h2 set:html={c.how.h2} />
+      <div class="why__grid">
+        {c.how.cards.map((card) => (
+          <div class="why__card">
+            <h3 set:html={card.h} />
+            <p set:html={card.p} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container prose">
+      <h2 set:html={c.fair.h2} />
+      {c.fair.ps.map((p) => <p set:html={p} />)}
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2 set:html={c.faq.h2} />
+      <dl class="faq__list">
+        {c.faq.items.map((item) => (
+          <div>
+            <dt set:html={item.q} />
+            <dd set:html={r(item.a)} />
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <AppCta lang={lang} heading={c.ctaHeading} />
+</BaseLayout>

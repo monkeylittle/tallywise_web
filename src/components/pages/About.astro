@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AppCta from '../../components/AppCta.astro';
+import type { Lang } from '../../i18n/config';
+import { getContent, resolve } from '../../i18n/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = getContent(lang).about;
+const r = (s: string) => resolve(s, lang);
+---
+<BaseLayout lang={lang} page="about" title={c.title} description={c.description}>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 set:html={c.hero.h1} />
+      <p class="hero__sub" set:html={c.hero.sub} />
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container prose">
+      <h2 set:html={c.why.h2} />
+      {c.why.ps.map((p) => <p set:html={p} />)}
+
+      <h2 set:html={c.how.h2} />
+      <ul>{c.how.list.map((li) => <li set:html={r(li)} />)}</ul>
+
+      <h2 set:html={c.who.h2} />
+      <p set:html={c.who.p} />
+
+      <h2 set:html={c.contact.h2} />
+      <p set:html={r(c.contact.p)} />
+    </div>
+  </section>
+
+  <AppCta lang={lang} heading={c.ctaHeading} />
+</BaseLayout>

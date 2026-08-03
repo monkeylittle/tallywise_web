@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AppCta from '../../components/AppCta.astro';
+import type { Lang } from '../../i18n/config';
+import { getContent } from '../../i18n/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = getContent(lang).savings;
+---
+<BaseLayout lang={lang} page="savings" title={c.title} description={c.description}>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 set:html={c.hero.h1} />
+      <p class="hero__sub" set:html={c.hero.sub} />
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="container">
+      <h2 set:html={c.vary.h2} />
+      <p class="why__lead" set:html={c.vary.lead} />
+      <div class="why__grid">
+        {c.vary.cards.map((card) => (
+          <div class="why__card">
+            <h3 set:html={card.h} />
+            <p set:html={card.p} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container prose">
+      <h2 set:html={c.build.h2} />
+      {c.build.ps.map((p) => <p set:html={p} />)}
+
+      <h2 set:html={c.honest.h2} />
+      <p set:html={c.honest.p} />
+
+      <h2 set:html={c.covered.h2} />
+      <ul>{c.covered.list.map((li) => <li set:html={li} />)}</ul>
+      <p set:html={c.covered.p} />
+    </div>
+  </section>
+
+  <AppCta lang={lang} heading={c.ctaHeading} />
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+// Single catch-all that builds every page in every language:
+//   ''  /how-it-works  /coupons …            → English (root)
+//   nl  nl/how-it-works  fr/coupons  de/…     → translations (prefixed)
+// The URL slugs are shared across languages; only the language prefix differs
+// (see src/i18n/config.ts). Each page key maps to its body component below.
+import { LANG_CODES, PAGES, pathFor } from '../i18n/config';
+import Home from '../components/pages/Home.astro';
+import HowItWorks from '../components/pages/HowItWorks.astro';
+import Coupons from '../components/pages/Coupons.astro';
+import Savings from '../components/pages/Savings.astro';
+import About from '../components/pages/About.astro';
+import Support from '../components/pages/Support.astro';
+import Legal from '../components/pages/Legal.astro';
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const lang of LANG_CODES) {
+    for (const page of PAGES) {
+      const full = pathFor(page.key, lang); // e.g. '/', '/nl/how-it-works/'
+      const path = full.replace(/^\/|\/$/g, ''); // '', 'nl/how-it-works'
+      paths.push({ params: { path: path || undefined }, props: { lang, pageKey: page.key } });
+    }
+  }
+  return paths;
+}
+
+const { lang, pageKey } = Astro.props;
+---
+{pageKey === 'home' && <Home lang={lang} />}
+{pageKey === 'howItWorks' && <HowItWorks lang={lang} />}
+{pageKey === 'coupons' && <Coupons lang={lang} />}
+{pageKey === 'savings' && <Savings lang={lang} />}
+{pageKey === 'about' && <About lang={lang} />}
+{pageKey === 'support' && <Support lang={lang} />}
+{pageKey === 'privacy' && <Legal lang={lang} page="privacy" />}
+{pageKey === 'terms' && <Legal lang={lang} page="terms" />}

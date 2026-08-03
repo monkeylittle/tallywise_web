@@ -1,14 +1,22 @@
 ---
 import { site } from '../site';
+import { pathFor, type Lang } from '../i18n/config';
+import { getContent } from '../i18n/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = getContent(lang);
 const year = new Date().getFullYear();
 ---
 <footer class="footer">
   <div class="container footer__inner">
     <span>&copy; {year} {site.name}</span>
     <nav class="footer__links" aria-label="Footer">
-      <a href="/privacy/">Privacy</a>
-      <a href="/terms/">Terms</a>
-      <a href="/support/">Support</a>
+      <a href={pathFor('privacy', lang)}>{c.footer.privacy}</a>
+      <a href={pathFor('terms', lang)}>{c.footer.terms}</a>
+      <a href={pathFor('support', lang)}>{c.footer.support}</a>
       <a href={`mailto:${site.email}`}>{site.email}</a>
     </nav>
   </div>

@@ -4,7 +4,6 @@
 export const site = {
   name: 'Tallywise',
   url: 'https://tallywise.eu',
-  lang: 'en',
   tagline: 'Stop guessing where your basket is cheapest.',
   description:
     'Scan barcodes and receipts, build a basket, and see what it costs across ' +
@@ -28,10 +27,5 @@ export const site = {
   social: [] as string[],
 } as const;
 
-export const nav = [
-  { href: '/how-it-works/', label: 'How it works' },
-  { href: '/coupons/', label: 'Coupons' },
-  { href: '/savings/', label: 'Savings' },
-  { href: '/about/', label: 'About' },
-  { href: '/#get', label: 'Get the app' },
-];
+// Navigation labels + targets are language-aware and live in the i18n content
+// (src/i18n/content/*) and src/components/Nav.astro.

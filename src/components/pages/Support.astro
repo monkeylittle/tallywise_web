@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Lang } from '../../i18n/config';
+import { getContent, resolve } from '../../i18n/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = getContent(lang).support;
+const r = (s: string) => resolve(s, lang);
+---
+<BaseLayout lang={lang} page="support" title={c.title} description={c.description}>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 set:html={c.hero.h1} />
+      <p class="hero__sub" set:html={r(c.hero.sub)} />
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2 set:html={c.faq.h2} />
+      <dl class="faq__list">
+        {c.faq.items.map((item) => (
+          <div>
+            <dt set:html={item.q} />
+            <dd set:html={r(item.a)} />
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+</BaseLayout>
