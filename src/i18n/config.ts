@@ -60,3 +60,27 @@ export function pathFor(page: PageKey, lang: Lang): string {
 export function altsFor(page: PageKey): { lang: Lang; href: string }[] {
   return LANG_CODES.map((lang) => ({ lang, href: pathFor(page, lang) }));
 }
+
+// Supported markets and their store lists — mirrors the app's
+// `storesForCountry` (lib/core/stores/store_directory.dart), the source of
+// truth for what's actually supported. Store names are language-neutral; the
+// country display names are translated (content.stores.countryNames).
+export const COUNTRIES = [
+  { code: 'IE', stores: ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 'Centra', 'Spar'] },
+  { code: 'UK', stores: ['Tesco', "Sainsbury's", 'Asda', 'Morrisons', 'Aldi', 'Lidl', 'M&S', 'Waitrose', 'Co-op'] },
+  { code: 'BE', stores: ['Delhaize', 'Carrefour', 'Jumbo', 'Aldi', 'Lidl'] },
+  { code: 'NL', stores: ['Albert Heijn', 'Jumbo', 'Plus', 'Aldi', 'Lidl'] },
+] as const;
+
+export type CountryCode = (typeof COUNTRIES)[number]['code'];
+export const COUNTRY_CODES = COUNTRIES.map((c) => c.code) as CountryCode[];
+
+// Country pre-selected on first load per site language (English → Ireland, the
+// continental languages → Belgium). The client script refines this from the
+// browser region and remembers an explicit choice; this is only the fallback.
+export const DEFAULT_COUNTRY: Record<Lang, CountryCode> = {
+  en: 'IE',
+  nl: 'BE',
+  fr: 'BE',
+  de: 'BE',
+};

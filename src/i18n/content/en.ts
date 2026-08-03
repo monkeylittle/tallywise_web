@@ -101,8 +101,9 @@ export const en = {
     },
     stores: {
       h2: 'Wherever you shop.',
+      pickLabel: 'Choose your country',
+      countryNames: { IE: 'Ireland', UK: 'United Kingdom', BE: 'Belgium', NL: 'Netherlands' },
       note1: 'Own-brand items only show prices where they&rsquo;re stocked — we never silently drop a store, so the totals are always honest.',
-      note2: "Shopping in the UK, Belgium or the Netherlands? Tallywise compares the big chains there too — Sainsbury's, Asda and Morrisons in the UK; Delhaize, Carrefour and Jumbo in Belgium; Albert Heijn, Jumbo and Plus in the Netherlands — with Aldi and Lidl across them all.",
       note3: 'Tallywise is in English, Dutch, French and German, so it speaks your shop wherever you are.',
     },
     faq: {

@@ -359,6 +359,66 @@ section h2 {
   max-width: 660px;
 }
 
+/* ── Country selector (JS-free radio tabs, JS-enhanced) ─── */
+.stores-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.stores-pick-label {
+  display: block;
+  margin: 0 0 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink2);
+}
+.stores-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 26px;
+}
+.stores-tab {
+  cursor: pointer;
+  padding: 9px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink2);
+  font-weight: 600;
+  user-select: none;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.stores-tab:hover { border-color: var(--sky); color: var(--sky-deep); }
+/* Show only the selected country's grid (all hidden by default). */
+.stores__grid[data-c] { display: none; }
+#c-IE:checked ~ .stores__grid[data-c="IE"],
+#c-UK:checked ~ .stores__grid[data-c="UK"],
+#c-BE:checked ~ .stores__grid[data-c="BE"],
+#c-NL:checked ~ .stores__grid[data-c="NL"] { display: grid; }
+/* Highlight the active tab. */
+#c-IE:checked ~ .stores-tabs label[for="c-IE"],
+#c-UK:checked ~ .stores-tabs label[for="c-UK"],
+#c-BE:checked ~ .stores-tabs label[for="c-BE"],
+#c-NL:checked ~ .stores-tabs label[for="c-NL"] {
+  background: var(--sky);
+  border-color: var(--sky);
+  color: #fff;
+}
+/* Keyboard focus ring on the tab whose radio has focus. */
+#c-IE:focus-visible ~ .stores-tabs label[for="c-IE"],
+#c-UK:focus-visible ~ .stores-tabs label[for="c-UK"],
+#c-BE:focus-visible ~ .stores-tabs label[for="c-BE"],
+#c-NL:focus-visible ~ .stores-tabs label[for="c-NL"] {
+  outline: 2px solid var(--sky-deep);
+  outline-offset: 2px;
+}
+
 /* ── Blog list ───────────────────────────────────── */
 .blog__list {
   margin: 0;

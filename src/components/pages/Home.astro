@@ -2,14 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../site';
 import type { Lang } from '../../i18n/config';
+import { COUNTRIES, DEFAULT_COUNTRY } from '../../i18n/config';
 import { getContent } from '../../i18n/content';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const c = getContent(lang).home;
 
-// Store names stay literal across languages.
-const ieStores = ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 'SPAR', 'Centra', 'Mace'];
+// Country pre-selected on first load; the inline script below refines it from
+// the visitor's browser region and remembers an explicit choice.
+const defaultCountry = DEFAULT_COUNTRY[lang];
 ---
 <BaseLayout lang={lang} page="home" title={c.title}>
   <section class="hero">
@@ -87,14 +89,51 @@ const ieStores = ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 
   <section class="stores" id="stores">
     <div class="container">
       <h2 set:html={c.stores.h2} />
-      <ul class="stores__grid">
-        {ieStores.map((s) => <li>{s}</li>)}
-      </ul>
+      <div class="stores-picker">
+        {/* Radios first so a `:checked ~ grid` sibling rule can show the right
+            list with no JS; the default is checked server-side per language. */}
+        {COUNTRIES.map((country) => (
+          <input class="stores-radio" type="radio" name="tw-country"
+                 id={`c-${country.code}`} checked={country.code === defaultCountry} />
+        ))}
+        <span class="stores-pick-label">{c.stores.pickLabel}</span>
+        <div class="stores-tabs">
+          {COUNTRIES.map((country) => (
+            <label class="stores-tab" for={`c-${country.code}`}>{c.stores.countryNames[country.code]}</label>
+          ))}
+        </div>
+        {COUNTRIES.map((country) => (
+          <ul class="stores__grid" data-c={country.code}>
+            {country.stores.map((s) => <li>{s}</li>)}
+          </ul>
+        ))}
+      </div>
       <p class="stores__note" set:html={c.stores.note1} />
-      <p class="stores__note" set:html={c.stores.note2} />
       <p class="stores__note" set:html={c.stores.note3} />
     </div>
   </section>
+  <script is:inline>
+    (function () {
+      var C = ['IE', 'UK', 'BE', 'NL'];
+      function pick() {
+        try { var s = localStorage.getItem('tw_country'); if (C.indexOf(s) >= 0) return s; } catch (e) {}
+        var langs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < langs.length; i++) {
+          var m = /-([A-Za-z]{2})/.exec(langs[i] || '');
+          if (m) { var r = m[1].toUpperCase(); if (r === 'GB') r = 'UK'; if (C.indexOf(r) >= 0) return r; }
+        }
+        return null;
+      }
+      var chosen = pick();
+      if (chosen) { var el = document.getElementById('c-' + chosen); if (el) el.checked = true; }
+      C.forEach(function (cc) {
+        var r = document.getElementById('c-' + cc);
+        if (r) r.addEventListener('change', function () {
+          if (r.checked) { try { localStorage.setItem('tw_country', cc); } catch (e) {} }
+        });
+      });
+    })();
+  </script>
 
   <section class="faq" id="faq">
     <div class="container">

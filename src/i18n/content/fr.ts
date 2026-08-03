@@ -99,8 +99,9 @@ export const fr: SiteContent = {
     },
     stores: {
       h2: 'Où que vous fassiez vos courses.',
+      pickLabel: 'Choisissez votre pays',
+      countryNames: { IE: 'Irlande', UK: 'Royaume-Uni', BE: 'Belgique', NL: 'Pays-Bas' },
       note1: 'Les produits de marque distributeur n’affichent un prix que là où ils sont vendus — nous ne retirons jamais discrètement un magasin, pour que les totaux restent toujours honnêtes.',
-      note2: 'Vous faites vos courses au Royaume-Uni, en Belgique ou aux Pays-Bas ? Tallywise y compare aussi les grandes enseignes — Sainsbury’s, Asda et Morrisons au Royaume-Uni ; Delhaize, Carrefour et Jumbo en Belgique ; Albert Heijn, Jumbo et Plus aux Pays-Bas — avec Aldi et Lidl partout.',
       note3: 'Tallywise est disponible en anglais, néerlandais, français et allemand, pour parler la langue de votre magasin où que vous soyez.',
     },
     faq: {

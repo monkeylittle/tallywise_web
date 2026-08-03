@@ -99,8 +99,9 @@ export const de: SiteContent = {
     },
     stores: {
       h2: 'Wo auch immer du einkaufst.',
+      pickLabel: 'Wähle dein Land',
+      countryNames: { IE: 'Irland', UK: 'Vereinigtes Königreich', BE: 'Belgien', NL: 'Niederlande' },
       note1: 'Eigenmarkenprodukte zeigen nur dort Preise, wo sie geführt werden — wir lassen nie still einen Laden weg, damit die Summen immer ehrlich sind.',
-      note2: 'Kaufst du im Vereinigten Königreich, in Belgien oder in den Niederlanden ein? Tallywise vergleicht dort auch die großen Ketten — Sainsbury’s, Asda und Morrisons im Vereinigten Königreich; Delhaize, Carrefour und Jumbo in Belgien; Albert Heijn, Jumbo und Plus in den Niederlanden — mit Aldi und Lidl überall.',
       note3: 'Tallywise gibt es auf Englisch, Niederländisch, Französisch und Deutsch, damit sie die Sprache deines Ladens spricht, wo du auch bist.',
     },
     faq: {

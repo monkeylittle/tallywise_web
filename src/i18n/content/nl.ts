@@ -99,8 +99,9 @@ export const nl: SiteContent = {
     },
     stores: {
       h2: 'Waar je ook winkelt.',
+      pickLabel: 'Kies je land',
+      countryNames: { IE: 'Ierland', UK: 'Verenigd Koninkrijk', BE: 'België', NL: 'Nederland' },
       note1: 'Huismerkproducten tonen alleen prijzen waar ze in de rekken liggen — we laten nooit stilletjes een winkel weg, zodat de totalen altijd eerlijk zijn.',
-      note2: 'Winkel je in het VK, België of Nederland? Tallywise vergelijkt daar ook de grote ketens — Sainsbury\'s, Asda en Morrisons in het VK; Delhaize, Carrefour en Jumbo in België; Albert Heijn, Jumbo en Plus in Nederland — met Aldi en Lidl overal.',
       note3: 'Tallywise is beschikbaar in het Engels, Nederlands, Frans en Duits, zodat het jouw winkel spreekt waar je ook bent.',
     },
     faq: {
