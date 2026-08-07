@@ -37,6 +37,17 @@ export const en = {
       ctaGet: 'Get the app',
       ctaHow: 'See how it works',
       note: 'Free on iPhone &amp; Android',
+      compare: {
+        basket: 'Your basket · 14 items',
+        caption: 'Priced at every store you could buy it.',
+        cheapest: 'Cheapest',
+        save: 'You save <b>€4.20</b> this shop',
+        shops: [
+          { code: 'SV', name: 'SuperValu', price: '€48.30', color: '#D4122A', best: true },
+          { code: 'TE', name: 'Tesco', price: '€50.15', color: '#00539F', best: false },
+          { code: 'DN', name: 'Dunnes', price: '€52.50', color: '#E4001B', best: false },
+        ],
+      },
     },
     why: {
       h2: 'Why Tallywise, why now?',

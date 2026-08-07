@@ -507,3 +507,163 @@ section h2 {
   gap: 18px;
   align-items: center;
 }
+
+/* ══ Richer, app-like components (match the app design system) ══════════ */
+
+/* Small uppercase section/hero label */
+.eyebrow {
+  display: inline-block;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sky-deep);
+  margin: 0 0 14px;
+}
+section > .container > .eyebrow { margin-bottom: 12px; }
+
+/* Two-column hero: copy + a live basket-comparison card */
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: 52px;
+  align-items: center;
+}
+.hero__col { max-width: 620px; }
+.hero__grid .hero h1 { margin-top: 4px; }
+
+/* Basket-comparison card — the actual product, visualised */
+.compare {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+.compare__head { margin-bottom: 16px; }
+.compare__head strong {
+  display: block;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+.compare__head span { color: var(--ink3); font-size: 0.88rem; }
+.compare__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin-bottom: 9px;
+  background: var(--card);
+}
+.compare__row.is-best {
+  border-color: var(--success);
+  background: rgba(47, 174, 107, 0.09);
+}
+.compare__shop {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 600;
+  color: var(--ink);
+  min-width: 0;
+}
+.compare__chip {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+.compare__tag {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--success);
+  background: var(--card);
+  border: 1px solid var(--success);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.compare__price {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.is-best .compare__price { color: var(--success); }
+.compare__saved {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 14px;
+  padding: 13px;
+  border-radius: 14px;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+}
+.compare__saved b { color: #7CE0AE; }
+
+/* Icon tile on feature cards */
+.card-ic {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: var(--sky-soft);
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+}
+.card-ic svg { width: 23px; height: 23px; stroke: var(--sky-deep); }
+.why__card--accent .card-ic,
+.why__grid--payoff .why__card:last-child .card-ic {
+  background: var(--navy);
+}
+.why__card--accent .card-ic svg,
+.why__grid--payoff .why__card:last-child .card-ic svg { stroke: #fff; }
+
+/* Navy gradient CTA card (the "get the app" band) */
+.beta__card--navy {
+  background: linear-gradient(150deg, var(--navy), var(--navy-deep));
+  border: none;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.beta__card--navy::after {
+  content: "";
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79,158,245,0.5), transparent 70%);
+  top: -130px; right: -80px;
+  pointer-events: none;
+}
+.beta__card--navy h2 { color: #fff; position: relative; }
+.beta__card--navy .beta__sub { color: #C7CFE6; position: relative; }
+.beta__card--navy .hero__cta { position: relative; }
+.beta__card--navy .btn--primary { background: #fff; color: var(--navy); box-shadow: 0 10px 24px rgba(0,0,0,0.18); }
+.beta__card--navy .btn--primary:hover { background: var(--sky-soft); color: var(--navy); }
+.beta__card--navy .btn--ghost { color: #fff; border-color: rgba(255,255,255,0.42); }
+.beta__card--navy .btn--ghost:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.08); }
+.beta__card--navy .beta__hint { color: #9AA4C4; }
+.beta__card--navy .beta__hint a { color: #9FC7FF; }
+
+@media (max-width: 860px) {
+  .hero__grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero { padding-top: 72px; }
+}

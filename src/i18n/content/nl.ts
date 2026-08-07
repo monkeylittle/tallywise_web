@@ -35,6 +35,17 @@ export const nl: SiteContent = {
       ctaGet: 'Download de app',
       ctaHow: 'Bekijk hoe het werkt',
       note: 'Gratis op iPhone &amp; Android',
+      compare: {
+        basket: 'Je mandje · 14 producten',
+        caption: 'Vergeleken bij elke winkel waar je het kunt kopen.',
+        cheapest: 'Goedkoopst',
+        save: 'Je bespaart <b>€4,20</b> deze keer',
+        shops: [
+          { code: 'AH', name: 'Albert Heijn', price: '€52,40', color: '#1791D0', best: true },
+          { code: 'JU', name: 'Jumbo', price: '€54,15', color: '#B87A00', best: false },
+          { code: 'PL', name: 'PLUS', price: '€55,90', color: '#6DA544', best: false },
+        ],
+      },
     },
     why: {
       h2: 'Waarom Tallywise, en waarom nu?',

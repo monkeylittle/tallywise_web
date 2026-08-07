@@ -35,6 +35,17 @@ export const de: SiteContent = {
       ctaGet: 'App herunterladen',
       ctaHow: 'So funktioniert’s',
       note: 'Kostenlos für iPhone &amp; Android',
+      compare: {
+        basket: 'Dein Warenkorb · 14 Artikel',
+        caption: 'Verglichen in jedem Geschäft, in dem du es kaufen kannst.',
+        cheapest: 'Am günstigsten',
+        save: 'Du sparst <b>4,20 €</b> bei diesem Einkauf',
+        shops: [
+          { code: 'CO', name: 'Colruyt', price: '48,30 €', color: '#E20613', best: true },
+          { code: 'DE', name: 'Delhaize', price: '50,15 €', color: '#B01E2E', best: false },
+          { code: 'CA', name: 'Carrefour', price: '52,50 €', color: '#004E9F', best: false },
+        ],
+      },
     },
     why: {
       h2: 'Warum Tallywise, und warum jetzt?',

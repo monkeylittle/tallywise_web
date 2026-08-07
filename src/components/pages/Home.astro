@@ -12,16 +12,48 @@ const c = getContent(lang).home;
 // Country pre-selected on first load; the inline script below refines it from
 // the visitor's browser region and remembers an explicit choice.
 const defaultCountry = DEFAULT_COUNTRY[lang];
+
+// Decorative icons for the three "why" cards (positional, so no translation).
+const whyIcons = [
+  '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>',
+];
 ---
 <BaseLayout lang={lang} page="home" title={c.title}>
   <section class="hero">
-    <div class="container hero__inner">
-      <h1>{c.hero.h1}</h1>
-      <p class="hero__sub" set:html={c.hero.sub} />
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="#get">{c.hero.ctaGet}</a>
-        <a class="btn btn--ghost" href="#how">{c.hero.ctaHow}</a>
-        <span class="hero__note" set:html={c.hero.note} />
+    <div class="container">
+      <div class="hero__grid">
+        <div class="hero__col">
+          <span class="eyebrow" set:html={c.hero.note} />
+          <h1>{c.hero.h1}</h1>
+          <p class="hero__sub" set:html={c.hero.sub} />
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#get">{c.hero.ctaGet}</a>
+            <a class="btn btn--ghost" href="#how">{c.hero.ctaHow}</a>
+          </div>
+        </div>
+
+        <div class="compare" aria-hidden="true">
+          <div class="compare__head">
+            <strong>{c.hero.compare.basket}</strong>
+            <span>{c.hero.compare.caption}</span>
+          </div>
+          {c.hero.compare.shops.map((s) => (
+            <div class={`compare__row${s.best ? ' is-best' : ''}`}>
+              <span class="compare__shop">
+                <span class="compare__chip" style={`background:${s.color}`}>{s.code}</span>
+                {s.name}
+                {s.best && <span class="compare__tag">{c.hero.compare.cheapest}</span>}
+              </span>
+              <span class="compare__price">{s.price}</span>
+            </div>
+          ))}
+          <div class="compare__saved">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7CE0AE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+            <span set:html={c.hero.compare.save} />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -31,8 +63,9 @@ const defaultCountry = DEFAULT_COUNTRY[lang];
       <h2 set:html={c.why.h2} />
       <p class="why__lead" set:html={c.why.lead} />
       <div class="why__grid why__grid--payoff">
-        {c.why.cards.map((card) => (
+        {c.why.cards.map((card, i) => (
           <div class="why__card">
+            <div class="card-ic" set:html={whyIcons[i]} />
             <h3 set:html={card.h} />
             <p set:html={card.p} />
           </div>
@@ -167,7 +200,7 @@ const defaultCountry = DEFAULT_COUNTRY[lang];
 
   <section class="beta" id="get">
     <div class="container">
-      <div class="beta__card">
+      <div class="beta__card beta__card--navy">
         <h2 set:html={c.get.h2} />
         <p class="beta__sub" set:html={c.get.sub} />
         <div class="hero__cta">
