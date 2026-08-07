@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AppCta from '../../components/AppCta.astro';
+import CompareCard from '../../components/CompareCard.astro';
 import type { Lang } from '../../i18n/config';
 import { getContent, resolve } from '../../i18n/content';
 
@@ -11,9 +12,14 @@ const r = (s: string) => resolve(s, lang);
 ---
 <BaseLayout lang={lang} page="about" title={c.title} description={c.description}>
   <section class="hero">
-    <div class="container hero__inner">
-      <h1 set:html={c.hero.h1} />
-      <p class="hero__sub" set:html={c.hero.sub} />
+    <div class="container">
+      <div class="hero__grid">
+        <div class="hero__col">
+          <h1 set:html={c.hero.h1} />
+          <p class="hero__sub" set:html={c.hero.sub} />
+        </div>
+        <CompareCard lang={lang} />
+      </div>
     </div>
   </section>
 
