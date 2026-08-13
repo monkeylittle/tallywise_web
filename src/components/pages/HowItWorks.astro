@@ -40,7 +40,7 @@ const c = getContent(lang).howItWorks;
     <div class="container">
       <h2 set:html={c.shots.h2} />
       <div class="shots__grid">
-        {['scan', 'receipt', 'spend'].map((name, i) => (
+        {['scan', 'list', 'compare', 'deals'].map((name, i) => (
           <figure class="shot">
             <img src={`/assets/screenshots/${name}.png`} width="592" height="1280"
                  loading="lazy" alt={c.shots.items[i].alt} />

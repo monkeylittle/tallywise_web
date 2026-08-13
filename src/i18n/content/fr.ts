@@ -82,6 +82,24 @@ export const fr: SiteContent = {
         },
       ],
     },
+    listsSec: {
+      h2: 'Votre liste de courses — partagée et chiffrée.',
+      lead: 'Composez une liste en scannant, en cherchant ou simplement en tapant un article, puis partagez-la avec ceux qui font les courses avec vous. Chacun ajoute à la même liste, vous cochez au fur et à mesure — et Tallywise affiche le total estimé avant de partir.',
+      cards: [
+        {
+          h: 'Ajoutez comme vous voulez',
+          p: 'Scannez un code-barres, cherchez dans le catalogue ou tapez simplement &laquo;&nbsp;bananes&nbsp;&raquo;. Ajustez les quantités et cochez les articles pendant vos courses, avec une barre de progression en direct.',
+        },
+        {
+          h: 'Partagez avec votre foyer',
+          p: "Partagez une liste par e-mail &mdash; en lecture ou en modification. Tout le monde complète la même liste, donc rien n'est acheté en double ni oublié. Invitez quelqu'un qui n'est pas encore sur Tallywise : la liste l'attend dès son inscription.",
+        },
+        {
+          h: 'Sachez le coût à l’avance',
+          p: 'Chaque article est chiffré à partir de courses réelles : vous voyez un <em>total estimé</em> &mdash; à peu près ce que coûtera votre panier &mdash; avant d’y aller.',
+        },
+      ],
+    },
     couponsSec: {
       h2: 'Ne perdez plus jamais un bon de réduction.',
       lead: 'Ces bons imprimés au bas de votre ticket de caisse ? Tallywise les enregistre sur votre téléphone et affiche le code-barres directement en caisse — le bon est ainsi dans votre poche, pas froissé dans un tiroir et périmé.',
@@ -104,8 +122,9 @@ export const fr: SiteContent = {
       h2: 'Voyez-la dans votre main.',
       items: [
         { alt: 'Écran de scan Tallywise — scannez un code-barres ou photographiez un ticket de caisse.', caption: 'Scannez un code-barres, ou photographiez un ticket.' },
-        { alt: 'Écran ticket Tallywise — produits et prix analysés depuis un ticket de caisse.', caption: 'Votre ticket, lu sur l’appareil en produits.' },
-        { alt: 'Écran dépenses Tallywise — vos dépenses de courses hebdomadaires dans le temps, par catégorie.', caption: 'Voyez où passe votre budget courses.' },
+        { alt: 'Liste de courses Tallywise — partagée, chaque article chiffré avec un total en direct.', caption: 'Une liste de courses partagée, chiffrée au fur et à mesure.' },
+        { alt: 'Écran produit Tallywise — un produit chiffré dans chaque supermarché.', caption: 'Le prix de chaque enseigne, côte à côte.' },
+        { alt: 'Offres Tallywise — récentes baisses de prix dans les supermarchés près de chez vous.', caption: 'Les offres près de chez vous, repérées pour vous.' },
       ],
     },
     stores: {
@@ -125,6 +144,7 @@ export const fr: SiteContent = {
         { q: 'Tallywise fonctionne-t-elle hors ligne ?', a: 'Oui. Scannez un ticket ou enregistrez un prix sans réseau et Tallywise le garde sur votre téléphone, puis le synchronise automatiquement dès que vous êtes en ligne — un rayon en sous-sol ou une zone morte en caisse ne vous fait jamais perdre votre scan.' },
         { q: 'Puis-je récupérer mes données ?', a: 'Oui. Exportez vos tickets en CSV depuis la liste des tickets, et exportez ou supprimez votre compte et vos données depuis les Réglages à tout moment — sans e-mail.' },
         { q: 'Le nom ou la taille d’un produit semble incorrect — puis-je le corriger ?', a: 'Vous pouvez proposer une correction (nom, marque ou format) directement depuis l’écran du produit. Dès qu’un autre client confirme les mêmes informations, la fiche produit partagée est mise à jour pour tout le monde — le catalogue est construit et tenu honnête par la communauté.' },
+        { q: 'Puis-je partager une liste de courses ?', a: "Oui. Composez une liste en scannant, en cherchant ou en tapant des articles, puis partagez-la par e-mail &mdash; en lecture seule ou modifiable. Toutes les personnes avec qui vous partagez complètent la même liste et cochent au fur et à mesure, et Tallywise affiche un total estimé. Vous pouvez même inviter quelqu'un qui n'est pas encore sur Tallywise ; la liste l'attend dès son inscription." },
       ],
     },
     membership: {
@@ -190,8 +210,9 @@ export const fr: SiteContent = {
       h2: 'À quoi ça ressemble.',
       items: [
         { alt: 'Écran de scan Tallywise — commencez par un code-barres ou un ticket de caisse.', caption: 'Commencez par un code-barres ou un ticket.' },
-        { alt: 'Écran ticket Tallywise — produits et prix lus depuis un ticket de caisse.', caption: 'Chaque ligne lue sur l’appareil.' },
-        { alt: 'Écran dépenses Tallywise — dépenses de courses hebdomadaires dans le temps, par catégorie.', caption: 'Vos dépenses dans le temps, par catégorie.' },
+        { alt: 'Liste de courses Tallywise — ajoutez par scan, recherche ou texte libre ; cochez au fur et à mesure.', caption: 'Composez une liste — scannez, cherchez ou tapez.' },
+        { alt: 'Écran produit Tallywise — le même produit chiffré dans chaque enseigne qui le vend.', caption: 'Voyez qui est le moins cher pour chaque article.' },
+        { alt: 'Offres Tallywise — récentes baisses de prix dans les magasins à proximité.', caption: 'Attrapez les baisses de prix près de chez vous.' },
       ],
     },
     ctaHeading: 'Essayez-la lors de vos prochaines courses.',

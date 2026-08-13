@@ -82,6 +82,24 @@ export const nl: SiteContent = {
         },
       ],
     },
+    listsSec: {
+      h2: 'Je boodschappenlijst — gedeeld én met prijzen.',
+      lead: 'Stel een lijst samen door te scannen, te zoeken of gewoon een item te typen, en deel hem met wie je mee boodschappen doet. Iedereen voegt toe aan dezelfde lijst, je vinkt af terwijl je winkelt — en Tallywise toont het geschatte totaal voordat je de deur uit gaat.',
+      cards: [
+        {
+          h: 'Voeg toe zoals je wilt',
+          p: 'Scan een barcode, doorzoek de catalogus of typ gewoon &ldquo;bananen.&rdquo; Pas aantallen aan en vink items af tijdens het winkelen, met een live voortgangsbalk.',
+        },
+        {
+          h: 'Deel met je huishouden',
+          p: 'Deel een lijst per e-mail &mdash; bekijken of bewerken. Iedereen vult dezelfde lijst aan, zodat niets dubbel wordt gekocht of vergeten. Nodig iemand uit die nog geen Tallywise heeft en de lijst staat klaar zodra ze zich aanmelden.',
+        },
+        {
+          h: 'Weet vooraf wat het kost',
+          p: 'Elk item is geprijsd op basis van echte boodschappen, dus je ziet een <em>geschat totaal</em> &mdash; ongeveer wat je boodschappen kosten &mdash; voordat je gaat.',
+        },
+      ],
+    },
     couponsSec: {
       h2: 'Nooit meer een kortingsbon kwijt.',
       lead: 'Die bonnetjes die onderaan je kassabon worden afgedrukt? Tallywise bewaart ze op je telefoon en toont de streepjescode gewoon aan de kassa — zo zit de bon in je zak, niet verfrommeld in een lade en over datum.',
@@ -104,8 +122,9 @@ export const nl: SiteContent = {
       h2: 'Zie het in je hand.',
       items: [
         { alt: 'Tallywise-scanscherm — scan een streepjescode of maak een foto van een kassabon.', caption: 'Scan een streepjescode, of fotografeer een kassabon.' },
-        { alt: 'Tallywise-kassabonscherm — verwerkte producten en prijzen van een kassabon.', caption: 'Je kassabon, op het toestel omgezet in producten.' },
-        { alt: 'Tallywise-uitgavenscherm — je wekelijkse boodschappenuitgaven over tijd, per categorie.', caption: 'Zie waar je boodschappengeld naartoe gaat.' },
+        { alt: 'Tallywise-boodschappenlijst — gedeeld, met elk item geprijsd en een lopend totaal.', caption: 'Een gedeelde boodschappenlijst, geprijsd terwijl je toevoegt.' },
+        { alt: 'Tallywise-productscherm — één product geprijsd bij elke supermarkt.', caption: 'De prijs van elke winkel, naast elkaar.' },
+        { alt: 'Tallywise-deals — recente prijsdalingen bij supermarkten bij jou in de buurt.', caption: 'Deals bij jou in de buurt, voor je gespot.' },
       ],
     },
     stores: {
@@ -125,6 +144,7 @@ export const nl: SiteContent = {
         { q: 'Werkt Tallywise offline?', a: 'Ja. Scan een kassabon of registreer een prijs zonder verbinding en Tallywise bewaart het op je telefoon, en synchroniseert het automatisch de volgende keer dat je online bent — zo verlies je nooit een scan door een kelderafdeling of een dode zone aan de kassa.' },
         { q: 'Kan ik mijn gegevens exporteren?', a: 'Ja. Exporteer je kassabonnen naar een CSV vanuit de bonnenlijst, en exporteer of verwijder je account en gegevens op elk moment via Instellingen — zonder e-mail.' },
         { q: 'De naam of het formaat van een product klopt niet — kan ik dat verbeteren?', a: 'Je kunt een correctie voorstellen (naam, merk of verpakkingsgrootte) rechtstreeks vanaf het productscherm. Zodra een andere shopper dezelfde gegevens bevestigt, wordt het gedeelde productitem voor iedereen bijgewerkt — de catalogus wordt door de gemeenschap opgebouwd en eerlijk gehouden.' },
+        { q: 'Kan ik een boodschappenlijst delen?', a: 'Ja. Stel een lijst samen door items te scannen, te zoeken of te typen en deel hem per e-mail &mdash; alleen-lezen of bewerkbaar. Iedereen met wie je deelt vult dezelfde lijst aan en vinkt af tijdens het winkelen, en Tallywise toont een geschat totaal. Je kunt zelfs iemand uitnodigen die nog geen Tallywise heeft; de lijst staat klaar zodra ze zich aanmelden.' },
       ],
     },
     membership: {
@@ -190,8 +210,9 @@ export const nl: SiteContent = {
       h2: 'Hoe het eruitziet.',
       items: [
         { alt: 'Tallywise-scanscherm — begin met een streepjescode of een kassabon.', caption: 'Begin met een streepjescode of een kassabon.' },
-        { alt: 'Tallywise-kassabonscherm — producten en prijzen gelezen van een kassabon.', caption: 'Elke regel op het toestel gelezen.' },
-        { alt: 'Tallywise-uitgavenscherm — wekelijkse boodschappenuitgaven over tijd, per categorie.', caption: 'Je uitgaven over tijd, per categorie.' },
+        { alt: 'Tallywise-boodschappenlijst — voeg toe via scan, zoeken of vrije tekst; vink af tijdens het winkelen.', caption: 'Stel een lijst samen — scan, zoek of typ het gewoon.' },
+        { alt: 'Tallywise-productscherm — hetzelfde product geprijsd bij elke winkel die het verkoopt.', caption: 'Zie wie het goedkoopst is voor elk item.' },
+        { alt: 'Tallywise-deals — recente prijsdalingen bij winkels in de buurt.', caption: 'Pak de prijsdalingen bij jou in de buurt.' },
       ],
     },
     ctaHeading: 'Probeer het bij je volgende boodschappen.',

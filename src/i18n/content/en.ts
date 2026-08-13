@@ -84,6 +84,24 @@ export const en = {
         },
       ],
     },
+    listsSec: {
+      h2: 'Your shopping list — shared, and priced.',
+      lead: "Build a list by scanning, searching, or just typing an item, then share it with whoever you shop with. Everyone adds to the same list, you tick things off as you go — and Tallywise shows the estimated total before you leave the house.",
+      cards: [
+        {
+          h: 'Add it any way',
+          p: 'Scan a barcode, search the catalogue, or just type &ldquo;bananas.&rdquo; Adjust quantities and tick items off as you shop, with a live progress bar.',
+        },
+        {
+          h: 'Share with your household',
+          p: "Share a list by email &mdash; view or edit. Everyone adds to the same one, so nothing gets bought twice or forgotten. Invite someone who isn't on Tallywise yet and the list is waiting when they join.",
+        },
+        {
+          h: 'Know the cost up front',
+          p: 'Every item is priced from real shopping, so you see an <em>estimated total</em> &mdash; roughly what your shop will cost &mdash; before you go.',
+        },
+      ],
+    },
     couponsSec: {
       h2: 'Never lose a money-off coupon again.',
       lead: "Those vouchers printed at the bottom of your receipt? Tallywise saves them to your phone and shows the barcode right at the till — so the coupon's in your pocket, not crumpled in a drawer past its date.",
@@ -106,8 +124,9 @@ export const en = {
       h2: 'See it in your hand.',
       items: [
         { alt: 'Tallywise scan screen — scan a barcode or snap a receipt.', caption: 'Scan a barcode, or snap a receipt.' },
-        { alt: 'Tallywise receipt screen — parsed items and prices from a shopping receipt.', caption: 'Your receipt, read on-device into items.' },
-        { alt: 'Tallywise spend screen — your weekly grocery spend over time, by category.', caption: 'See where your grocery spend goes.' },
+        { alt: 'Tallywise shopping list — shared, with each item priced and a running total.', caption: 'A shared shopping list, priced as you add.' },
+        { alt: 'Tallywise product screen — one product priced across every supermarket.', caption: 'Every store’s price, side by side.' },
+        { alt: 'Tallywise deals — recent price drops at supermarkets near you.', caption: 'Deals near you, spotted for you.' },
       ],
     },
     stores: {
@@ -127,6 +146,7 @@ export const en = {
         { q: 'Does Tallywise work offline?', a: "Yes. Scan a receipt or record a price with no signal and Tallywise saves it on your phone, then syncs it automatically the next time you're online — so a basement aisle or a dead spot at the till never loses your scan." },
         { q: 'Can I get my data out?', a: 'Yes. Export your receipts to a CSV from the receipts list, and export or delete your account and data from Settings at any time — no email required.' },
         { q: "A product's name or size looks wrong — can I fix it?", a: 'You can suggest a correction (name, brand or pack size) right from the product screen. Once another shopper confirms the same details, the shared product entry updates for everyone — the catalogue is built and kept honest by the community.' },
+        { q: 'Can I share a shopping list?', a: "Yes. Build a list by scanning, searching or typing items, then share it by email &mdash; view-only or editable. Everyone you share with adds to the same list and ticks items off as you shop, and Tallywise shows an estimated total. You can even invite someone who isn't on Tallywise yet; the list is waiting when they sign up." },
       ],
     },
     membership: {
@@ -192,8 +212,9 @@ export const en = {
       h2: 'What it looks like.',
       items: [
         { alt: 'Tallywise scan screen — start with a barcode or a receipt.', caption: 'Start with a barcode or a receipt.' },
-        { alt: 'Tallywise receipt screen — items and prices read from a shopping receipt.', caption: 'Every line read on-device.' },
-        { alt: 'Tallywise spend screen — weekly grocery spend over time, by category.', caption: 'Your spend over time, by category.' },
+        { alt: 'Tallywise shopping list — add by scan, search or free text; tick off as you shop.', caption: 'Build a list — scan, search or just type it.' },
+        { alt: 'Tallywise product screen — the same product priced at every store that stocks it.', caption: 'See who’s cheapest for each item.' },
+        { alt: 'Tallywise deals — recent price drops at nearby stores.', caption: 'Catch the price drops near you.' },
       ],
     },
     ctaHeading: 'Try it on your next shop.',

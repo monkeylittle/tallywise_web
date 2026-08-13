@@ -82,6 +82,24 @@ export const de: SiteContent = {
         },
       ],
     },
+    listsSec: {
+      h2: 'Deine Einkaufsliste — geteilt und mit Preisen.',
+      lead: 'Erstelle eine Liste durch Scannen, Suchen oder einfaches Eintippen und teile sie mit allen, mit denen du einkaufst. Jeder ergänzt dieselbe Liste, du hakst beim Einkaufen ab — und Tallywise zeigt die geschätzte Summe, bevor du losgehst.',
+      cards: [
+        {
+          h: 'Füge alles hinzu, wie du willst',
+          p: 'Scanne einen Barcode, durchsuche den Katalog oder tippe einfach &bdquo;Bananen&ldquo;. Passe Mengen an und hake Artikel beim Einkaufen ab &mdash; mit einer Live-Fortschrittsanzeige.',
+        },
+        {
+          h: 'Teile mit deinem Haushalt',
+          p: 'Teile eine Liste per E-Mail &mdash; zum Ansehen oder Bearbeiten. Alle ergänzen dieselbe Liste, sodass nichts doppelt gekauft oder vergessen wird. Lade jemanden ein, der noch nicht bei Tallywise ist &mdash; die Liste wartet, sobald er sich anmeldet.',
+        },
+        {
+          h: 'Kenne die Kosten vorab',
+          p: 'Jeder Artikel ist anhand echter Einkäufe bepreist, sodass du eine <em>geschätzte Summe</em> siehst &mdash; ungefähr, was dein Einkauf kostet &mdash; bevor du losgehst.',
+        },
+      ],
+    },
     couponsSec: {
       h2: 'Nie wieder einen Rabattgutschein verlieren.',
       lead: 'Diese Gutscheine, die unten auf deinem Kassenbon gedruckt sind? Tallywise speichert sie auf deinem Handy und zeigt den Barcode direkt an der Kasse — so steckt der Gutschein in deiner Tasche, nicht zerknüllt und abgelaufen in einer Schublade.',
@@ -104,8 +122,9 @@ export const de: SiteContent = {
       h2: 'Sieh sie in deiner Hand.',
       items: [
         { alt: 'Tallywise-Scan-Bildschirm — scanne einen Barcode oder fotografiere einen Kassenbon.', caption: 'Scanne einen Barcode oder fotografiere einen Kassenbon.' },
-        { alt: 'Tallywise-Kassenbon-Bildschirm — erkannte Artikel und Preise von einem Kassenbon.', caption: 'Dein Kassenbon, auf dem Gerät in Artikel umgesetzt.' },
-        { alt: 'Tallywise-Ausgaben-Bildschirm — deine wöchentlichen Lebensmittelausgaben über die Zeit, nach Kategorie.', caption: 'Sieh, wohin dein Einkaufsbudget fließt.' },
+        { alt: 'Tallywise-Einkaufsliste — geteilt, mit Preis je Artikel und laufender Summe.', caption: 'Eine geteilte Einkaufsliste, bepreist beim Hinzufügen.' },
+        { alt: 'Tallywise-Produktbildschirm — ein Produkt bei jedem Supermarkt bepreist.', caption: 'Der Preis jedes Markts, nebeneinander.' },
+        { alt: 'Tallywise-Angebote — aktuelle Preissenkungen in Supermärkten in deiner Nähe.', caption: 'Angebote in deiner Nähe, für dich entdeckt.' },
       ],
     },
     stores: {
@@ -125,6 +144,7 @@ export const de: SiteContent = {
         { q: 'Funktioniert Tallywise offline?', a: 'Ja. Scanne einen Kassenbon oder erfasse einen Preis ohne Empfang, und Tallywise speichert es auf deinem Handy und synchronisiert es automatisch, sobald du wieder online bist — ein Kellerregal oder ein Funkloch an der Kasse lässt dich nie einen Scan verlieren.' },
         { q: 'Kann ich meine Daten exportieren?', a: 'Ja. Exportiere deine Kassenbons als CSV aus der Bonliste, und exportiere oder lösche dein Konto und deine Daten jederzeit in den Einstellungen — ohne E-Mail.' },
         { q: 'Name oder Größe eines Produkts wirken falsch — kann ich das korrigieren?', a: 'Du kannst direkt vom Produktbildschirm eine Korrektur vorschlagen (Name, Marke oder Packungsgröße). Sobald ein anderer Kunde dieselben Angaben bestätigt, wird der geteilte Produkteintrag für alle aktualisiert — der Katalog wird von der Gemeinschaft aufgebaut und ehrlich gehalten.' },
+        { q: 'Kann ich eine Einkaufsliste teilen?', a: 'Ja. Erstelle eine Liste durch Scannen, Suchen oder Eintippen und teile sie per E-Mail &mdash; schreibgeschützt oder bearbeitbar. Alle, mit denen du teilst, ergänzen dieselbe Liste und haken beim Einkaufen ab, und Tallywise zeigt eine geschätzte Summe. Du kannst sogar jemanden einladen, der noch nicht bei Tallywise ist; die Liste wartet, sobald er sich anmeldet.' },
       ],
     },
     membership: {
@@ -190,8 +210,9 @@ export const de: SiteContent = {
       h2: 'So sieht es aus.',
       items: [
         { alt: 'Tallywise-Scan-Bildschirm — beginne mit einem Barcode oder einem Kassenbon.', caption: 'Beginne mit einem Barcode oder einem Kassenbon.' },
-        { alt: 'Tallywise-Kassenbon-Bildschirm — Artikel und Preise von einem Kassenbon gelesen.', caption: 'Jede Zeile auf dem Gerät gelesen.' },
-        { alt: 'Tallywise-Ausgaben-Bildschirm — wöchentliche Lebensmittelausgaben über die Zeit, nach Kategorie.', caption: 'Deine Ausgaben über die Zeit, nach Kategorie.' },
+        { alt: 'Tallywise-Einkaufsliste — hinzufügen per Scan, Suche oder Freitext; beim Einkaufen abhaken.', caption: 'Erstelle eine Liste — scannen, suchen oder tippen.' },
+        { alt: 'Tallywise-Produktbildschirm — dasselbe Produkt bei jedem Markt bepreist, der es führt.', caption: 'Sieh, wer bei jedem Artikel am günstigsten ist.' },
+        { alt: 'Tallywise-Angebote — aktuelle Preissenkungen in Geschäften in der Nähe.', caption: 'Schnapp dir die Preissenkungen in deiner Nähe.' },
       ],
     },
     ctaHeading: 'Probier sie bei deinem nächsten Einkauf.',
