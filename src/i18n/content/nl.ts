@@ -113,8 +113,8 @@ export const nl: SiteContent = {
           p: 'Open je portefeuille en Tallywise toont de streepjescode van de bon schermvullend, klaar voor de scanner aan de kassa — de gedrukte bon exact nagemaakt.',
         },
         {
-          h: 'Geef er een weg, pak er een die je nodig hebt',
-          p: 'Gebruik je een bon toch niet voor de vervaldatum? Leg hem in de gedeelde pool voor iemand anders. Zelf een bon nodig voor je boodschappen? Claim er een die een buur heeft weggegeven — eerlijk geven en nemen, zodat het een gemeenschap blijft.',
+          h: 'Geef er een weg, vraag er een aan die je nodig hebt',
+          p: 'Gebruik je een bon toch niet voor de vervaldatum? Geef hem weg en verdien Karma — een kassabon scannen of een prijs toevoegen levert het ook op. Zelf een bon nodig? Kies de winkel bij <strong>Aanvragen</strong> en Tallywise geeft je de bon die het eerst vervalt.',
         },
       ],
     },
@@ -237,23 +237,24 @@ export const nl: SiteContent = {
           p: 'Open je portefeuille, tik op de bon, en Tallywise vult het scherm met dezelfde streepjescode die de kassamedewerker van het gedrukte bonnetje zou scannen. Geen "ik had er een, hij ligt volgens mij in de auto…" meer.',
         },
         {
-          h: '3. Of geef hem weg',
-          p: 'Heb je er een die je zeker niet gebruikt? Tik op het cadeau-icoon en hij verhuist naar <strong>Beschikbaar</strong> — een gedeelde pool die elke Tallywise-shopper kan doorbladeren. Zij tikken op Claimen en hij belandt in hun portefeuille. Je kunt hem altijd terugnemen voordat iemand anders dat doet.',
+          h: '3. Geef hem weg, of vraag er een aan',
+          p: 'Heb je er een die je zeker niet gebruikt? Tik op het cadeau-icoon om hem weg te geven — dat levert Karma op en hij komt in de gedeelde pool. Zelf een bon nodig? Open <strong>Aanvragen</strong>, kies de winkel en het type bon, en Tallywise geeft je de bon die het eerst vervalt.',
         },
       ],
     },
     fair: {
-      h2: 'Het delen eerlijk houden.',
+      h2: 'Karma houdt het delen eerlijk.',
       ps: [
-        'Een gedeelde pool werkt alleen als hij niet door een handvol mensen wordt leeggehaald. Tallywise houdt bij hoeveel waarde je hebt weggegeven tegenover hoeveel je hebt geclaimd; als je veel meer hebt genomen dan gedeeld, pauzeert het claimen tot je er een teruggeeft. Dat saldo is privé — niemand anders ziet het, en de limiet is ruim, zodat gewoon gebruik er nooit tegenaan botst.',
-        'We koppelen nooit je naam of e-mail aan een bon in de pool — enkel de eigen gegevens van de bon (waarde, voorwaarden, data, streepjescode) reizen mee.',
+        'Elke bon in de pool komt van iemand anders z\'n Karma. Geef er een weg, scan een kassabon of voeg een prijs toe en je verdient het — hoe verder een bon van zijn vervaldatum af staat, hoe meer Karma hij oplevert. Besteed er een beetje van om er een aan te vragen: kies een winkel en een type bon, en Tallywise geeft je de bon die het eerst vervalt. Ben je door je Karma heen, dan pauzeert aanvragen tot je weer wat hebt aangevuld.',
+        'Je Karma-saldo is privé — niemand anders ziet het — en we koppelen nooit je naam of e-mail aan een bon die je weggeeft; enkel de eigen gegevens van de bon (waarde, voorwaarden, data, streepjescode) reizen mee.',
       ],
     },
     faq: {
       h2: 'Veelgestelde vragen.',
       items: [
         { q: 'Welke winkels worden ondersteund?', a: 'Voorlopig kortingsbonnen van Dunnes Stores en SuperValu (de varianten op de kassabon en in de app). Andere ketens volgen zodra we kalibratiegegevens hebben voor hun bonformaten.' },
-        { q: 'Werkt een bon die iemand mij gaf aan de kassa?', a: 'Meestal wel — maar bonnen worden uitgegeven door de winkelketen, niet door Tallywise. Ze zijn doorgaans eenmalig en tijdsgebonden. We kunnen niet controleren of een gedeelde bon nog niet gebruikt is; is een bon gebruikt of geweigerd, claim dan een andere.' },
+        { q: 'Werkt een bon die iemand mij gaf aan de kassa?', a: 'Meestal wel — maar bonnen worden uitgegeven door de winkelketen, niet door Tallywise. Ze zijn doorgaans eenmalig en tijdsgebonden. We kunnen niet controleren of een gedeelde bon nog niet gebruikt is; is een bon gebruikt of geweigerd, vraag dan een andere aan.' },
+        { q: 'Wat is Karma?', a: 'Karma is Tallywises score voor eerlijk gebruik van de bonnenpool — gewoon punten, geen munteenheid. Je verdient het door een bon weg te geven, een kassabon te scannen of een prijs toe te voegen, en besteedt er telkens een beetje van als je een bon aanvraagt uit de pool. Alleen jij ziet je eigen saldo.' },
         { q: 'Hoe zit het met mijn privacy?', a: 'Er wordt niets over jou aan een bon gekoppeld die je weggeeft — enkel de eigen waarde, data en streepjescode van de bon. Zie het <a href="%PRIVACY%">privacybeleid</a> voor het volledige plaatje.' },
         { q: 'Is de streepjescode exact dezelfde als het origineel?', a: 'Ja. Tallywise geeft dezelfde streepjescode weer als die op de gedrukte bon staat, schermvullend en met veel contrast, zodat de scanner van de kassa hem net als het bonnetje leest.' },
       ],
@@ -369,7 +370,7 @@ export const nl: SiteContent = {
     title: 'Tallywise — Privacybeleid',
     description: 'Hoe Tallywise met je gegevens omgaat — scannen op het toestel, wat we verzamelen, hoe het wordt gebruikt, en je keuzes.',
     h1: 'Privacybeleid',
-    heroSub: 'Laatst bijgewerkt op 29 juli 2026. Tallywise wordt beheerd door MonkeyLittle. Vragen: <a href="mailto:%EMAIL%">%EMAIL%</a>.',
+    heroSub: 'Laatst bijgewerkt op 21 augustus 2026. Tallywise wordt beheerd door MonkeyLittle. Vragen: <a href="mailto:%EMAIL%">%EMAIL%</a>.',
     blocks: [
       { h: 'De korte versie', ps: ['Scannen gebeurt <strong>op je toestel</strong>. We verzamelen het minimum dat nodig is om mandjesprijzen te vergelijken en je account te beheren. We verkopen je gegevens niet en er zijn geen advertentie-SDK\'s. We gebruiken wel <strong>Google Analytics</strong> om te begrijpen hoe de app wordt gebruikt zodat we die kunnen verbeteren — nooit de inhoud van je kassabonnen.'] },
       {
@@ -378,7 +379,7 @@ export const nl: SiteContent = {
           '<strong>Account</strong> — je e-mailadres, via onze aanmeldprovider (Amazon Cognito), ook wanneer je met Google of Apple aanmeldt.',
           '<strong>Boodschappengegevens</strong> — de mandjes die je samenstelt, streepjescodes die je scant, regels die uit kassabonnen worden gehaald, de prijzen die je registreert, en je bespaartotalen. Prijzen die je registreert, worden bijgedragen aan de gedeelde prijsgegevens van Tallywise zodat de vergelijking voor iedereen werkt (zie onze Voorwaarden).',
           '<strong>Productgegevens die je voorstelt</strong> — als je de naam, het merk of de verpakkingsgrootte van een product toevoegt of verbetert, wordt je voorstel bij je account bewaard en, zodra een andere shopper overeenkomende gegevens indient, gebruikt om het item van dat product in de <strong>gedeelde catalogus</strong> van Tallywise bij te werken, die voor alle gebruikers zichtbaar is. We tonen je identiteit er niet bij.',
-          '<strong>Kortingsbonnen</strong> — kortingsbonnen die je bewaart (hun streepjescode/nummer, waarde, voorwaarden en geldigheidsdata, en de winkel) worden bij je account bewaard zodat je ze aan de kassa kunt tonen. Als je ervoor kiest een <strong>bon weg te geven</strong>, worden die bongegevens in een gedeelde pool geplaatst en worden ze <strong>zichtbaar voor en claimbaar door andere Tallywise-gebruikers</strong>; zie "Bonnen delen" hieronder. We houden ook per account een saldo bij van de bonwaarde die je hebt gegeven tegenover ontvangen, om het delen eerlijk te houden.',
+          '<strong>Kortingsbonnen</strong> — kortingsbonnen die je bewaart (hun streepjescode/nummer, waarde, voorwaarden en geldigheidsdata, en de winkel) worden bij je account bewaard zodat je ze aan de kassa kunt tonen. Als je ervoor kiest een <strong>bon weg te geven</strong>, worden die bongegevens in een gedeelde pool geplaatst en worden ze <strong>zichtbaar voor en aanvraagbaar door andere Tallywise-gebruikers</strong>; zie "Bonnen delen" hieronder. We houden ook per account een <strong>Karma</strong>-saldo bij — verdiend door bonnen weg te geven, kassabonnen te scannen en prijzen toe te voegen, en besteed als je een bon uit de pool aanvraagt — om het delen eerlijk te houden.',
           '<strong>Afbeeldingen en scantekst van bonnen &amp; kassabonnen</strong> — kassabonnen, bonnen en streepjescodes worden <strong>op je toestel</strong> gelezen. Wanneer je een <strong>gescande kassabon bewaart</strong> in je geschiedenis, worden de afbeelding, de herkende tekst en het verwerkte resultaat naar ons gestuurd — om je bonnengeschiedenis op te bouwen en de scannauwkeurigheid te verbeteren. Een tik op <strong>"Een probleem melden"</strong> stuurt daarnaast een korte notitie (en, voor een scan die je niet bewaarde, de afbeelding) zodat we een specifieke leesfout kunnen onderzoeken. Voor een winkel die we nog niet ondersteunen, kun je optioneel op <strong>"Probeer een slimme lezing"</strong> tikken, wat de herkende <em>tekst</em> van de kassabon (niet de afbeelding) naar onze cloud stuurt om die te verwerken — alleen wanneer je dat kiest. Kaartgegevens die op kassabonnen staan afgedrukt, worden eerst verwijderd (zie hieronder).',
           '<strong>Bij benadering je locatie</strong> — op je toestel gebruikt om het juiste land/de juiste munt en de dichtstbijzijnde winkel te kiezen. We sturen je gps-coördinaten niet naar onze servers; maar als je een prijs registreert of een kassabon bewaart, kunnen de resulterende winkelnaam en het filiaal bij die inzending worden bewaard.',
           '<strong>Pushmeldingen</strong> — als je meldingen toestaat, bewaren we een push-token van je toestel (via Firebase Cloud Messaging / Apple Push Notification service) zodat we prijsdalingsmeldingen kunnen sturen voor producten die je hebt gescand. We verwijderen het token wanneer je je afmeldt, en je kunt meldingen op elk moment uitschakelen in de instellingen van je toestel.',
@@ -388,7 +389,7 @@ export const nl: SiteContent = {
       { h: 'Betaalgegevens op kassabonnen', ps: ['Kassabonnen kunnen een kaartschema, een gemaskeerd kaartnummer en betaalidentificatoren afdrukken. Tallywise <strong>verwijdert deze automatisch voordat er iets wordt bewaard of verzonden</strong> — kaartgegevens worden nooit bewaard, zelfs niet in een probleemmelding.'] },
       { h: 'Hoe we het gebruiken', ps: ['Om de prijsvergelijking en bespaarfuncties te bieden, je account te beheren, scans die je meldt te onderzoeken zodat de app nauwkeuriger wordt, en geaggregeerd gebruik te analyseren (via Google Analytics) om te zien welke functies worden gebruikt en die te verbeteren. We gebruiken je gegevens niet voor reclame of profilering.'] },
       { h: 'Delen', ps: ['We verkopen je gegevens niet. We gebruiken infrastructuuraanbieders om de dienst namens ons uit te voeren en te verbeteren: <strong>Amazon Web Services</strong> (hosting, EU/Ierland-regio) en <strong>Google</strong> (Google Analytics / Firebase, voor gebruiksanalyse). We geven gegevens alleen vrij als de wet dat vereist.'] },
-      { h: 'Bonnen delen', ps: ['Als je ervoor kiest een bon weg te geven, worden de gegevens van de bon (waarde, voorwaarden, geldigheidsdata, de winkel en de streepjescode/het nummer om hem in te wisselen) toegevoegd aan een gedeelde pool die andere Tallywise-gebruikers kunnen doorbladeren en claimen. Dit is iets waar je <strong>per bon voor kiest</strong> — bonnen die je gewoon bewaart, blijven privé voor je account. We delen je identiteit niet bij een gepoolde bon. Een bon die je weggeeft, verlaat je portefeuille en kan door iemand anders geclaimd worden; je kunt hem terugnemen zolang hij in de pool zit.'] },
+      { h: 'Bonnen delen', ps: ['Als je ervoor kiest een bon weg te geven, worden de gegevens van de bon (waarde, voorwaarden, geldigheidsdata, de winkel en de streepjescode/het nummer om hem in te wisselen) toegevoegd aan een gedeelde pool die andere Tallywise-gebruikers per winkel en type bon kunnen aanvragen. Dit is iets waar je <strong>per bon voor kiest</strong> — bonnen die je gewoon bewaart, blijven privé voor je account. We delen je identiteit niet bij een gepoolde bon. Een bon weggeven of aanvragen levert <strong>Karma</strong> op of kost Karma, onze score voor eerlijk gebruik van de pool. Een bon die je weggeeft, verlaat je portefeuille en kan door iemand anders aangevraagd worden; je kunt hem terugnemen zolang hij in de pool zit.'] },
       { h: 'Opslag &amp; beveiliging', ps: ['Gegevens worden opgeslagen op AWS in de EU (Ierland), versleuteld tijdens overdracht (HTTPS/TLS) en in rust. Probleemmeldingen worden slechts zo lang bewaard als nodig om het scannen te diagnosticeren en te verbeteren.'] },
       { h: 'Je keuzes', ps: ['Je kunt <strong>je gegevens exporteren</strong> (je kassabonnen, naar een CSV) en <strong>je account en alle bijbehorende gegevens verwijderen</strong> rechtstreeks in de app onder <strong>Instellingen</strong> — zonder e-mail. Je kunt ook toegang, correctie of verwijdering vragen, of bezwaar maken tegen het gebruik van je gebruiksgegevens voor analyse, door te mailen naar <a href="mailto:%EMAIL%">%EMAIL%</a>. Je kunt camera-, foto-, locatie- of meldingsmachtigingen op elk moment intrekken in de instellingen van je toestel (scannen heeft de camera nodig om te werken).'] },
       { h: 'Kinderen', ps: ['Tallywise is niet gericht op kinderen en is bedoeld voor gebruikers van 18 jaar en ouder.'] },
@@ -400,7 +401,7 @@ export const nl: SiteContent = {
     title: 'Tallywise — Gebruiksvoorwaarden',
     description: 'De voorwaarden voor je gebruik van Tallywise — de prijsvergelijkingsapp voor supermarkten in Ierland, het VK, België en Nederland.',
     h1: 'Gebruiksvoorwaarden',
-    heroSub: 'Laatst bijgewerkt op 29 juli 2026. Tallywise wordt beheerd door MonkeyLittle. Vragen: <a href="mailto:%EMAIL%">%EMAIL%</a>.',
+    heroSub: 'Laatst bijgewerkt op 21 augustus 2026. Tallywise wordt beheerd door MonkeyLittle. Vragen: <a href="mailto:%EMAIL%">%EMAIL%</a>.',
     blocks: [
       { h: 'De korte versie', ps: ['Tallywise is een gratis app die je helpt vergelijken wat een mandje boodschappen zou kosten tussen supermarkten in Ierland, het VK, België en Nederland. Prijzen zijn indicatief en kunnen verouderd zijn — ze zijn een richtlijn, geen aanbod tot verkoop, en de prijs aan de kassa wint altijd. Gebruik de app rechtmatig, houd je inzendingen eerlijk, en probeer de dienst niet te breken of te misbruiken. De volledige overeenkomst staat hieronder.'] },
       { h: '1. Wie we zijn &amp; deze voorwaarden aanvaarden', ps: ['Tallywise ("de app", "wij", "ons") wordt beheerd door MonkeyLittle. Deze Gebruiksvoorwaarden regelen je gebruik van de Tallywise-app en aanverwante diensten. Door een account aan te maken of Tallywise te gebruiken, ga je akkoord met deze voorwaarden en met ons <a href="%PRIVACY%">privacybeleid</a>. Ga je niet akkoord, gebruik de app dan niet.'] },
@@ -429,10 +430,10 @@ export const nl: SiteContent = {
       {
         h: '14. Kortingsbonnen',
         ps: [
-          'Met Tallywise kun je kortingsbonnen bewaren en, optioneel, ze weggeven aan of claimen van andere gebruikers via een gedeelde pool. Bongegevens (waarde, voorwaarden, geldigheidsdata en de streepjescode/het nummer) worden door scannen op het toestel gelezen en <strong>kunnen verkeerd gelezen worden</strong> — controleer ze aan de hand van de originele bon voordat je erop vertrouwt.',
+          'Met Tallywise kun je kortingsbonnen bewaren en, optioneel, ze weggeven aan of aanvragen bij andere gebruikers via een gedeelde pool. Bongegevens (waarde, voorwaarden, geldigheidsdata en de streepjescode/het nummer) worden door scannen op het toestel gelezen en <strong>kunnen verkeerd gelezen worden</strong> — controleer ze aan de hand van de originele bon voordat je erop vertrouwt.',
           'Bonnen worden uitgegeven door winkelketens, niet door Tallywise. Ze zijn doorgaans <strong>eenmalig, tijdsgebonden en blijven onderworpen aan de eigen voorwaarden van de uitgevende keten</strong>, waaronder eventuele beperkingen op overdracht. Je bent verantwoordelijk voor het gebruik van een bon in lijn met die voorwaarden, en mag alleen een bon weggeven die je mag doorgeven.',
-          'Bonnen die tussen gebruikers worden gedeeld, worden geleverd <strong>"zoals ze zijn" en op eigen risico</strong>. Een bon die je claimt, kan al gebruikt zijn, kan vervallen zijn of kan aan de kassa geweigerd worden, en we <strong>kunnen niet controleren of garanderen dat een bon geldig, ongebruikt of aanvaard is</strong>. Voor zover wettelijk toegestaan is MonkeyLittle niet aansprakelijk voor een bon die niet werkt, voor een bon die door een andere gebruiker is gedeeld, of voor een geschil tussen gebruikers over een gedeelde bon.',
-          'Om het delen eerlijk te houden, is claimen onderworpen aan een <strong>geven-en-nemenlimiet</strong> (je kunt een beperkte hoeveelheid bonwaarde claimen bovenop wat je hebt weggegeven, voordat je er een moet teruggeven). We kunnen zulke limieten instellen, wijzigen of afdwingen, en bonnen verwijderen of accounts beperken, om misbruik van de pool te voorkomen.',
+          'Bonnen die tussen gebruikers worden gedeeld, worden geleverd <strong>"zoals ze zijn" en op eigen risico</strong>. Een bon die je aanvraagt, kan al gebruikt zijn, kan vervallen zijn of kan aan de kassa geweigerd worden, en we <strong>kunnen niet controleren of garanderen dat een bon geldig, ongebruikt of aanvaard is</strong>. Voor zover wettelijk toegestaan is MonkeyLittle niet aansprakelijk voor een bon die niet werkt, voor een bon die door een andere gebruiker is gedeeld, of voor een geschil tussen gebruikers over een gedeelde bon.',
+          'Delen draait op <strong>Karma</strong>, Tallywises score voor eerlijk gebruik van de pool: een bon weggeven, een kassabon scannen of een prijs toevoegen levert Karma op, en een bon aanvragen kost het — zo kan de pool niet door een handvol accounts leeggehaald worden. We kunnen instellen, wijzigen of afdwingen hoe Karma verdiend of besteed wordt, en bonnen verwijderen of accounts beperken, om misbruik van de pool te voorkomen.',
         ],
       },
       {

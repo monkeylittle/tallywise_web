@@ -115,8 +115,8 @@ export const en = {
           p: "Open your wallet and Tallywise shows the coupon's barcode full-screen, ready for the checkout scanner — the printed voucher reproduced exactly.",
         },
         {
-          h: 'Give one away, grab one you need',
-          p: "Won't use a coupon before it expires? Pop it in the shared pool for someone else. Need one for your shop? Claim one a neighbour has given away — fair give-and-take, so it stays a community.",
+          h: 'Give one away, request one you need',
+          p: "Won't use a coupon before it expires? Give it away and earn Karma — scanning a receipt or adding a price earns it too. Need one for your shop? Pick the store in <strong>Request</strong> and Tallywise hands you whichever one expires soonest.",
         },
       ],
     },
@@ -239,23 +239,24 @@ export const en = {
           p: 'Open your wallet, tap the coupon, and Tallywise fills the screen with the same barcode the cashier would scan from the printed slip. No more "I had one, I think it\'s in the car…"',
         },
         {
-          h: '3. Or give it away',
-          p: "Got one you know you won't use? Tap the gift icon and it moves to <strong>Up for grabs</strong> — a shared pool any Tallywise shopper can browse. They tap Claim, it lands in their wallet. You can take it back any time before someone else does.",
+          h: '3. Give it away, or request one',
+          p: "Got one you know you won't use? Tap the gift icon to give it away — it earns you Karma and joins the shared pool. Need one yourself? Open <strong>Request</strong>, pick the store and the coupon type, and Tallywise hands you whichever one expires soonest.",
         },
       ],
     },
     fair: {
-      h2: 'Keeping the sharing fair.',
+      h2: 'Karma keeps the sharing fair.',
       ps: [
-        "A shared pool only works if it doesn't get drained by a handful of people. Tallywise tracks the value of what you've given away versus what you've claimed; if you've taken much more than you've shared, claiming pauses until you give one back. The balance is private — nobody else sees it, and the limit is generous so casual use never bumps into it.",
-        'We never link your name or email to a coupon in the pool — only the coupon\'s own details (value, conditions, dates, barcode) travel.',
+        "Every coupon in the pool came from someone else's Karma. Give one away, scan a receipt, or add a price and you earn it — a coupon's worth more Karma the further it is from expiring. Spend a little to request one: pick a store and a coupon type, and Tallywise hands you whichever one expires soonest. Run low and requesting pauses until you top back up.",
+        'Your Karma balance is private — nobody else sees it — and we never link your name or email to a coupon you give away; only its own details (value, conditions, dates, barcode) travel.',
       ],
     },
     faq: {
       h2: 'Common questions.',
       items: [
         { q: 'Which shops are supported?', a: 'Dunnes Stores and SuperValu money-off vouchers for now (the on-receipt and in-app variants). Other chains will follow as we get calibration data for their voucher formats.' },
-        { q: 'Will a coupon someone gave me work at the till?', a: "Usually — but coupons are issued by the retailer, not by Tallywise. They're typically single-use and time-limited. We can't verify that a shared coupon hasn't already been used; if a coupon's been used or refused, claim a different one." },
+        { q: 'Will a coupon someone gave me work at the till?', a: "Usually — but coupons are issued by the retailer, not by Tallywise. They're typically single-use and time-limited. We can't verify that a shared coupon hasn't already been used; if a coupon's been used or refused, request a different one instead." },
+        { q: 'What is Karma?', a: "Karma is Tallywise's fair-use score for the coupon pool — just points, not a currency. You earn it by giving a coupon away, scanning a receipt, or adding a price, and spend a little each time you request one from the pool. Only you can see your own balance." },
         { q: 'What about my privacy?', a: 'Nothing about you is attached to a coupon you give away — only the coupon\'s own value, dates and barcode. See the <a href="%PRIVACY%">Privacy Policy</a> for the full picture.' },
         { q: 'Is the barcode an exact match for the original?', a: "Yes. Tallywise renders the same barcode the printed voucher carries, full-screen and high contrast, so the cashier's scanner reads it just like the slip." },
       ],
@@ -371,7 +372,7 @@ export const en = {
     title: 'Tallywise — Privacy Policy',
     description: "How Tallywise handles your data — on-device scanning, what we collect, how it's used, and your choices.",
     h1: 'Privacy Policy',
-    heroSub: 'Last updated 29 July 2026. Tallywise is operated by MonkeyLittle. Questions: <a href="mailto:%EMAIL%">%EMAIL%</a>.',
+    heroSub: 'Last updated 21 August 2026. Tallywise is operated by MonkeyLittle. Questions: <a href="mailto:%EMAIL%">%EMAIL%</a>.',
     blocks: [
       { h: 'The short version', ps: ['Scanning runs <strong>on your device</strong>. We collect the minimum needed to compare basket prices and keep your account. We don\'t sell your data and there are no advertising SDKs. We do use <strong>Google Analytics</strong> to understand how the app is used so we can improve it — never your receipt contents.'] },
       {
@@ -380,7 +381,7 @@ export const en = {
           '<strong>Account</strong> — your email address, via our sign-in provider (Amazon Cognito), including when you use Google or Apple sign-in.',
           "<strong>Shopping data</strong> — the baskets you build, barcodes you scan, line items parsed from receipts, the prices you record, and your savings totals. Prices you record are contributed to Tallywise's shared price data so the comparison works for everyone (see our Terms).",
           "<strong>Product details you suggest</strong> — if you add or correct a product's name, brand or pack size, your suggestion is stored against your account and, once another shopper submits matching details, used to update that product's entry in Tallywise's <strong>shared catalogue</strong>, which is visible to all users. We don't display your identity alongside it.",
-          '<strong>Coupons</strong> — money-off vouchers you save (their barcode/number, value, conditions and validity dates, and the shop) are stored with your account so you can present them at the till. If you choose to <strong>give a coupon away</strong>, those coupon details are placed in a shared pool and become <strong>visible to and claimable by other Tallywise users</strong>; see "Sharing coupons" below. We also keep a per-account tally of the coupon value you\'ve given versus received, to keep sharing fair.',
+          '<strong>Coupons</strong> — money-off vouchers you save (their barcode/number, value, conditions and validity dates, and the shop) are stored with your account so you can present them at the till. If you choose to <strong>give a coupon away</strong>, those coupon details are placed in a shared pool and become <strong>visible to and requestable by other Tallywise users</strong>; see "Sharing coupons" below. We also keep a per-account <strong>Karma</strong> balance — earned by giving coupons away, scanning receipts, and adding prices, and spent when you request one from the pool — to keep sharing fair.',
           '<strong>Receipt &amp; coupon images and scan text</strong> — receipts, coupons and barcodes are read <strong>on your device</strong>. When you <strong>save a scanned receipt</strong> to your history, its image, the recognised text and the parsed result are sent to us — to build your receipt history and to improve scanning accuracy. Tapping <strong>"Report a problem"</strong> additionally sends a short note (and, for a scan you didn\'t save, the image) so we can investigate a specific misread. For a shop we don\'t yet support, you can optionally tap <strong>"Try a smart read"</strong>, which sends the receipt\'s recognised <em>text</em> (not the image) to our cloud to parse it — only when you choose to. Card data printed on receipts is removed first (see below).',
           "<strong>Approximate location</strong> — used on your device to pick the right country/currency and the nearest store. We don't send your GPS coordinates to our servers; but if you record a price or save a receipt, the resulting store name and branch may be stored with that submission.",
           '<strong>Push notifications</strong> — if you allow notifications, we store a device push token (via Firebase Cloud Messaging / Apple Push Notification service) so we can send price-drop alerts on items you\'ve scanned. We delete the token when you sign out, and you can turn notifications off in your device settings at any time.',
@@ -390,7 +391,7 @@ export const en = {
       { h: 'Payment details on receipts', ps: ['Receipts can print a card scheme, masked card number, and payment identifiers. Tallywise <strong>automatically removes these before anything is stored or transmitted</strong> — card data is never retained, even in a problem report.'] },
       { h: 'How we use it', ps: ["To provide the price comparison and savings features, operate your account, investigate scans you report so the app gets more accurate, and analyse aggregate usage (via Google Analytics) to see which features are used and improve them. We don't use your data for advertising or profiling."] },
       { h: 'Sharing', ps: ['We don\'t sell your data. We use infrastructure providers to run and improve the service on our behalf: <strong>Amazon Web Services</strong> (hosting, EU/Ireland region) and <strong>Google</strong> (Google Analytics / Firebase, for usage analytics). We disclose data only if required by law.'] },
-      { h: 'Sharing coupons', ps: ["If you choose to give a coupon away, the coupon's details (value, conditions, validity dates, the shop, and the barcode/number needed to redeem it) are added to a shared pool that other Tallywise users can browse and claim. This is something <strong>you opt into per coupon</strong> — coupons you simply save stay private to your account. We don't share your identity alongside a pooled coupon. A coupon you give away leaves your wallet and may be claimed by someone else; you can take it back while it's still in the pool."] },
+      { h: 'Sharing coupons', ps: ["If you choose to give a coupon away, the coupon's details (value, conditions, validity dates, the shop, and the barcode/number needed to redeem it) are added to a shared pool that other Tallywise users can request by store and coupon type. This is something <strong>you opt into per coupon</strong> — coupons you simply save stay private to your account. We don't share your identity alongside a pooled coupon. Giving a coupon away or requesting one earns or spends <strong>Karma</strong>, our fair-use score for the pool. A coupon you give away leaves your wallet and may be requested by someone else; you can take it back while it's still in the pool."] },
       { h: 'Storage &amp; security', ps: ['Data is stored on AWS in the EU (Ireland), encrypted in transit (HTTPS/TLS) and at rest. Problem reports are kept only as long as needed to diagnose and improve scanning.'] },
       { h: 'Your choices', ps: ['You can <strong>export your data</strong> (your receipts, to a CSV) and <strong>delete your account and all its data</strong> directly in the app under <strong>Settings</strong> — no email needed. You can also request access, correction, or deletion, or object to your usage data being used for analytics, by emailing <a href="mailto:%EMAIL%">%EMAIL%</a>. You can revoke camera, photo, location, or notification permissions in your device settings at any time (scanning needs the camera to work).'] },
       { h: 'Children', ps: ['Tallywise is not directed at children and is intended for users aged 18 and over.'] },
@@ -402,7 +403,7 @@ export const en = {
     title: 'Tallywise — Terms of Service',
     description: 'The terms governing your use of Tallywise — the price-comparison app for supermarkets in Ireland, the UK, Belgium and the Netherlands.',
     h1: 'Terms of Service',
-    heroSub: 'Last updated 29 July 2026. Tallywise is operated by MonkeyLittle. Questions: <a href="mailto:%EMAIL%">%EMAIL%</a>.',
+    heroSub: 'Last updated 21 August 2026. Tallywise is operated by MonkeyLittle. Questions: <a href="mailto:%EMAIL%">%EMAIL%</a>.',
     blocks: [
       { h: 'The short version', ps: ["Tallywise is a free app that helps you compare what a basket of groceries would cost across supermarkets in Ireland, the UK, Belgium and the Netherlands. Prices are indicative and can be out of date — they're a guide, not an offer to sell, and the price at the till always wins. Use the app lawfully, keep your submissions honest, and don't try to break or abuse the service. The full agreement is below."] },
       { h: '1. Who we are &amp; accepting these terms', ps: ['Tallywise ("the app", "we", "us") is operated by MonkeyLittle. These Terms of Service govern your use of the Tallywise mobile app and related services. By creating an account or using Tallywise you agree to these terms and to our <a href="%PRIVACY%">Privacy Policy</a>. If you don\'t agree, please don\'t use the app.'] },
@@ -431,10 +432,10 @@ export const en = {
       {
         h: '14. Coupons',
         ps: [
-          'Tallywise lets you save money-off coupons and, optionally, give them away to or claim them from other users through a shared pool. Coupon details (value, conditions, validity dates and the barcode/number) are read by on-device scanning and <strong>may be misread</strong> — check them against the original coupon before relying on them.',
+          'Tallywise lets you save money-off coupons and, optionally, give them away to, or request them from, other users through a shared pool. Coupon details (value, conditions, validity dates and the barcode/number) are read by on-device scanning and <strong>may be misread</strong> — check them against the original coupon before relying on them.',
           'Coupons are issued by retailers, not by Tallywise. They are typically <strong>single-use, time-limited, and remain subject to the issuing retailer\'s own terms</strong>, including any restriction on transfer. You are responsible for using a coupon in line with those terms, and should only give away a coupon you are entitled to pass on.',
-          'Coupons shared between users are provided <strong>"as is" and at your own risk</strong>. A coupon you claim may already have been used, may have expired, or may be refused at the till, and we <strong>cannot verify or guarantee that any coupon is valid, unused, or will be accepted</strong>. To the fullest extent permitted by law, MonkeyLittle is not liable for a coupon that does not work, for any coupon shared by another user, or for any dispute between users about a shared coupon.',
-          'To keep sharing fair, claiming is subject to a <strong>give-and-take limit</strong> (you can claim a limited amount of coupon value beyond what you\'ve given away before you need to share one back). We may set, change, or enforce such limits, and remove coupons or restrict accounts, to prevent abuse of the pool.',
+          'Coupons shared between users are provided <strong>"as is" and at your own risk</strong>. A coupon you request may already have been used, may have expired, or may be refused at the till, and we <strong>cannot verify or guarantee that any coupon is valid, unused, or will be accepted</strong>. To the fullest extent permitted by law, MonkeyLittle is not liable for a coupon that does not work, for any coupon shared by another user, or for any dispute between users about a shared coupon.',
+          'Sharing runs on <strong>Karma</strong>, Tallywise\'s fair-use score for the pool: giving a coupon away, scanning a receipt, or adding a price earns Karma, and requesting a coupon spends it, so the pool can\'t be drained by a handful of accounts. We may set, change, or enforce how Karma is earned or spent, and remove coupons or restrict accounts, to prevent abuse of the pool.',
         ],
       },
       {
