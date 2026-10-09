@@ -54,6 +54,8 @@ export function getRegionContent(region: RegionOrAll, lang: Lang): SiteContent {
         ? original.slice(0, -1) // drop the "UK chains" bullet — Irish region lists Irish stores
         : def.stores.map((s) => `<strong>${s.replaceAll('&', '&amp;')}</strong>`);
     c.savings.covered.p = c.savings.covered.pRegion;
+    // No loyalty scheme to name (BE): drop the sentence rather than leave it empty.
+    if (def.loyalty.length === 0) c.home.stores.loyalty = '';
   }
   return c;
 }

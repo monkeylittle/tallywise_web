@@ -34,6 +34,20 @@ export interface CompareShop {
   ink?: string;
 }
 
+import priced from '../../scripts/data/priced-chains.json';
+
+/**
+ * BE and NL list only chains we actually hold recent prices for: the ones the
+ * refresh script (scripts/refresh-priced-chains.py) marked `included` for that
+ * country in scripts/data/priced-chains.json (>= threshold products priced in
+ * the last 45 days, loyalty-only and outlier rows excluded, keyed by chain AND
+ * country). Candidates keep their display order; unlisted chains are dropped.
+ */
+function pricedIn(country: 'BE' | 'NL', candidates: string[]): string[] {
+  const ok = new Set(priced.chains.filter((c) => c.country === country && c.included).map((c) => c.chain));
+  return candidates.filter((c) => ok.has(c));
+}
+
 export interface RegionDef {
   code: Region;
   /** URL segment: /ie/, /uk/, … */
@@ -111,8 +125,8 @@ export const REGIONS: Record<Region, RegionDef> = {
     locale: { nl: 'nl-BE', fr: 'fr-BE', en: 'en-BE' },
     currency: { code: 'EUR', symbol: '€' },
     names: { en: 'Belgium', nl: 'België', fr: 'Belgique', de: 'Belgien' },
-    stores: ['Colruyt', 'Delhaize', 'Carrefour', 'Jumbo', 'Aldi', 'Lidl'],
-    loyalty: ['Lidl Plus'],
+    stores: pricedIn('BE', ['Colruyt', 'Delhaize', 'Carrefour', 'Jumbo', 'Aldi', 'Lidl']),
+    loyalty: [], // no loyalty-card price is held for a chain listed here
     coupons: false,
     basketItems: 6,
     compare: [
@@ -131,8 +145,8 @@ export const REGIONS: Record<Region, RegionDef> = {
     locale: { nl: 'nl-NL', en: 'en-NL' },
     currency: { code: 'EUR', symbol: '€' },
     names: { en: 'Netherlands', nl: 'Nederland', fr: 'Pays-Bas', de: 'Niederlande' },
-    stores: ['Albert Heijn', 'Jumbo', 'Plus', 'Aldi', 'Lidl'],
-    loyalty: ['Albert Heijn Bonuskaart', 'Lidl Plus'],
+    stores: pricedIn('NL', ['Albert Heijn', 'Jumbo', 'Plus', 'Aldi', 'Lidl']),
+    loyalty: ['Albert Heijn Bonuskaart'],
     coupons: false,
     basketItems: 7,
     compare: [

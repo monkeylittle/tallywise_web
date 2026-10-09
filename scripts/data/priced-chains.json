@@ -1,0 +1,194 @@
+{
+ "computed": "2026-10-09",
+ "window_days": 45,
+ "threshold": 500,
+ "source": "zavvy-prod-pricing",
+ "chains": [
+  {
+   "country": "BE",
+   "chain": "Jumbo",
+   "products": 15711,
+   "included": true
+  },
+  {
+   "country": "BE",
+   "chain": "Delhaize",
+   "products": 5280,
+   "included": true
+  },
+  {
+   "country": "BE",
+   "chain": "Colruyt",
+   "products": 3687,
+   "included": true
+  },
+  {
+   "country": "BE",
+   "chain": "Aldi",
+   "products": 1,
+   "included": false
+  },
+  {
+   "country": "DE",
+   "chain": "Edeka",
+   "products": 4411,
+   "included": true
+  },
+  {
+   "country": "ES",
+   "chain": "Mercadona",
+   "products": 4275,
+   "included": true
+  },
+  {
+   "country": "FR",
+   "chain": "Carrefour",
+   "products": 28633,
+   "included": true
+  },
+  {
+   "country": "IE",
+   "chain": "Tesco",
+   "products": 19791,
+   "included": true
+  },
+  {
+   "country": "IE",
+   "chain": "Dunnes Stores",
+   "products": 6555,
+   "included": true
+  },
+  {
+   "country": "IE",
+   "chain": "Evergreen",
+   "products": 6134,
+   "included": true
+  },
+  {
+   "country": "IE",
+   "chain": "SuperValu",
+   "products": 2079,
+   "included": true
+  },
+  {
+   "country": "IE",
+   "chain": "Molloys",
+   "products": 1655,
+   "included": true
+  },
+  {
+   "country": "IE",
+   "chain": "Lidl",
+   "products": 186,
+   "included": false
+  },
+  {
+   "country": "IE",
+   "chain": "Drink Store",
+   "products": 112,
+   "included": false
+  },
+  {
+   "country": "IE",
+   "chain": "O'Briens Wine",
+   "products": 94,
+   "included": false
+  },
+  {
+   "country": "IE",
+   "chain": "Martin's Off Licence",
+   "products": 84,
+   "included": false
+  },
+  {
+   "country": "IE",
+   "chain": "Mitchell & Son",
+   "products": 83,
+   "included": false
+  },
+  {
+   "country": "IE",
+   "chain": "VP Merchants",
+   "products": 67,
+   "included": false
+  },
+  {
+   "country": "IE",
+   "chain": "Bubble Brothers",
+   "products": 59,
+   "included": false
+  },
+  {
+   "country": "IE",
+   "chain": "Spar",
+   "products": 16,
+   "included": false
+  },
+  {
+   "country": "IE",
+   "chain": "Centra",
+   "products": 1,
+   "included": false
+  },
+  {
+   "country": "IE",
+   "chain": "Aldi",
+   "products": 1,
+   "included": false
+  },
+  {
+   "country": "NL",
+   "chain": "Jumbo",
+   "products": 15696,
+   "included": true
+  },
+  {
+   "country": "NL",
+   "chain": "Albert Heijn",
+   "products": 15481,
+   "included": true
+  },
+  {
+   "country": "UK",
+   "chain": "Asda",
+   "products": 59117,
+   "included": true
+  },
+  {
+   "country": "UK",
+   "chain": "Tesco",
+   "products": 29580,
+   "included": true
+  },
+  {
+   "country": "UK",
+   "chain": "Sainsbury's",
+   "products": 21462,
+   "included": true
+  },
+  {
+   "country": "UK",
+   "chain": "Morrisons",
+   "products": 1063,
+   "included": true
+  },
+  {
+   "country": "UK",
+   "chain": "Iceland",
+   "products": 978,
+   "included": true
+  },
+  {
+   "country": "UK",
+   "chain": "Aldi",
+   "products": 2,
+   "included": false
+  },
+  {
+   "country": "UK",
+   "chain": "Lidl",
+   "products": 1,
+   "included": false
+  }
+ ]
+}

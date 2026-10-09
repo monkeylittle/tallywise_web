@@ -12,13 +12,16 @@ const ALL = {
   Sainsbury: /\bSainsbury/i, Morrisons: /\bMorrisons\b/i, Iceland: /\bIceland\b/i,
   'Co-op': /\bCo-op\b/i, Waitrose: /\bWaitrose\b/i, Colruyt: /\bColruyt\b/i,
   Delhaize: /\bDelhaize\b/i, Carrefour: /\bCarrefour\b/i, Jumbo: /\bJumbo\b/i,
-  'Albert Heijn': /\bAlbert Heijn\b/i, PLUS: /\bPLUS\b/,
+  'Albert Heijn': /\bAlbert Heijn\b/i, // 'plus' is also a normal word (nl/fr/en/de): only the uppercase brand, or a title-case
+  // 'Plus' used as a store in a list (<strong>Plus<, ", Plus", "en Plus"), counts.
+  PLUS: /\bPLUS\b|<strong>Plus<|(?:,|\b(?:en|and|et|und)\b) Plus(?![\w-])(?! ?(?:card|kaart|Retail))/,
 };
 const ALLOWED = {
   ie: ['Tesco', 'SuperValu', 'Dunnes', 'Aldi', 'Lidl', 'M&S', 'Centra', 'Spar'],
   uk: ['Tesco', 'Sainsbury', 'Asda', 'Morrisons', 'Aldi', 'Lidl', 'M&S', 'Co-op', 'Waitrose', 'Iceland', 'Spar'],
-  be: ['Colruyt', 'Delhaize', 'Carrefour', 'Jumbo', 'Aldi', 'Lidl'],
-  nl: ['Albert Heijn', 'Jumbo', 'PLUS', 'Aldi', 'Lidl'],
+  // BE/NL: only chains with priced products (scripts/data/priced-chains.json); trimmed chains must not appear.
+  be: ['Colruyt', 'Delhaize', 'Jumbo'],
+  nl: ['Albert Heijn', 'Jumbo'],
 };
 const CURRENCY = { ie: /£|\bGBP\b/, uk: /€|\bEUR\b/, be: /£|\bGBP\b/, nl: /£|\bGBP\b/ };
 
