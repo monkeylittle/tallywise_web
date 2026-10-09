@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AppCta from '../../components/AppCta.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const d = post.data;
+const fmt = (x: Date) => x.toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const minutes = Math.max(1, Math.round(post.body.split(/\s+/).length / 220));
+---
+<BaseLayout
+  lang="en" region="IE" page="home" standalone
+  title={`${d.title} | Tallywise`}
+  description={d.description}
+  image={d.image}
+  article={{ published: d.date, modified: d.updated, author: d.author, headline: d.title, imageAlt: d.imageAlt, tags: d.tags }}
+>
+  <article class="post">
+    <header class="post__head">
+      <div class="container container--narrow">
+        <p class="eyebrow"><a href="/blog/">Blog</a></p>
+        <h1>{d.title}</h1>
+        <p class="post__meta">
+          <span>{d.author}</span>
+          <span aria-hidden="true">&middot;</span>
+          <time datetime={d.date.toISOString()}>{fmt(d.date)}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{minutes} min read</span>
+        </p>
+      </div>
+    </header>
+    <div class="container container--narrow post__body prose">
+      <Content />
+    </div>
+  </article>
+
+  <AppCta lang="en" region="IE" heading="See what your own basket costs" />
+</BaseLayout>

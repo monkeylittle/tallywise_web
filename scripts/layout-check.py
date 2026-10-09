@@ -7,7 +7,8 @@ import functools, http.server, pathlib, socketserver, sys, threading
 import cloakbrowser
 ROOT = pathlib.Path(__file__).resolve().parent.parent / "dist"
 PATHS = ["/?choose=1", "/ie/", "/uk/", "/be/", "/be/fr/", "/be/en/", "/nl/", "/nl/en/", "/de/",
-         "/be/savings/", "/nl/how-it-works/", "/uk/coupons/"]
+         "/be/savings/", "/nl/how-it-works/", "/uk/coupons/",
+         "/blog/", "/blog/snack-attack-why-your-treats-cost-more-in-ireland/"]
 WIDTHS = [320, 360, 390, 430, 768]
 shots = pathlib.Path(sys.argv[sys.argv.index("--shots") + 1]) if "--shots" in sys.argv else None
 H = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(ROOT)); H.log_message = lambda *a, **k: None

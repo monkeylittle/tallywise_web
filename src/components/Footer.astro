@@ -20,6 +20,7 @@ const current = region && region !== 'ALL' ? region : null;
       <a href={pathFor('privacy', lang, region)}>{c.footer.privacy}</a>
       <a href={pathFor('terms', lang, region)}>{c.footer.terms}</a>
       <a href={pathFor('support', lang, region)}>{c.footer.support}</a>
+      {current && REGIONS[current].blog && <a href="/blog/">Blog</a>}
       <a href={`mailto:${site.email}`}>{site.email}</a>
     </nav>
   </div>

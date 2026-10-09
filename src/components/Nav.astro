@@ -16,6 +16,7 @@ const { lang, page, region, chooser = false } = Astro.props;
 const c = getRegionContent(region ?? 'ALL', lang);
 const real = region && region !== 'ALL' ? region : null;
 const showCoupons = !real || REGIONS[real].coupons;
+const showBlog = !!real && REGIONS[real].blog;
 
 // Nav targets, localized and region-aware. "Get the app" points at the #get
 // band on the region's home page. Coupons only exist in Ireland.
@@ -25,6 +26,7 @@ const links = chooser
       { href: pathFor('howItWorks', lang, region), label: c.nav.howItWorks },
       ...(showCoupons ? [{ href: pathFor('coupons', lang, region), label: c.nav.coupons }] : []),
       { href: pathFor('savings', lang, region), label: c.nav.savings },
+      ...(showBlog ? [{ href: '/blog/', label: 'Blog' }] : []),
       { href: pathFor('about', lang, region), label: c.nav.about },
       { href: `${pathFor('home', lang, region)}#get`, label: c.nav.getApp },
     ];

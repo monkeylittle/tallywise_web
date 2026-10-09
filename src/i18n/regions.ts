@@ -71,6 +71,8 @@ export interface RegionDef {
   loyalty: string[];
   /** Coupons (Dunnes Stores / SuperValu vouchers) exist in Ireland only. */
   coupons: boolean;
+  /** The (English-only) blog is linked from the nav/footer of English-language regions only. */
+  blog: boolean;
   /** Hero card: totals of a real 5-item basket (see scripts/screenshots/data/<region>.json), labelled as an example. IE: same recipe, computed 2026-10-09. */
   compare: CompareShop[];
   /** Units in the example basket (the "N items" in the hero card). */
@@ -94,6 +96,7 @@ export const REGIONS: Record<Region, RegionDef> = {
     stores: pricedIn('IE', ['Tesco', 'SuperValu', 'Dunnes Stores', 'Aldi', 'Lidl', 'M&S', 'Centra', 'Spar']),
     loyalty: loyaltyFor('IE', [['Tesco', 'Tesco Clubcard'], ['SuperValu', 'SuperValu Real Rewards'], ['Dunnes Stores', 'Dunnes Rewards'], ['Lidl', 'Lidl Plus']]),
     coupons: true,
+    blog: true,
     basketItems: 8,
     compare: [
       { code: 'SV', name: 'SuperValu', price: 19.95, color: '#D4122A' },
@@ -114,6 +117,7 @@ export const REGIONS: Record<Region, RegionDef> = {
     stores: pricedIn('UK', ['Tesco', "Sainsbury's", 'Asda', 'Morrisons', 'Aldi', 'Lidl', 'M&S', 'Waitrose', 'Co-op', 'EuroSpar', 'Iceland']),
     loyalty: loyaltyFor('UK', [['Tesco', 'Tesco Clubcard'], ['Sainsbury\'s', "Sainsbury's Nectar"], ['Asda', 'Asda Rewards'], ['Morrisons', 'Morrisons More Card'], ['Lidl', 'Lidl Plus']]),
     coupons: false,
+    blog: true,
     basketItems: 8,
     compare: [
       { code: 'AS', name: 'Asda', price: 13.38, color: '#68A51C' },
@@ -134,6 +138,7 @@ export const REGIONS: Record<Region, RegionDef> = {
     stores: pricedIn('BE', ['Colruyt', 'Delhaize', 'Carrefour', 'Jumbo', 'Aldi', 'Lidl']),
     loyalty: loyaltyFor('BE', [['Lidl', 'Lidl Plus']]), // none of the listed BE chains has a loyalty scheme we record
     coupons: false,
+    blog: false,
     basketItems: 6,
     compare: [
       { code: 'CO', name: 'Colruyt', price: 18.5, color: '#E20613' },
@@ -154,6 +159,7 @@ export const REGIONS: Record<Region, RegionDef> = {
     stores: pricedIn('NL', ['Albert Heijn', 'Jumbo', 'Plus', 'Aldi', 'Lidl']),
     loyalty: loyaltyFor('NL', [['Albert Heijn', 'Albert Heijn Bonuskaart'], ['Lidl', 'Lidl Plus']]),
     coupons: false,
+    blog: false,
     basketItems: 7,
     compare: [
       { code: 'JU', name: 'Jumbo', price: 21.13, color: '#EEB717', ink: '#1B2140' },

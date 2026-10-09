@@ -22,9 +22,14 @@ interface Props {
   noindex?: boolean;
   /** The page is the region chooser at '/'. */
   chooser?: boolean;
+  /** Region-neutral page outside the region/language hreflang cluster (the blog):
+   *  no alternates, and visiting it does not record a region choice. */
+  standalone?: boolean;
+  /** Blog post metadata: switches og:type to article and the JSON-LD to BlogPosting. */
+  article?: { published: Date; modified?: Date; author: string; headline: string; imageAlt?: string; tags?: string[] };
 }
 
-const { lang, region, page, title, description, image, noindex = false, chooser = false } = Astro.props;
+const { lang, region, page, title, description, image, noindex = false, chooser = false, standalone = false, article } = Astro.props;
 const c = getRegionContent(region ?? 'ALL', lang);
 // Default description: the region's own hero sentence (localized, region-specific stores/market,
 // tags stripped) rather than the site-wide English line that names every country and coupons.
@@ -37,7 +42,7 @@ const real = region && region !== 'ALL' ? region : null;
 // hreflang cluster: every region × language variant of this page (en-IE, en-GB,
 // nl-BE, fr-BE, en-BE, nl-NL, en-NL) + x-default → the region chooser at '/'.
 // Pages outside the cluster (legacy German, coupons explainer) list only themselves.
-const inCluster = real && !(page === 'coupons' && !REGIONS[real].coupons);
+const inCluster = !standalone && real && !(page === 'coupons' && !REGIONS[real].coupons);
 const alternates = inCluster
   ? allVariants(page).map((v) => ({ hreflang: v.hreflang, href: new URL(v.href, site.url).href }))
   : [];
@@ -48,17 +53,31 @@ const ogLocale = locale.replace('-', '_');
 const currency = real ? REGIONS[real].currency.code : 'EUR';
 const areaServed = real ? REGIONS[real].names.en : undefined;
 
+const organization = {
+  '@type': 'Organization',
+  '@id': `${site.url}/#organization`,
+  name: site.name,
+  url: site.url,
+  logo: new URL('/app-icon.png', site.url).href,
+  ...(site.social.length ? { sameAs: site.social } : {}),
+};
+const blogPosting = article && {
+  '@type': 'BlogPosting',
+  headline: article.headline,
+  description: desc,
+  inLanguage: 'en',
+  datePublished: article.published.toISOString(),
+  dateModified: (article.modified ?? article.published).toISOString(),
+  author: { '@type': 'Organization', name: article.author, url: site.url },
+  publisher: { '@id': `${site.url}/#organization` },
+  mainEntityOfPage: canonical,
+  image: ogImage,
+  ...(article.tags?.length ? { keywords: article.tags.join(', ') } : {}),
+};
 const structuredData = {
   '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': `${site.url}/#organization`,
-      name: site.name,
-      url: site.url,
-      logo: new URL('/app-icon.png', site.url).href,
-      ...(site.social.length ? { sameAs: site.social } : {}),
-    },
+  '@graph': article ? [organization, blogPosting] : [
+    organization,
     {
       '@type': 'MobileApplication',
       name: site.name,
@@ -96,7 +115,11 @@ const regionData = Object.fromEntries(
     <meta name="theme-color" content="#1B2140" />
 
     <!-- Open Graph / Twitter -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    {article && <meta property="article:published_time" content={article.published.toISOString()} />}
+    {article && <meta property="article:modified_time" content={(article.modified ?? article.published).toISOString()} />}
+    {article && <meta property="article:author" content={article.author} />}
+    {article?.tags?.map((t) => <meta property="article:tag" content={t} />)}
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
@@ -107,6 +130,7 @@ const regionData = Object.fromEntries(
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={desc} />
     <meta name="twitter:image" content={ogImage} />
+    {article?.imageAlt && <meta name="twitter:image:alt" content={article.imageAlt} />}
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -124,7 +148,7 @@ const regionData = Object.fromEntries(
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <script is:inline type="application/json" id="tw-regions" set:html={JSON.stringify(regionData)} />
   </head>
-  <body data-region={real ?? ''} data-chooser={chooser ? '1' : '0'}>
+  <body data-region={standalone ? '' : (real ?? '')} data-chooser={chooser ? '1' : '0'} data-standalone={standalone ? '1' : '0'}>
     <a class="skip-link" href="#main">{c.meta.skip}</a>
     <Nav lang={lang} page={page} region={region} chooser={chooser} />
     <div
@@ -159,6 +183,9 @@ const regionData = Object.fromEntries(
           var a = e.target && e.target.closest ? e.target.closest('a[data-tw-region]') : null;
           if (a) { try { localStorage.setItem('tw_region', a.getAttribute('data-tw-region')); } catch (e2) {} }
         });
+
+        // Region-neutral pages (the blog): no region suggestion, no region recorded.
+        if (body.getAttribute('data-standalone') === '1') return;
 
         if (chooser && stored && location.search.indexOf('choose') < 0) {
           location.replace(data[stored].href);

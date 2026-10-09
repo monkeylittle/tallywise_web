@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { site } from '../site';
+import { getCollection } from 'astro:content';
 import { PAGES, allVariants, pathFor } from '../i18n/config';
 
 // Sitemap generated from the i18n/region config so it can't drift from the
@@ -9,7 +10,7 @@ import { PAGES, allVariants, pathFor } from '../i18n/config';
 // a one-URL cluster of its own.
 const abs = (path: string) => new URL(path, site.url).href;
 
-export const GET: APIRoute = () => {
+export const GET: APIRoute = async () => {
   const entries: string[] = [];
 
   entries.push(`  <url>\n    <loc>${abs('/')}</loc>\n  </url>`);
@@ -24,6 +25,13 @@ export const GET: APIRoute = () => {
       entries.push(`  <url>\n    <loc>${abs(v.href)}</loc>\n${alts}\n${xDefault}\n  </url>`);
     }
     entries.push(`  <url>\n    <loc>${abs(pathFor(page.key, 'de'))}</loc>\n  </url>`);
+  }
+
+  // Blog: region-neutral, English only, so no hreflang cluster.
+  entries.push(`  <url>\n    <loc>${abs('/blog/')}</loc>\n  </url>`);
+  for (const post of await getCollection('blog')) {
+    const lastmod = (post.data.updated ?? post.data.date).toISOString().slice(0, 10);
+    entries.push(`  <url>\n    <loc>${abs(`/blog/${post.slug}/`)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`);
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

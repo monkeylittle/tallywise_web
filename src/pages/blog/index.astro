@@ -1,0 +1,46 @@
+---
+// Blog index. English only and region-neutral: lives outside the region/language
+// cluster (see BaseLayout `standalone`), rendered in Ireland's English chrome.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AppCta from '../../components/AppCta.astro';
+import { site } from '../../site';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<BaseLayout
+  lang="en" region="IE" page="home" standalone
+  title={`Blog | ${site.name}`}
+  description="Price comparisons and shopping insights from Tallywise: what the same products really cost across Ireland, the UK, Belgium and the Netherlands."
+>
+  <section class="blog-hero">
+    <div class="container">
+      <p class="eyebrow">Blog</p>
+      <h1>Price notes from Tallywise</h1>
+      <p class="hero__sub">What the same products really cost in Ireland, the UK, Belgium and the Netherlands, and how we checked.</p>
+    </div>
+  </section>
+
+  <section class="blog-list">
+    <div class="container">
+      <ul class="blog-cards">
+        {posts.map((post) => (
+          <li>
+            <a class="blog-card" href={`/blog/${post.slug}/`}>
+              <img class="blog-card__img" src={post.data.image} alt="" width="1200" height="630" loading="lazy" />
+              <div class="blog-card__body">
+                <p class="blog-card__meta"><time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time></p>
+                <h2>{post.data.title}</h2>
+                <p>{post.data.description}</p>
+                <span class="blog-card__more">Read the article</span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <AppCta lang="en" region="IE" heading="See what your own basket costs" />
+</BaseLayout>
