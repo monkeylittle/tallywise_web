@@ -1,6 +1,6 @@
 ---
 import { site } from '../site';
-import { REGIONS, pathFor, type Lang, type PageKey, type RegionOrAll } from '../i18n/config';
+import { LANGUAGES, REGION_CODES, REGIONS, altsFor, pathFor, regionHref, type Lang, type PageKey, type RegionOrAll } from '../i18n/config';
 import { getRegionContent } from '../i18n/content';
 import LangSwitcher from './LangSwitcher.astro';
 import RegionSwitcher from './RegionSwitcher.astro';
@@ -28,6 +28,8 @@ const links = chooser
       { href: pathFor('about', lang, region), label: c.nav.about },
       { href: `${pathFor('home', lang, region)}#get`, label: c.nav.getApp },
     ];
+const alts = real && !chooser ? altsFor(page, real) : [];
+const getHref = `${pathFor('home', lang, region)}#get`;
 const brandHref = chooser ? '/?choose=1' : pathFor('home', lang, region);
 ---
 <header class="nav">
@@ -41,5 +43,26 @@ const brandHref = chooser ? '/?choose=1' : pathFor('home', lang, region);
       <RegionSwitcher lang={lang} page={page} region={region} />
       <LangSwitcher lang={lang} page={page} region={region} />
     </nav>
+    {/* Phones (<=860px): brand + Get-the-app + a native <details> menu (no JS).
+        The desktop .nav__links above is hidden at that width. */}
+    <div class="nav__mobile">
+      {!chooser && <a class="btn btn--primary btn--sm nav__get" href={getHref}>{c.nav.getApp}</a>}
+      <details class="menu">
+        <summary class="menu__btn" aria-label={c.region.menuLabel}>
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </summary>
+        <div class="menu__panel">
+          {links.map((item) => <a href={item.href}>{item.label}</a>)}
+          <p class="menu__h">{c.region.label}</p>
+          {REGION_CODES.map((r) => (
+            <a href={regionHref(page, lang, r)} data-tw-region={r} class={r === real ? 'is-current' : undefined}>{REGIONS[r].names[lang]}</a>
+          ))}
+          {alts.length > 1 && <p class="menu__h">{c.nav.langMenuLabel}</p>}
+          {alts.length > 1 && alts.map((a) => (
+            <a href={a.href} class={a.lang === lang ? 'is-current' : undefined}>{LANGUAGES.find((l) => l.code === a.lang)!.label}</a>
+          ))}
+        </div>
+      </details>
+    </div>
   </div>
 </header>

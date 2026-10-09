@@ -98,6 +98,7 @@ img { max-width: 100%; }
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  min-height: 44px;
   color: var(--ink);
   font-family: 'Fredoka', 'DM Sans', system-ui, sans-serif;
   font-weight: 600;
@@ -122,6 +123,32 @@ img { max-width: 100%; }
   font-weight: 500;
 }
 .nav__links a:hover { color: var(--ink); }
+
+/* ── Phone header: brand + Get-the-app + hamburger <details> ── */
+.nav__mobile { display: none; align-items: center; gap: 8px; }
+.nav__mobile .nav__get { margin: 0; min-height: 44px; padding: 0 16px; font-size: 0.92rem; white-space: nowrap; }
+.menu__btn { display: grid; place-items: center; width: 44px; height: 44px; cursor: pointer; list-style: none; color: var(--ink); border-radius: 10px; }
+.menu__btn::-webkit-details-marker { display: none; }
+.menu[open] .menu__btn { background: var(--sky-soft); }
+.menu__panel {
+  position: absolute; left: 0; right: 0; top: 100%;
+  max-height: calc(100vh - 68px); overflow-y: auto;
+  background: var(--bg); border-bottom: 1px solid var(--line-strong);
+  box-shadow: 0 16px 30px rgba(18,21,42,0.12);
+  padding: 8px 16px 16px;
+}
+.menu__panel a { display: flex; align-items: center; min-height: 44px; color: var(--ink2); text-decoration: none; font-weight: 500; }
+.menu__panel a.is-current { color: var(--sky-deep); font-weight: 700; }
+.menu__h { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 0.8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink3); }
+@media (max-width: 860px) {
+  .nav__links { display: none; }
+  .nav__mobile { display: flex; }
+  .nav { position: sticky; }
+}
+@media (max-width: 440px) {
+  .nav__brand span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } /* logo only; name stays for screen readers */
+  .nav__mobile .nav__get { padding: 0 12px; font-size: 0.85rem; }
+}
 
 /* ── Language switcher (JS-free <details> menu) ──── */
 .lang {
@@ -378,7 +405,7 @@ section h2 {
   color: var(--ink2);
 }
 .region-suggest[hidden] { display: none; }
-.region-suggest .btn--sm { padding: 6px 14px; font-size: 0.9rem; margin-left: 0; }
+.region-suggest .btn--sm { padding: 0 16px; min-height: 44px; display: inline-flex; align-items: center; font-size: 0.9rem; margin-left: 0; }
 .region-suggest__stay {
   background: none;
   border: 0;
@@ -386,6 +413,8 @@ section h2 {
   text-decoration: underline;
   cursor: pointer;
   font: inherit;
+  min-height: 44px;
+  padding: 0 8px;
 }
 .footer__regions {
   display: flex;
@@ -648,6 +677,19 @@ section > .container > .eyebrow { margin-bottom: 12px; }
 .beta__card--navy .beta__hint a { color: #9FC7FF; }
 
 @media (max-width: 860px) {
-  .hero__grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero__grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .hero { padding-top: 72px; }
 }
+
+/* Phones: nothing may force the page wider than the viewport (long Dutch/German words, compare card). */
+.hero__col, .compare { min-width: 0; }
+.hero h1, .hero__sub { overflow-wrap: break-word; hyphens: auto; }
+.compare__shop { flex-wrap: wrap; row-gap: 4px; }
+@media (max-width: 420px) {
+  .compare { padding: 16px; }
+  .compare__row { padding: 10px; gap: 8px; }
+}
+h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
+.hero__cta { flex-wrap: wrap; }
+.beta__card .btn { max-width: 100%; }
+@media (max-width: 420px) { h2 { font-size: clamp(1.5rem, 8vw, 2rem); } }
