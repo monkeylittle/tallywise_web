@@ -2,15 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AppCta from '../../components/AppCta.astro';
 import CompareCard from '../../components/CompareCard.astro';
-import type { Lang } from '../../i18n/config';
-import { getContent, resolve } from '../../i18n/content';
+import type { Lang, RegionOrAll } from '../../i18n/config';
+import { getRegionContent, resolve } from '../../i18n/content';
 
-interface Props { lang: Lang }
-const { lang } = Astro.props;
-const c = getContent(lang).about;
-const r = (s: string) => resolve(s, lang);
+interface Props { lang: Lang; region: RegionOrAll }
+const { lang, region } = Astro.props;
+const c = getRegionContent(region, lang).about;
+const r = (s: string) => resolve(s, lang, region);
 ---
-<BaseLayout lang={lang} page="about" title={c.title} description={c.description}>
+<BaseLayout lang={lang} region={region} page="about" title={c.title} description={c.description}>
   <section class="hero">
     <div class="container">
       <div class="hero__grid">
@@ -18,7 +18,7 @@ const r = (s: string) => resolve(s, lang);
           <h1 set:html={c.hero.h1} />
           <p class="hero__sub" set:html={c.hero.sub} />
         </div>
-        <CompareCard lang={lang} />
+        <CompareCard lang={lang} region={region} />
       </div>
     </div>
   </section>
@@ -39,5 +39,5 @@ const r = (s: string) => resolve(s, lang);
     </div>
   </section>
 
-  <AppCta lang={lang} heading={c.ctaHeading} />
+  <AppCta lang={lang} region={region} heading={c.ctaHeading} />
 </BaseLayout>

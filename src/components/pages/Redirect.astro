@@ -1,0 +1,19 @@
+---
+// Static redirect stub (GitHub Pages cannot send 301s): meta refresh + canonical
+// pointing at the new URL, noindex so the stub itself never ranks.
+import { site } from '../../site';
+interface Props { to: string }
+const { to } = Astro.props;
+const abs = new URL(to, site.url).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <link rel="canonical" href={abs} />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+  </head>
+  <body><p>Moved to <a href={to}>{abs}</a>.</p></body>
+</html>

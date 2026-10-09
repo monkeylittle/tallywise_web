@@ -1,0 +1,148 @@
+{
+ "region": "nl",
+ "cur": "€",
+ "dec": ",",
+ "scan": {
+  "weekday": "Friday",
+  "store": "Albert Heijn",
+  "items": 5
+ },
+ "list": {
+  "title": "Weekly Shop",
+  "items": [
+   {
+    "name": "Maltesers Crunchy chocolade snoepjes",
+    "brand": "Maltesers",
+    "size": "135g",
+    "qty": 1,
+    "price": 3.29
+   },
+   {
+    "name": "Milka MMMax Chocoladereep Oreo",
+    "brand": "Milka",
+    "size": "300g",
+    "qty": 1,
+    "price": 4.89
+   },
+   {
+    "name": "Lipton Ice Tea Green Original",
+    "brand": "Lipton",
+    "size": "1.5l",
+    "qty": 2,
+    "price": 2.99
+   },
+   {
+    "name": "Snack A Jacks Smooth Caramel Rijstwafels",
+    "brand": "Snack-a-jack",
+    "size": "140g",
+    "qty": 2,
+    "price": 2.01
+   },
+   {
+    "name": "Lay's Max Ribbel Chips Patatje Mayo Pinda",
+    "brand": "Lay's",
+    "size": "185g",
+    "qty": 1,
+    "price": 2.35
+   }
+  ]
+ },
+ "compare": {
+  "name": "Lipton Ice Tea Green Original",
+  "brand": "Lipton",
+  "size": "1.5l",
+  "rows": [
+   {
+    "chain": "albertheijn",
+    "label": "Albert Heijn",
+    "price": 2.99,
+    "km": 1.2
+   },
+   {
+    "chain": "jumbo",
+    "label": "Jumbo",
+    "price": 3.29,
+    "km": 2.8
+   }
+  ]
+ },
+ "deals": [
+  {
+   "chain": "albertheijn",
+   "label": "Albert Heijn",
+   "km": 1.2,
+   "brand": "Iglo",
+   "name": "Iglo Vissticks",
+   "size": "",
+   "pct": 25,
+   "price": 2.81,
+   "was": 3.75,
+   "loyalty": true,
+   "observed": "2026-10-09"
+  },
+  {
+   "chain": "jumbo",
+   "label": "Jumbo",
+   "km": 2.8,
+   "brand": "Quaker",
+   "name": "Quaker Cruesli Cookies & Cream Ontbijtgranen 450 gr",
+   "size": "",
+   "pct": 25,
+   "price": 2.99,
+   "was": 3.99,
+   "loyalty": false,
+   "observed": "2026-10-07"
+  }
+ ],
+ "basket_totals": {
+  "albertheijn": 22.13,
+  "jumbo": 21.13
+ },
+ "provenance": {
+  "source": "read-only pull of the production pricing + deals tables, 2026-10-09; latest observed price per (product, chain), loyalty-only rows excluded; distances (km) are illustrative",
+  "item_prices": {
+   "Maltesers Crunchy chocolade snoepjes": {
+    "jumbo": 3.29,
+    "albertheijn": 3.39
+   },
+   "Milka MMMax Chocoladereep Oreo": {
+    "jumbo": 4.89,
+    "albertheijn": 4.99
+   },
+   "Lipton Ice Tea Green Original": {
+    "jumbo": 3.29,
+    "albertheijn": 2.99
+   },
+   "Snack A Jacks Smooth Caramel Rijstwafels": {
+    "jumbo": 2.01,
+    "albertheijn": 2.69
+   },
+   "Lay's Max Ribbel Chips Patatje Mayo Pinda": {
+    "jumbo": 2.35,
+    "albertheijn": 2.39
+   }
+  },
+  "item_observed": {
+   "Maltesers Crunchy chocolade snoepjes": {
+    "jumbo": "2026-10-04",
+    "albertheijn": "2026-09-29"
+   },
+   "Milka MMMax Chocoladereep Oreo": {
+    "jumbo": "2026-10-04",
+    "albertheijn": "2026-09-30"
+   },
+   "Lipton Ice Tea Green Original": {
+    "jumbo": "2026-10-04",
+    "albertheijn": "2026-10-01"
+   },
+   "Snack A Jacks Smooth Caramel Rijstwafels": {
+    "jumbo": "2026-10-09",
+    "albertheijn": "2026-10-05"
+   },
+   "Lay's Max Ribbel Chips Patatje Mayo Pinda": {
+    "jumbo": "2026-10-04",
+    "albertheijn": "2026-10-03"
+   }
+  }
+ }
+}

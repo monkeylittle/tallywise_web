@@ -27,29 +27,43 @@ export const nl: SiteContent = {
 
   legalNote: 'Deze vertaling wordt enkel ter informatie aangeboden; bij verschillen is de Engelse versie doorslaggevend.',
 
+  region: {
+    label: 'Regio',
+    menuLabel: 'Regio wijzigen',
+    suggest: 'Het lijkt erop dat je in %COUNTRY% bent. Overstappen naar Tallywise %COUNTRY%?',
+    switchBtn: 'Overstappen',
+    stay: 'Hier blijven',
+    alsoIn: 'Ook beschikbaar in',
+    illustrative: 'Illustratieve schermen, opgebouwd uit echte recente prijzen.',
+  },
+
+  couponsElsewhere: {
+    title: 'Kortingsbonnen — Tallywise',
+    description: 'Kortingsbonnen bewaren en delen in Tallywise werkt met bonnen van Dunnes Stores en SuperValu, die Iers zijn.',
+    h1: 'Bonnen zijn een Ierse functie — voorlopig.',
+    p: 'Kortingsbonnen bewaren, scannen en delen in Tallywise werkt met bonnen van Dunnes Stores en SuperValu, en die zijn Iers. Al het andere — streepjescodes en kassabonnen scannen, een mandje samenstellen en het vergelijken tussen de supermarkten in %MKT% — werkt hier.',
+    link: 'Zie hoe bonnen in Ierland werken',
+  },
+
   home: {
-    title: 'Tallywise — vergelijk je boodschappenmandje tussen supermarkten',
+    title: 'Tallywise — vergelijk je boodschappenmandje tussen supermarkten in %MKT%',
     hero: {
       h1: 'Stop met gokken waar je mandje het goedkoopst is.',
-      sub: 'Scan een streepjescode of maak een foto van je kassabon, stel je mandje samen, en Tallywise laat zien wat het zou kosten bij de grote supermarkten in Ierland, het VK, België en Nederland — en wat je hebt bespaard.',
+      sub: 'Scan een streepjescode of maak een foto van je kassabon, stel je mandje samen, en Tallywise laat zien wat het zou kosten bij de grote supermarkten in %MKT% — en wat je hebt bespaard.',
       ctaGet: 'Download de app',
       ctaHow: 'Bekijk hoe het werkt',
       note: 'Gratis op iPhone &amp; Android',
       compare: {
-        basket: 'Je mandje · 14 producten',
+        basket: 'Je mandje · %ITEMS% producten',
+        example: 'Voorbeeldmandje',
         caption: 'Vergeleken bij elke winkel waar je het kunt kopen.',
         cheapest: 'Goedkoopst',
-        save: 'Je bespaart <b>€4,20</b> deze keer',
-        shops: [
-          { code: 'AH', name: 'Albert Heijn', price: '€52,40', color: '#1791D0', best: true },
-          { code: 'JU', name: 'Jumbo', price: '€54,15', color: '#B87A00', best: false },
-          { code: 'PL', name: 'PLUS', price: '€55,90', color: '#6DA544', best: false },
-        ],
+        save: 'Je bespaart <b>%SAVED%</b> deze keer',
       },
     },
     why: {
       h2: 'Waarom Tallywise, en waarom nu?',
-      lead: 'De boodschappen zijn de afgelopen jaren fors duurder geworden, en eenzelfde weekmandje kan merkbaar meer of minder kosten, alleen afhankelijk van waar je het koopt. Elke euro en pond levert minder op dan vroeger — dus te veel betalen voor dezelfde producten doet meer pijn dan ooit.',
+      lead: 'De boodschappen zijn de afgelopen jaren fors duurder geworden, en eenzelfde weekmandje kan merkbaar meer of minder kosten, alleen afhankelijk van waar je het koopt. Elke %CUR% levert minder op dan vroeger — dus te veel betalen voor dezelfde producten doet meer pijn dan ooit.',
       cards: [
         {
           h: 'Prijzen staan nooit stil',
@@ -123,14 +137,14 @@ export const nl: SiteContent = {
       items: [
         { alt: 'Tallywise-scanscherm — scan een streepjescode of maak een foto van een kassabon.', caption: 'Scan een streepjescode, of fotografeer een kassabon.' },
         { alt: 'Tallywise-boodschappenlijst — gedeeld, met elk item geprijsd en een lopend totaal.', caption: 'Een gedeelde boodschappenlijst, geprijsd terwijl je toevoegt.' },
-        { alt: 'Tallywise-productscherm — één product geprijsd bij elke supermarkt.', caption: 'De prijs van elke winkel, naast elkaar.' },
-        { alt: 'Tallywise-deals — recente prijsdalingen bij supermarkten bij jou in de buurt.', caption: 'Deals bij jou in de buurt, voor je gespot.' },
+        { alt: 'Tallywise-productscherm — één product geprijsd bij %SHOT_STORES%.', caption: 'De prijs van elke winkel, naast elkaar.' },
+        { alt: 'Tallywise-deals — recente prijsdalingen bij %SHOT_STORES% en andere supermarkten bij jou in de buurt.', caption: 'Deals bij jou in de buurt, voor je gespot.' },
       ],
     },
     stores: {
       h2: 'Waar je ook winkelt.',
-      pickLabel: 'Kies je land',
-      countryNames: { IE: 'Ierland', UK: 'Verenigd Koninkrijk', BE: 'België', NL: 'Nederland' },
+      lead: 'Supermarkten die Tallywise ondersteunt in %MKT%:',
+      loyalty: 'Heb je een klantenkaart? Je kunt ook klantenkaartprijzen registreren — zoals %LOYALTY%.',
       note1: 'Huismerkproducten tonen alleen prijzen waar ze in de rekken liggen — we laten nooit stilletjes een winkel weg, zodat de totalen altijd eerlijk zijn.',
       note3: 'Tallywise is beschikbaar in het Engels, Nederlands, Frans en Duits, zodat het jouw winkel spreekt waar je ook bent.',
     },
@@ -152,7 +166,7 @@ export const nl: SiteContent = {
       intro: 'Elke shopper begint als <strong>Brons</strong>. Scan je boodschappen en label de producten onderweg, en je klimt naar <strong>Zilver</strong> — beide gratis. (Goud, een betaalde rang, is in de maak.)',
       bronzeH: 'Brons — waar je begint',
       bronze: [
-        'Vergelijk je mandje tussen supermarkten in Ierland, het VK, België en Nederland',
+        'Vergelijk je mandje tussen supermarkten in %MKT%',
         'Scan streepjescodes om prijzen te controleren en te registreren',
         '<strong>Help producten te identificeren</strong> — voeg een ontbrekende naam, merk of formaat toe',
         '<strong>Bewaar &amp; deel kortingsbonnen</strong> om aan de kassa te scannen',
@@ -172,7 +186,7 @@ export const nl: SiteContent = {
     },
     get: {
       h2: 'Download Tallywise.',
-      sub: 'Tallywise is gratis op iPhone en Android, in Ierland, het VK, België en Nederland. Tik op je platform om het te installeren en je boodschappen te vergelijken.',
+      sub: 'Tallywise is gratis op iPhone en Android, in %MKT%. Tik op je platform om het te installeren en je boodschappen te vergelijken.',
       hintLabel: 'Vragen?',
     },
   },
@@ -211,8 +225,8 @@ export const nl: SiteContent = {
       items: [
         { alt: 'Tallywise-scanscherm — begin met een streepjescode of een kassabon.', caption: 'Begin met een streepjescode of een kassabon.' },
         { alt: 'Tallywise-boodschappenlijst — voeg toe via scan, zoeken of vrije tekst; vink af tijdens het winkelen.', caption: 'Stel een lijst samen — scan, zoek of typ het gewoon.' },
-        { alt: 'Tallywise-productscherm — hetzelfde product geprijsd bij elke winkel die het verkoopt.', caption: 'Zie wie het goedkoopst is voor elk item.' },
-        { alt: 'Tallywise-deals — recente prijsdalingen bij winkels in de buurt.', caption: 'Pak de prijsdalingen bij jou in de buurt.' },
+        { alt: 'Tallywise-productscherm — hetzelfde product geprijsd bij %SHOT_STORES% en elke andere winkel die het verkoopt.', caption: 'Zie wie het goedkoopst is voor elk item.' },
+        { alt: 'Tallywise-deals — recente prijsdalingen bij %SHOT_STORES% en andere winkels in de buurt.', caption: 'Pak de prijsdalingen bij jou in de buurt.' },
       ],
     },
     ctaHeading: 'Probeer het bij je volgende boodschappen.',
@@ -275,7 +289,7 @@ export const nl: SiteContent = {
       cards: [
         {
           h: 'Promoties staan niet stil',
-          p: 'De "3 voor €5" van vanavond is volgende week de "2 voor €4". Elke keten draait zijn eigen cyclus, dus de goedkoopste winkel voor je vaste mandje wisselt op manieren die niemand met de hand bijhoudt.',
+          p: 'De "3 voor %P5%" van vanavond is volgende week de "2 voor %P4%". Elke keten draait zijn eigen cyclus, dus de goedkoopste winkel voor je vaste mandje wisselt op manieren die niemand met de hand bijhoudt.',
         },
         {
           h: 'Huismerk vs. merkproduct',
@@ -301,7 +315,7 @@ export const nl: SiteContent = {
     covered: {
       h2: 'Welke supermarkten zijn gedekt?',
       list: [
-        '<strong>Tesco</strong> — gekalibreerde bonnenlezer, volledige vergelijking (VK &amp; Ierland).',
+        '<strong>Tesco</strong> — gekalibreerde bonnenlezer, volledige vergelijking.',
         '<strong>Dunnes Stores</strong> — gekalibreerd, plus ondersteuning voor bonnen.',
         '<strong>SuperValu</strong> — gekalibreerd.',
         '<strong>Aldi</strong> en <strong>Lidl</strong> — gekalibreerd (papier + Lidl Plus digitaal).',
@@ -309,6 +323,7 @@ export const nl: SiteContent = {
         "<strong>Britse ketens</strong> — Sainsbury's, Asda, Morrisons en meer.",
       ],
       p: 'Tallywise is beschikbaar in Ierland, het VK, België en Nederland — Delhaize, Carrefour en Jumbo in België, en Albert Heijn, Jumbo en Plus in Nederland, naast Aldi en Lidl overal. Nieuwe ketens komen erbij zodra we genoeg voorbeeldbonnen hebben om de lezer te kalibreren. Staat een winkel die je gebruikt er niet bij, fotografeer dan toch een kassabon en tik op "Een probleem melden" — zo voegen we er een toe.',
+      pRegion: 'Tallywise is beschikbaar in %MKT% met de supermarkten hierboven. Nieuwe ketens komen erbij zodra we genoeg voorbeeldbonnen hebben om de lezer te kalibreren. Staat een winkel die je gebruikt er niet bij, fotografeer dan toch een kassabon en tik op "Een probleem melden" — zo voegen we er een toe.',
     },
     ctaHeading: 'Vind je goedkoopste mandje.',
   },
@@ -318,7 +333,7 @@ export const nl: SiteContent = {
     description: 'Wie Tallywise bouwt, waarom het bestaat, hoe je contact opneemt, en hoe je de app op iOS of Android krijgt.',
     hero: {
       h1: 'Over Tallywise.',
-      sub: 'Een kleine, onafhankelijke app, gebouwd in Dublin om boodschappen doen in Ierland, het VK, België en Nederland een eerlijker spel te maken voor wie het doet.',
+      sub: 'Een kleine, onafhankelijke app, gebouwd in Dublin om boodschappen doen in %MKT% een eerlijker spel te maken voor wie het doet.',
     },
     why: {
       h2: 'Waarom we het bouwden.',

@@ -1,27 +1,33 @@
 ---
-// Reusable basket-comparison card (the product value, visualised). Reads the
-// home page's market-appropriate compare data so it stays in one place and
-// localised per language. Decorative — aria-hidden; the value is in the copy.
-import type { Lang } from '../i18n/config';
-import { getContent } from '../i18n/content';
+// Reusable basket-comparison card (the product value, visualised). The example
+// basket is region-specific (that region's real supermarkets, its currency) and
+// labelled as an example. Decorative — aria-hidden; the value is in the copy.
+import { REGIONS, money } from '../i18n/regions';
+import type { Lang, RegionOrAll } from '../i18n/config';
+import { getRegionContent } from '../i18n/content';
 
-interface Props { lang: Lang }
-const { lang } = Astro.props;
-const compare = getContent(lang).home.hero.compare;
+interface Props { lang: Lang; region?: RegionOrAll }
+const { lang, region } = Astro.props;
+const r = region ?? 'ALL';
+const compare = getRegionContent(r, lang).home.hero.compare;
+// The legacy German pages (no region) keep the Irish example basket.
+const shops = REGIONS[r === 'ALL' ? 'IE' : r].compare;
+const best = Math.min(...shops.map((s) => s.price));
+const rows = [...shops].sort((a, b) => a.price - b.price);
 ---
 <div class="compare" aria-hidden="true">
   <div class="compare__head">
     <strong>{compare.basket}</strong>
-    <span>{compare.caption}</span>
+    <span>{compare.example} · {compare.caption}</span>
   </div>
-  {compare.shops.map((s) => (
-    <div class={`compare__row${s.best ? ' is-best' : ''}`}>
+  {rows.map((s) => (
+    <div class={`compare__row${s.price === best ? ' is-best' : ''}`}>
       <span class="compare__shop">
-        <span class="compare__chip" style={`background:${s.color}`}>{s.code}</span>
+        <span class="compare__chip" style={`background:${s.color};${s.ink ? `color:${s.ink}` : ''}`}>{s.code}</span>
         {s.name}
-        {s.best && <span class="compare__tag">{compare.cheapest}</span>}
+        {s.price === best && <span class="compare__tag">{compare.cheapest}</span>}
       </span>
-      <span class="compare__price">{s.price}</span>
+      <span class="compare__price">{money(s.price, r, lang)}</span>
     </div>
   ))}
   <div class="compare__saved">

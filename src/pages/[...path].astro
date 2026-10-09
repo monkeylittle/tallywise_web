@@ -1,10 +1,11 @@
 ---
-// Single catch-all that builds every page in every language:
-//   ''  /how-it-works  /coupons …            → English (root)
-//   nl  nl/how-it-works  fr/coupons  de/…     → translations (prefixed)
-// The URL slugs are shared across languages; only the language prefix differs
-// (see src/i18n/config.ts). Each page key maps to its body component below.
-import { LANG_CODES, PAGES, pathFor } from '../i18n/config';
+// Single catch-all that builds every page:
+//   /                         region chooser
+//   /ie/…  /uk/…  /be/…  /nl/…  region-first pages, language inside
+//   /de/…                     legacy German (language-only, no region)
+//   /how-it-works/ /fr/… etc. redirect stubs for pre-region URLs
+// See src/i18n/config.ts for the URL scheme and src/i18n/regions.ts for data.
+import { PAGES, REGION_CODES, REGIONS, pathFor } from '../i18n/config';
 import Home from '../components/pages/Home.astro';
 import HowItWorks from '../components/pages/HowItWorks.astro';
 import Coupons from '../components/pages/Coupons.astro';
@@ -12,26 +13,53 @@ import Savings from '../components/pages/Savings.astro';
 import About from '../components/pages/About.astro';
 import Support from '../components/pages/Support.astro';
 import Legal from '../components/pages/Legal.astro';
+import Choose from '../components/pages/Choose.astro';
+import Redirect from '../components/pages/Redirect.astro';
 
 export function getStaticPaths() {
-  const paths = [];
-  for (const lang of LANG_CODES) {
-    for (const page of PAGES) {
-      const full = pathFor(page.key, lang); // e.g. '/', '/nl/how-it-works/'
-      const path = full.replace(/^\/|\/$/g, ''); // '', 'nl/how-it-works'
-      paths.push({ params: { path: path || undefined }, props: { lang, pageKey: page.key } });
+  const clean = (full: string) => full.replace(/^\/|\/$/g, '') || undefined;
+  const paths: { params: { path: string | undefined }; props: Record<string, unknown> }[] = [];
+  const seen = new Set<string>();
+  const add = (full: string, props: Record<string, unknown>) => {
+    if (seen.has(full)) throw new Error(`duplicate route ${full}`);
+    seen.add(full);
+    paths.push({ params: { path: clean(full) }, props });
+  };
+
+  add('/', { kind: 'choose' });
+
+  for (const region of REGION_CODES) {
+    for (const lang of REGIONS[region].langs) {
+      for (const page of PAGES) {
+        add(pathFor(page.key, lang, region), { kind: 'page', lang, region, pageKey: page.key });
+      }
     }
+  }
+
+  // Legacy German stays language-only (no German region yet).
+  for (const page of PAGES) {
+    add(pathFor(page.key, 'de'), { kind: 'page', lang: 'de', region: 'ALL', pageKey: page.key });
+  }
+
+  // Redirect stubs for pre-region URLs. English root pages and /fr/* map into
+  // Ireland / Belgium; /nl/* is deliberately now the Netherlands region (its
+  // new home page), so only the non-colliding legacy paths get stubs.
+  for (const page of PAGES) {
+    if (page.key !== 'home') add(pathFor(page.key, 'en'), { kind: 'redirect', to: pathFor(page.key, 'en', 'IE') });
+    add(pathFor(page.key, 'fr'), { kind: 'redirect', to: pathFor(page.key, 'fr', 'BE') });
   }
   return paths;
 }
 
-const { lang, pageKey } = Astro.props;
+const { kind, lang, region, pageKey, to } = Astro.props as any;
 ---
-{pageKey === 'home' && <Home lang={lang} />}
-{pageKey === 'howItWorks' && <HowItWorks lang={lang} />}
-{pageKey === 'coupons' && <Coupons lang={lang} />}
-{pageKey === 'savings' && <Savings lang={lang} />}
-{pageKey === 'about' && <About lang={lang} />}
-{pageKey === 'support' && <Support lang={lang} />}
-{pageKey === 'privacy' && <Legal lang={lang} page="privacy" />}
-{pageKey === 'terms' && <Legal lang={lang} page="terms" />}
+{kind === 'choose' && <Choose />}
+{kind === 'redirect' && <Redirect to={to} />}
+{kind === 'page' && pageKey === 'home' && <Home lang={lang} region={region} />}
+{kind === 'page' && pageKey === 'howItWorks' && <HowItWorks lang={lang} region={region} />}
+{kind === 'page' && pageKey === 'coupons' && <Coupons lang={lang} region={region} />}
+{kind === 'page' && pageKey === 'savings' && <Savings lang={lang} region={region} />}
+{kind === 'page' && pageKey === 'about' && <About lang={lang} region={region} />}
+{kind === 'page' && pageKey === 'support' && <Support lang={lang} region={region} />}
+{kind === 'page' && pageKey === 'privacy' && <Legal lang={lang} region={region} page="privacy" />}
+{kind === 'page' && pageKey === 'terms' && <Legal lang={lang} region={region} page="terms" />}

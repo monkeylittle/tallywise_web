@@ -3,20 +3,20 @@
 // by the `blocks` array in the content. Translated versions show a
 // "translation for convenience; English prevails" banner (content.legalNote).
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import type { Lang } from '../../i18n/config';
-import { getContent, resolve } from '../../i18n/content';
+import type { Lang, RegionOrAll } from '../../i18n/config';
+import { getRegionContent, resolve } from '../../i18n/content';
 
 interface LegalBlock { h?: string; ps?: string[]; list?: string[] }
-interface Props { lang: Lang; page: 'privacy' | 'terms' }
+interface Props { lang: Lang; region: RegionOrAll; page: 'privacy' | 'terms' }
 
-const { lang, page } = Astro.props;
-const content = getContent(lang);
+const { lang, region, page } = Astro.props;
+const content = getRegionContent(region, lang);
 const c = content[page];
 const note = content.legalNote;
 const blocks = c.blocks as LegalBlock[];
-const r = (s: string) => resolve(s, lang);
+const r = (s: string) => resolve(s, lang, region);
 ---
-<BaseLayout lang={lang} page={page} title={c.title} description={c.description}>
+<BaseLayout lang={lang} region={region} page={page} title={c.title} description={c.description}>
   <section class="hero">
     <div class="container hero__inner">
       <h1 set:html={c.h1} />

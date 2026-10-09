@@ -1,9 +1,14 @@
-// Language + routing configuration for the multilingual site.
+// Language + routing configuration for the multilingual, multi-region site.
 //
-// URL scheme (decided): English at the root (/, /how-it-works/); the other
-// languages under a prefix (/nl/, /fr/coupons/, /de/savings/). URL *slugs* stay
-// English across all languages — only the prefix changes — so links are stable
-// and the routing stays simple.
+// URL scheme: REGION first, language inside (see pathFor below):
+//   /            region chooser (no marketing content depends on a market)
+//   /ie/  /uk/   Ireland, United Kingdom (English)
+//   /be/ /be/fr/ /be/en/   Belgium (Dutch default, French, English)
+//   /nl/ /nl/en/           Netherlands (Dutch default, English)
+//   /de/…        LEGACY German pages: language-only, outside the region selector
+// URL *slugs* stay English across all languages and regions, so links are
+// stable and the routing stays simple. Everything that varies by market lives
+// in ./regions.ts.
 
 export const DEFAULT_LANG = 'en' as const;
 
@@ -48,39 +53,73 @@ export function slugFor(page: PageKey): string {
   return PAGES.find((p) => p.key === page)!.slug;
 }
 
-/** Build the URL path for a page in a given language (always trailing-slashed). */
-export function pathFor(page: PageKey, lang: Lang): string {
+import {
+  REGIONS,
+  REGION_CODES,
+  defaultLangFor,
+  regionSupportsLang,
+  type Region,
+  type RegionOrAll,
+} from './regions';
+
+/**
+ * Build the URL path for a page. URLs are region-first, language inside:
+ *
+ *   /ie/  /ie/how-it-works/            Ireland (English)
+ *   /be/  /be/fr/savings/  /be/en/     Belgium (Dutch default, French, English)
+ *   /nl/  /nl/en/                      Netherlands (Dutch default, English)
+ *
+ * Slugs stay English everywhere. With no region (or 'ALL') this builds the
+ * LEGACY language-only path used by the German pages (/de/…) and by the
+ * redirect stubs for pre-region URLs (/how-it-works/, /fr/coupons/ …).
+ */
+export function pathFor(page: PageKey, lang: Lang, region?: RegionOrAll): string {
   const slug = slugFor(page);
-  const prefix = lang === DEFAULT_LANG ? '' : `/${lang}`;
   const tail = slug ? `/${slug}/` : '/';
-  return `${prefix}${tail}` || '/';
+  if (!region || region === 'ALL') {
+    const prefix = lang === DEFAULT_LANG ? '' : `/${lang}`;
+    return `${prefix}${tail}` || '/';
+  }
+  const r = REGIONS[region];
+  const langPart = lang === defaultLangFor(region) ? '' : `/${lang}`;
+  return `/${r.slug}${langPart}${tail}`;
 }
 
-/** Every language variant of a page — for hreflang alternates and the switcher. */
-export function altsFor(page: PageKey): { lang: Lang; href: string }[] {
-  return LANG_CODES.map((lang) => ({ lang, href: pathFor(page, lang) }));
+/** Language variants of a page WITHIN a region — for the language switcher. */
+export function altsFor(page: PageKey, region: Region): { lang: Lang; href: string }[] {
+  return REGIONS[region].langs.map((lang) => ({ lang, href: pathFor(page, lang, region) }));
 }
 
-// Supported markets and their store lists — mirrors the app's
-// `storesForCountry` (lib/core/stores/store_directory.dart), the source of
-// truth for what's actually supported. Store names are language-neutral; the
-// country display names are translated (content.stores.countryNames).
-export const COUNTRIES = [
-  { code: 'IE', stores: ['Tesco', 'Dunnes Stores', 'SuperValu', 'Aldi', 'Lidl', 'M&S', 'Centra', 'Spar'] },
-  { code: 'UK', stores: ['Tesco', "Sainsbury's", 'Asda', 'Morrisons', 'Aldi', 'Lidl', 'M&S', 'Waitrose', 'Co-op'] },
-  { code: 'BE', stores: ['Delhaize', 'Carrefour', 'Jumbo', 'Aldi', 'Lidl'] },
-  { code: 'NL', stores: ['Albert Heijn', 'Jumbo', 'Plus', 'Aldi', 'Lidl'] },
-] as const;
+/** The same page in another region, keeping the language when that region offers it. */
+export function regionHref(page: PageKey, lang: Lang, to: Region): string {
+  const l = regionSupportsLang(to, lang) ? lang : defaultLangFor(to);
+  return pathFor(page, l, to);
+}
 
-export type CountryCode = (typeof COUNTRIES)[number]['code'];
-export const COUNTRY_CODES = COUNTRIES.map((c) => c.code) as CountryCode[];
+/** Every region × language variant of a page, with its hreflang code (en-IE, nl-BE …). */
+export function allVariants(page: PageKey): { region: Region; lang: Lang; href: string; hreflang: string }[] {
+  const out: { region: Region; lang: Lang; href: string; hreflang: string }[] = [];
+  for (const region of REGION_CODES) {
+    // Coupons only exist (as a real page) in Ireland; elsewhere it is a short
+    // explainer that is not part of the hreflang cluster.
+    if (page === 'coupons' && !REGIONS[region].coupons) continue;
+    for (const lang of REGIONS[region].langs) {
+      out.push({
+        region,
+        lang,
+        href: pathFor(page, lang, region),
+        hreflang: REGIONS[region].locale[lang] ?? lang,
+      });
+    }
+  }
+  return out;
+}
 
-// Country pre-selected on first load per site language (English → Ireland, the
-// continental languages → Belgium). The client script refines this from the
-// browser region and remembers an explicit choice; this is only the fallback.
-export const DEFAULT_COUNTRY: Record<Lang, CountryCode> = {
-  en: 'IE',
-  nl: 'BE',
-  fr: 'BE',
-  de: 'BE',
-};
+export { REGIONS, REGION_CODES, defaultLangFor, regionSupportsLang };
+export type { Region, RegionOrAll };
+
+/** Path of an app-screen image for a region (real/illustrative set per region). */
+export function shotPath(region: RegionOrAll | undefined, name: string): string {
+  if (region && region !== 'ALL') return `/assets/screenshots/${REGIONS[region].slug}/${name}.png`;
+  return `/assets/screenshots/${name}.png`;
+}

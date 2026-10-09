@@ -29,29 +29,43 @@ export const en = {
   // Shown as a banner atop translated legal pages (not used in English).
   legalNote: '',
 
+  region: {
+    label: 'Region',
+    menuLabel: 'Change region',
+    suggest: 'It looks like you’re in %COUNTRY%. Switch to Tallywise %COUNTRY%?',
+    switchBtn: 'Switch',
+    stay: 'Stay here',
+    alsoIn: 'Also available in',
+    illustrative: 'Illustrative screens, built from real recent prices.',
+  },
+
+  couponsElsewhere: {
+    title: 'Money-off coupons — Tallywise',
+    description: 'Saving and sharing money-off coupons in Tallywise works with Dunnes Stores and SuperValu vouchers, which are Irish.',
+    h1: 'Coupons are an Irish feature — for now.',
+    p: 'Saving, scanning and sharing money-off coupons in Tallywise works with Dunnes Stores and SuperValu vouchers, and those are Irish. Everything else — scanning barcodes and receipts, building a basket and comparing it across the supermarkets in %MKT% — works here.',
+    link: 'See how coupons work in Ireland',
+  },
+
   home: {
-    title: 'Tallywise — compare your grocery basket across UK & Irish supermarkets',
+    title: 'Tallywise — compare your grocery basket across supermarkets in %MKT%',
     hero: {
       h1: 'Stop guessing where your basket is cheapest.',
-      sub: "Scan a barcode or snap your receipt, build your basket, and Tallywise shows what it would cost at the major supermarkets across Ireland, the UK, Belgium and the Netherlands — and what you've saved.",
+      sub: "Scan a barcode or snap your receipt, build your basket, and Tallywise shows what it would cost at the major supermarkets in %MKT% — and what you've saved.",
       ctaGet: 'Get the app',
       ctaHow: 'See how it works',
       note: 'Free on iPhone &amp; Android',
       compare: {
-        basket: 'Your basket · 14 items',
+        basket: 'Your basket · %ITEMS% items',
+        example: 'Example basket',
         caption: 'Priced at every store you could buy it.',
         cheapest: 'Cheapest',
-        save: 'You save <b>€4.20</b> this shop',
-        shops: [
-          { code: 'SV', name: 'SuperValu', price: '€48.30', color: '#D4122A', best: true },
-          { code: 'TE', name: 'Tesco', price: '€50.15', color: '#00539F', best: false },
-          { code: 'DN', name: 'Dunnes', price: '€52.50', color: '#E4001B', best: false },
-        ],
+        save: 'You save <b>%SAVED%</b> this shop',
       },
     },
     why: {
       h2: 'Why Tallywise, why now?',
-      lead: 'Grocery bills have climbed hard these past few years, and a weekly shop can cost noticeably more or less depending only on where you buy it. Every euro and pound stretches less than it used to — so paying over the odds for the same items stings more than ever.',
+      lead: 'Grocery bills have climbed hard these past few years, and a weekly shop can cost noticeably more or less depending only on where you buy it. Every %CUR% stretches less than it used to — so paying over the odds for the same items stings more than ever.',
       cards: [
         {
           h: 'Prices never sit still',
@@ -125,14 +139,14 @@ export const en = {
       items: [
         { alt: 'Tallywise scan screen — scan a barcode or snap a receipt.', caption: 'Scan a barcode, or snap a receipt.' },
         { alt: 'Tallywise shopping list — shared, with each item priced and a running total.', caption: 'A shared shopping list, priced as you add.' },
-        { alt: 'Tallywise product screen — one product priced across every supermarket.', caption: 'Every store’s price, side by side.' },
-        { alt: 'Tallywise deals — recent price drops at supermarkets near you.', caption: 'Deals near you, spotted for you.' },
+        { alt: 'Tallywise product screen — one product priced across %SHOT_STORES%.', caption: 'Every store’s price, side by side.' },
+        { alt: 'Tallywise deals — recent price drops at %SHOT_STORES% and other supermarkets near you.', caption: 'Deals near you, spotted for you.' },
       ],
     },
     stores: {
       h2: 'Wherever you shop.',
-      pickLabel: 'Choose your country',
-      countryNames: { IE: 'Ireland', UK: 'United Kingdom', BE: 'Belgium', NL: 'Netherlands' },
+      lead: 'Supermarkets Tallywise supports in %MKT%:',
+      loyalty: 'Got a loyalty card? You can record loyalty-card prices too — such as %LOYALTY%.',
       note1: 'Own-brand items only show prices where they&rsquo;re stocked — we never silently drop a store, so the totals are always honest.',
       note3: 'Tallywise is in English, Dutch, French and German, so it speaks your shop wherever you are.',
     },
@@ -154,7 +168,7 @@ export const en = {
       intro: "Every shopper starts as <strong>Bronze</strong>. Scan your shops and tag the items as you go, and you'll climb to <strong>Silver</strong> — both free. (Gold, a paid tier, is on the way.)",
       bronzeH: 'Bronze — where you start',
       bronze: [
-        'Compare your basket across supermarkets in Ireland, the UK, Belgium and the Netherlands',
+        'Compare your basket across supermarkets in %MKT%',
         'Scan barcodes to check and record prices',
         '<strong>Help identify products</strong> — add a missing name, brand or size',
         '<strong>Save &amp; share money-off coupons</strong> to scan at the till',
@@ -174,7 +188,7 @@ export const en = {
     },
     get: {
       h2: 'Get Tallywise.',
-      sub: 'Tallywise is free on iPhone and Android, in Ireland, the UK, Belgium and the Netherlands. Tap your platform to install it and start comparing your shop.',
+      sub: 'Tallywise is free on iPhone and Android, in %MKT%. Tap your platform to install it and start comparing your shop.',
       hintLabel: 'Questions?',
     },
   },
@@ -213,8 +227,8 @@ export const en = {
       items: [
         { alt: 'Tallywise scan screen — start with a barcode or a receipt.', caption: 'Start with a barcode or a receipt.' },
         { alt: 'Tallywise shopping list — add by scan, search or free text; tick off as you shop.', caption: 'Build a list — scan, search or just type it.' },
-        { alt: 'Tallywise product screen — the same product priced at every store that stocks it.', caption: 'See who’s cheapest for each item.' },
-        { alt: 'Tallywise deals — recent price drops at nearby stores.', caption: 'Catch the price drops near you.' },
+        { alt: 'Tallywise product screen — the same product priced at %SHOT_STORES% and every other store that stocks it.', caption: 'See who’s cheapest for each item.' },
+        { alt: 'Tallywise deals — recent price drops at %SHOT_STORES% and other nearby stores.', caption: 'Catch the price drops near you.' },
       ],
     },
     ctaHeading: 'Try it on your next shop.',
@@ -266,7 +280,7 @@ export const en = {
 
   savings: {
     title: 'Where shoppers really save on groceries — Tallywise',
-    description: 'How Tallywise builds a transparent picture of grocery prices across Tesco, Dunnes, SuperValu, Aldi, Lidl, M&S, SPAR and Centra — and what that means for your weekly shop.',
+    description: 'How Tallywise builds a transparent picture of grocery prices across %STORE_LIST_RAW% — and what that means for your weekly shop.',
     hero: {
       h1: 'Honest grocery price comparison, built by shoppers.',
       sub: "The cheapest supermarket isn't a single answer — it depends on what's actually in <em>your</em> basket. Here's how Tallywise works that out, and what it means for the shop you do every week.",
@@ -277,7 +291,7 @@ export const en = {
       cards: [
         {
           h: "Promotions don't sit still",
-          p: 'The "3 for €5" tonight is the "2 for €4" next week. Each chain runs its own cycle, so the cheapest shop for your regular basket flips around in ways nobody\'s tracking by hand.',
+          p: 'The "3 for %P5%" tonight is the "2 for %P4%" next week. Each chain runs its own cycle, so the cheapest shop for your regular basket flips around in ways nobody\'s tracking by hand.',
         },
         {
           h: 'Own-brand vs. branded',
@@ -303,7 +317,7 @@ export const en = {
     covered: {
       h2: 'Which supermarkets are covered?',
       list: [
-        '<strong>Tesco</strong> — calibrated receipt reader, full comparison (UK &amp; Ireland).',
+        '<strong>Tesco</strong> — calibrated receipt reader, full comparison.',
         '<strong>Dunnes Stores</strong> — calibrated, plus coupon support.',
         '<strong>SuperValu</strong> — calibrated.',
         '<strong>Aldi</strong> and <strong>Lidl</strong> — calibrated (paper + Lidl Plus digital).',
@@ -311,6 +325,7 @@ export const en = {
         "<strong>UK chains</strong> — Sainsbury's, Asda, Morrisons and more.",
       ],
       p: 'Tallywise is live in Ireland, the UK, Belgium and the Netherlands — Delhaize, Carrefour and Jumbo in Belgium, and Albert Heijn, Jumbo and Plus in the Netherlands, alongside Aldi and Lidl across them all. New chains land as we get enough sample receipts to calibrate the reader. If a shop you use isn\'t here, snap a receipt anyway and tap "Report a problem" — that\'s how we add one.',
+      pRegion: 'Tallywise is live in %MKT% with the supermarkets above. New chains land as we get enough sample receipts to calibrate the reader. If a shop you use isn\'t here, snap a receipt anyway and tap "Report a problem" — that\'s how we add one.',
     },
     ctaHeading: 'Find your cheapest basket.',
   },
@@ -320,7 +335,7 @@ export const en = {
     description: 'Who builds Tallywise, why it exists, how to get in touch, and how to get the app on iOS or Android.',
     hero: {
       h1: 'About Tallywise.',
-      sub: 'A small, independent app built in Dublin to make grocery shopping across Ireland, the UK, Belgium and the Netherlands a fairer game for the people doing it.',
+      sub: 'A small, independent app built in Dublin to make grocery shopping in %MKT% a fairer game for the people doing it.',
     },
     why: {
       h2: 'Why we built it.',

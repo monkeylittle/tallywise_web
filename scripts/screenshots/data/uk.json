@@ -1,0 +1,165 @@
+{
+ "region": "uk",
+ "cur": "£",
+ "dec": ".",
+ "scan": {
+  "weekday": "Friday",
+  "store": "Tesco",
+  "items": 5
+ },
+ "list": {
+  "title": "Weekly Shop",
+  "items": [
+   {
+    "name": "Rice Krispies Breakfast Cereal",
+    "brand": "Kellogg's",
+    "size": "660g",
+    "qty": 1,
+    "price": 3.85
+   },
+   {
+    "name": "Lighter Medium Sliced Danish White Bread",
+    "brand": "Warburtons",
+    "size": "400g",
+    "qty": 2,
+    "price": 1.24
+   },
+   {
+    "name": "Salt & Shake Multipack Crisps",
+    "brand": "Walkers",
+    "size": "24g",
+    "qty": 1,
+    "price": 2.15
+   },
+   {
+    "name": "Bassetts Liquorice Allsorts Candy",
+    "brand": "Maynards",
+    "size": "130g",
+    "qty": 2,
+    "price": 1.25
+   },
+   {
+    "name": "Tilda Mircowave Pilau Basmati Rice",
+    "brand": "Tilda",
+    "size": "250g",
+    "qty": 2,
+    "price": 0.95
+   }
+  ]
+ },
+ "compare": {
+  "name": "Rice Krispies Breakfast Cereal",
+  "brand": "Kellogg's",
+  "size": "660g",
+  "rows": [
+   {
+    "chain": "asda",
+    "label": "Asda",
+    "price": 3.85,
+    "km": 3.1
+   },
+   {
+    "chain": "sainsburys",
+    "label": "Sainsbury's",
+    "price": 4.35,
+    "km": 2.4
+   },
+   {
+    "chain": "tesco",
+    "label": "Tesco",
+    "price": 4.35,
+    "km": 2.0
+   }
+  ]
+ },
+ "deals": [
+  {
+   "chain": "asda",
+   "label": "Asda",
+   "km": 3.1,
+   "brand": "Heinz",
+   "name": "Heinz 30% Less Fat Salad Cream 415g",
+   "size": "",
+   "pct": 16,
+   "price": 2.5,
+   "was": 2.98,
+   "loyalty": false,
+   "observed": "2026-10-07"
+  },
+  {
+   "chain": "tesco",
+   "label": "Tesco",
+   "km": 2.0,
+   "brand": "Andrex",
+   "name": "Andrex Ultimate Quilts Toilet Tissue 6 Mega Rolls",
+   "size": "",
+   "pct": 15,
+   "price": 5.5,
+   "was": 6.5,
+   "loyalty": true,
+   "observed": "2026-10-06"
+  }
+ ],
+ "basket_totals": {
+  "asda": 13.38,
+  "tesco": 13.7,
+  "sainsburys": 13.8
+ },
+ "provenance": {
+  "source": "read-only pull of the production pricing + deals tables, 2026-10-09; latest observed price per (product, chain), loyalty-only rows excluded; distances (km) are illustrative",
+  "item_prices": {
+   "Rice Krispies Breakfast Cereal": {
+    "sainsburys": 4.35,
+    "asda": 3.85,
+    "tesco": 4.35
+   },
+   "Lighter Medium Sliced Danish White Bread": {
+    "sainsburys": 1.3,
+    "asda": 1.24,
+    "tesco": 1.25
+   },
+   "Salt & Shake Multipack Crisps": {
+    "asda": 2.15,
+    "sainsburys": 2.35,
+    "tesco": 2.35
+   },
+   "Bassetts Liquorice Allsorts Candy": {
+    "sainsburys": 1.25,
+    "asda": 1.5,
+    "tesco": 1.25
+   },
+   "Tilda Mircowave Pilau Basmati Rice": {
+    "sainsburys": 1.0,
+    "asda": 0.95,
+    "tesco": 1.0
+   }
+  },
+  "item_observed": {
+   "Rice Krispies Breakfast Cereal": {
+    "sainsburys": "2026-09-26",
+    "asda": "2026-09-28",
+    "tesco": "2026-10-02"
+   },
+   "Lighter Medium Sliced Danish White Bread": {
+    "sainsburys": "2026-09-28",
+    "asda": "2026-10-01",
+    "tesco": "2026-10-01"
+   },
+   "Salt & Shake Multipack Crisps": {
+    "asda": "2026-09-29",
+    "sainsburys": "2026-09-26",
+    "tesco": "2026-10-01"
+   },
+   "Bassetts Liquorice Allsorts Candy": {
+    "sainsburys": "2026-09-26",
+    "asda": "2026-09-25",
+    "tesco": "2026-10-01"
+   },
+   "Tilda Mircowave Pilau Basmati Rice": {
+    "sainsburys": "2026-09-26",
+    "asda": "2026-10-03",
+    "tesco": "2026-10-02"
+   }
+  }
+ }
+}

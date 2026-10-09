@@ -1,34 +1,45 @@
 ---
 import { site } from '../site';
-import { pathFor, type Lang, type PageKey } from '../i18n/config';
-import { getContent } from '../i18n/content';
+import { REGIONS, pathFor, type Lang, type PageKey, type RegionOrAll } from '../i18n/config';
+import { getRegionContent } from '../i18n/content';
 import LangSwitcher from './LangSwitcher.astro';
+import RegionSwitcher from './RegionSwitcher.astro';
 
 interface Props {
   lang: Lang;
   page: PageKey;
+  region?: RegionOrAll;
+  /** Region chooser page: brand + region menu only. */
+  chooser?: boolean;
 }
-const { lang, page } = Astro.props;
-const c = getContent(lang);
+const { lang, page, region, chooser = false } = Astro.props;
+const c = getRegionContent(region ?? 'ALL', lang);
+const real = region && region !== 'ALL' ? region : null;
+const showCoupons = !real || REGIONS[real].coupons;
 
-// Nav targets, localized. "Get the app" points at the #get band on the home page.
-const links = [
-  { href: pathFor('howItWorks', lang), label: c.nav.howItWorks },
-  { href: pathFor('coupons', lang), label: c.nav.coupons },
-  { href: pathFor('savings', lang), label: c.nav.savings },
-  { href: pathFor('about', lang), label: c.nav.about },
-  { href: `${pathFor('home', lang)}#get`, label: c.nav.getApp },
-];
+// Nav targets, localized and region-aware. "Get the app" points at the #get
+// band on the region's home page. Coupons only exist in Ireland.
+const links = chooser
+  ? []
+  : [
+      { href: pathFor('howItWorks', lang, region), label: c.nav.howItWorks },
+      ...(showCoupons ? [{ href: pathFor('coupons', lang, region), label: c.nav.coupons }] : []),
+      { href: pathFor('savings', lang, region), label: c.nav.savings },
+      { href: pathFor('about', lang, region), label: c.nav.about },
+      { href: `${pathFor('home', lang, region)}#get`, label: c.nav.getApp },
+    ];
+const brandHref = chooser ? '/?choose=1' : pathFor('home', lang, region);
 ---
 <header class="nav">
   <div class="container nav__inner">
-    <a class="nav__brand" href={pathFor('home', lang)}>
+    <a class="nav__brand" href={brandHref}>
       <img class="logo" src="/app-icon.png" alt="" width="38" height="38" />
       <span>{site.name}</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
       {links.map((item) => <a href={item.href}>{item.label}</a>)}
-      <LangSwitcher lang={lang} page={page} />
+      <RegionSwitcher lang={lang} page={page} region={region} />
+      <LangSwitcher lang={lang} page={page} region={region} />
     </nav>
   </div>
 </header>

@@ -2,14 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AppCta from '../../components/AppCta.astro';
 import CompareCard from '../../components/CompareCard.astro';
-import type { Lang } from '../../i18n/config';
-import { getContent } from '../../i18n/content';
+import type { Lang, RegionOrAll } from '../../i18n/config';
+import { shotPath } from '../../i18n/config';
+import { REGIONS } from '../../i18n/regions';
+import { getRegionContent } from '../../i18n/content';
 
-interface Props { lang: Lang }
-const { lang } = Astro.props;
-const c = getContent(lang).howItWorks;
+interface Props { lang: Lang; region: RegionOrAll }
+const { lang, region } = Astro.props;
+const c = getRegionContent(region, lang).howItWorks;
 ---
-<BaseLayout lang={lang} page="howItWorks" title={c.title} description={c.description}>
+<BaseLayout lang={lang} region={region} page="howItWorks" title={c.title} description={c.description}>
   <section class="hero">
     <div class="container">
       <div class="hero__grid">
@@ -17,7 +19,7 @@ const c = getContent(lang).howItWorks;
           <h1 set:html={c.hero.h1} />
           <p class="hero__sub" set:html={c.hero.sub} />
         </div>
-        <CompareCard lang={lang} />
+        <CompareCard lang={lang} region={region} />
       </div>
     </div>
   </section>
@@ -42,14 +44,15 @@ const c = getContent(lang).howItWorks;
       <div class="shots__grid">
         {['scan', 'list', 'compare', 'deals'].map((name, i) => (
           <figure class="shot">
-            <img src={`/assets/screenshots/${name}.png`} width="592" height="1280"
+            <img src={shotPath(region, name)} width="592" height="1280"
                  loading="lazy" alt={c.shots.items[i].alt} />
             <figcaption>{c.shots.items[i].caption}</figcaption>
           </figure>
         ))}
       </div>
+      {region !== 'ALL' && REGIONS[region].illustrativeScreens && <p class="shots__note">{getRegionContent(region, lang).region.illustrative}</p>}
     </div>
   </section>
 
-  <AppCta lang={lang} heading={c.ctaHeading} />
+  <AppCta lang={lang} region={region} heading={c.ctaHeading} />
 </BaseLayout>

@@ -20,3 +20,6 @@ pnpm-debug.log*
 
 # macOS
 .DS_Store
+
+# screenshot generator scratch
+scripts/screenshots/.tmp/

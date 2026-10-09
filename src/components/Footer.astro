@@ -1,23 +1,32 @@
 ---
 import { site } from '../site';
-import { pathFor, type Lang } from '../i18n/config';
-import { getContent } from '../i18n/content';
+import { REGION_CODES, REGIONS, pathFor, regionHref, type Lang, type PageKey, type RegionOrAll } from '../i18n/config';
+import { getRegionContent } from '../i18n/content';
 
 interface Props {
   lang: Lang;
+  region?: RegionOrAll;
+  page: PageKey;
 }
-const { lang } = Astro.props;
-const c = getContent(lang);
+const { lang, region, page } = Astro.props;
+const c = getRegionContent(region ?? 'ALL', lang);
 const year = new Date().getFullYear();
+const current = region && region !== 'ALL' ? region : null;
 ---
 <footer class="footer">
   <div class="container footer__inner">
     <span>&copy; {year} {site.name}</span>
     <nav class="footer__links" aria-label="Footer">
-      <a href={pathFor('privacy', lang)}>{c.footer.privacy}</a>
-      <a href={pathFor('terms', lang)}>{c.footer.terms}</a>
-      <a href={pathFor('support', lang)}>{c.footer.support}</a>
+      <a href={pathFor('privacy', lang, region)}>{c.footer.privacy}</a>
+      <a href={pathFor('terms', lang, region)}>{c.footer.terms}</a>
+      <a href={pathFor('support', lang, region)}>{c.footer.support}</a>
       <a href={`mailto:${site.email}`}>{site.email}</a>
     </nav>
+  </div>
+  <div class="container footer__regions">
+    <span>{c.region.label}:</span>
+    {REGION_CODES.map((r) => (
+      <a href={regionHref(page, lang, r)} data-tw-region={r} aria-current={r === current ? 'true' : undefined}>{REGIONS[r].names[lang]}</a>
+    ))}
   </div>
 </footer>

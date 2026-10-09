@@ -1,0 +1,165 @@
+{
+ "region": "be",
+ "cur": "€",
+ "dec": ",",
+ "scan": {
+  "weekday": "Friday",
+  "store": "Colruyt",
+  "items": 5
+ },
+ "list": {
+  "title": "Weekly Shop",
+  "items": [
+   {
+    "name": "Alpro 50g High Protein Soya Chocolate Flavour Long Life Dairy Free Drink",
+    "brand": "Alpro",
+    "size": "1l",
+    "qty": 1,
+    "price": 2.99
+   },
+   {
+    "name": "Heinz Tomaten Ketchup Knijpfles",
+    "brand": "Heinz",
+    "size": "875ml",
+    "qty": 1,
+    "price": 3.69
+   },
+   {
+    "name": "Croky Chips Naturel",
+    "brand": "Croky",
+    "size": "200g",
+    "qty": 2,
+    "price": 1.99
+   },
+   {
+    "name": "Côte d'Or Chocoladereep Extra Intense Pure Chocolade 86%",
+    "brand": "Côte d'Or",
+    "size": "100g",
+    "qty": 1,
+    "price": 3.59
+   },
+   {
+    "name": "Calvé Pindakaas Stukjes Pinda",
+    "brand": "Calvé",
+    "size": "350g",
+    "qty": 1,
+    "price": 3.49
+   }
+  ]
+ },
+ "compare": {
+  "name": "Heinz Tomaten Ketchup Knijpfles",
+  "brand": "Heinz",
+  "size": "875ml",
+  "rows": [
+   {
+    "chain": "colruyt",
+    "label": "Colruyt",
+    "price": 3.69,
+    "km": 2.2
+   },
+   {
+    "chain": "delhaize",
+    "label": "Delhaize",
+    "price": 3.75,
+    "km": 1.5
+   },
+   {
+    "chain": "jumbo",
+    "label": "Jumbo",
+    "price": 4.29,
+    "km": 2.8
+   }
+  ]
+ },
+ "deals": [
+  {
+   "chain": "colruyt",
+   "label": "Colruyt",
+   "km": 2.2,
+   "brand": "Côte d'Or",
+   "name": "Bloc melk hazelnoot",
+   "size": "",
+   "pct": 33,
+   "price": 2.99,
+   "was": 4.49,
+   "loyalty": false,
+   "observed": "2026-10-08"
+  },
+  {
+   "chain": "jumbo",
+   "label": "Jumbo",
+   "km": 2.8,
+   "brand": "Douwe Egberts",
+   "name": "Douwe Egberts Aroma Rood Oploskoffie 200 g",
+   "size": "",
+   "pct": 16,
+   "price": 6.99,
+   "was": 8.29,
+   "loyalty": false,
+   "observed": "2026-10-06"
+  }
+ ],
+ "basket_totals": {
+  "colruyt": 18.5,
+  "delhaize": 18.68,
+  "jumbo": 19.44
+ },
+ "provenance": {
+  "source": "read-only pull of the production pricing + deals tables, 2026-10-09; latest observed price per (product, chain), loyalty-only rows excluded; distances (km) are illustrative",
+  "item_prices": {
+   "Alpro 50g High Protein Soya Chocolate Flavour Long Life Dairy Free Drink": {
+    "delhaize": 3.25,
+    "colruyt": 3.25,
+    "jumbo": 2.99
+   },
+   "Heinz Tomaten Ketchup Knijpfles": {
+    "jumbo": 4.29,
+    "delhaize": 3.75,
+    "colruyt": 3.69
+   },
+   "Croky Chips Naturel": {
+    "jumbo": 2.39,
+    "delhaize": 2.05,
+    "colruyt": 1.99
+   },
+   "Côte d'Or Chocoladereep Extra Intense Pure Chocolade 86%": {
+    "jumbo": 3.89,
+    "colruyt": 3.59,
+    "delhaize": 3.59
+   },
+   "Calvé Pindakaas Stukjes Pinda": {
+    "jumbo": 3.49,
+    "delhaize": 3.99,
+    "colruyt": 3.99
+   }
+  },
+  "item_observed": {
+   "Alpro 50g High Protein Soya Chocolate Flavour Long Life Dairy Free Drink": {
+    "delhaize": "2026-10-05",
+    "colruyt": "2026-10-07",
+    "jumbo": "2026-10-03"
+   },
+   "Heinz Tomaten Ketchup Knijpfles": {
+    "jumbo": "2026-10-09",
+    "delhaize": "2026-10-05",
+    "colruyt": "2026-09-30"
+   },
+   "Croky Chips Naturel": {
+    "jumbo": "2026-10-05",
+    "delhaize": "2026-10-04",
+    "colruyt": "2026-09-25"
+   },
+   "Côte d'Or Chocoladereep Extra Intense Pure Chocolade 86%": {
+    "jumbo": "2026-10-05",
+    "colruyt": "2026-09-30",
+    "delhaize": "2026-10-09"
+   },
+   "Calvé Pindakaas Stukjes Pinda": {
+    "jumbo": "2026-10-04",
+    "delhaize": "2026-10-02",
+    "colruyt": "2026-09-30"
+   }
+  }
+ }
+}

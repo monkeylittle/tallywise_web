@@ -2,17 +2,18 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CompareCard from '../../components/CompareCard.astro';
 import { site } from '../../site';
-import type { Lang } from '../../i18n/config';
-import { COUNTRIES, DEFAULT_COUNTRY } from '../../i18n/config';
-import { getContent } from '../../i18n/content';
+import type { Lang, RegionOrAll } from '../../i18n/config';
+import { shotPath } from '../../i18n/config';
+import { REGIONS } from '../../i18n/regions';
+import { getRegionContent } from '../../i18n/content';
 
-interface Props { lang: Lang }
-const { lang } = Astro.props;
-const c = getContent(lang).home;
+interface Props { lang: Lang; region: RegionOrAll }
+const { lang, region } = Astro.props;
+const c = getRegionContent(region, lang).home;
 
-// Country pre-selected on first load; the inline script below refines it from
-// the visitor's browser region and remembers an explicit choice.
-const defaultCountry = DEFAULT_COUNTRY[lang];
+// The region's own store list (the legacy German pages list the Irish one).
+const stores = REGIONS[region === 'ALL' ? 'IE' : region].stores;
+const hasCoupons = region === 'ALL' || REGIONS[region].coupons;
 
 // Decorative icons for the three "why" cards (positional, so no translation).
 const whyIcons = [
@@ -21,7 +22,7 @@ const whyIcons = [
   '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>',
 ];
 ---
-<BaseLayout lang={lang} page="home" title={c.title}>
+<BaseLayout lang={lang} region={region} page="home" title={c.title}>
   <section class="hero">
     <div class="container">
       <div class="hero__grid">
@@ -35,7 +36,7 @@ const whyIcons = [
           </div>
         </div>
 
-        <CompareCard lang={lang} />
+        <CompareCard lang={lang} region={region} />
       </div>
     </div>
   </section>
@@ -86,7 +87,7 @@ const whyIcons = [
     </div>
   </section>
 
-  <section class="coupons" id="coupons">
+  {hasCoupons && <section class="coupons" id="coupons">
     <div class="container">
       <h2 set:html={c.couponsSec.h2} />
       <p class="why__lead" set:html={c.couponsSec.lead} />
@@ -99,7 +100,7 @@ const whyIcons = [
         ))}
       </div>
     </div>
-  </section>
+  </section>}
 
   <section class="shots" id="shots">
     <div class="container">
@@ -107,64 +108,28 @@ const whyIcons = [
       <div class="shots__grid">
         {['scan', 'list', 'compare', 'deals'].map((name, i) => (
           <figure class="shot">
-            <img src={`/assets/screenshots/${name}.png`} width="592" height="1280"
+            <img src={shotPath(region, name)} width="592" height="1280"
                  loading="lazy" alt={c.shots.items[i].alt} />
             <figcaption>{c.shots.items[i].caption}</figcaption>
           </figure>
         ))}
       </div>
+      {region !== 'ALL' && REGIONS[region].illustrativeScreens && <p class="shots__note">{getRegionContent(region, lang).region.illustrative}</p>}
     </div>
   </section>
 
   <section class="stores" id="stores">
     <div class="container">
       <h2 set:html={c.stores.h2} />
-      <div class="stores-picker">
-        {/* Radios first so a `:checked ~ grid` sibling rule can show the right
-            list with no JS; the default is checked server-side per language. */}
-        {COUNTRIES.map((country) => (
-          <input class="stores-radio" type="radio" name="tw-country"
-                 id={`c-${country.code}`} checked={country.code === defaultCountry} />
-        ))}
-        <span class="stores-pick-label">{c.stores.pickLabel}</span>
-        <div class="stores-tabs">
-          {COUNTRIES.map((country) => (
-            <label class="stores-tab" for={`c-${country.code}`}>{c.stores.countryNames[country.code]}</label>
-          ))}
-        </div>
-        {COUNTRIES.map((country) => (
-          <ul class="stores__grid" data-c={country.code}>
-            {country.stores.map((s) => <li>{s}</li>)}
-          </ul>
-        ))}
-      </div>
+      <p class="why__lead" set:html={c.stores.lead} />
+      <ul class="stores__grid">
+        {stores.map((s) => <li>{s}</li>)}
+      </ul>
+      <p class="stores__note" set:html={c.stores.loyalty} />
       <p class="stores__note" set:html={c.stores.note1} />
-      <p class="stores__note" set:html={c.stores.note3} />
+      {region === 'ALL' && <p class="stores__note" set:html={c.stores.note3} />}
     </div>
   </section>
-  <script is:inline>
-    (function () {
-      var C = ['IE', 'UK', 'BE', 'NL'];
-      function pick() {
-        try { var s = localStorage.getItem('tw_country'); if (C.indexOf(s) >= 0) return s; } catch (e) {}
-        var langs = navigator.languages || [navigator.language || ''];
-        for (var i = 0; i < langs.length; i++) {
-          var m = /-([A-Za-z]{2})/.exec(langs[i] || '');
-          if (m) { var r = m[1].toUpperCase(); if (r === 'GB') r = 'UK'; if (C.indexOf(r) >= 0) return r; }
-        }
-        return null;
-      }
-      var chosen = pick();
-      if (chosen) { var el = document.getElementById('c-' + chosen); if (el) el.checked = true; }
-      C.forEach(function (cc) {
-        var r = document.getElementById('c-' + cc);
-        if (r) r.addEventListener('change', function () {
-          if (r.checked) { try { localStorage.setItem('tw_country', cc); } catch (e) {} }
-        });
-      });
-    })();
-  </script>
-
   <section class="faq" id="faq">
     <div class="container">
       <h2 set:html={c.faq.h2} />
@@ -201,8 +166,8 @@ const whyIcons = [
         <h2 set:html={c.get.h2} />
         <p class="beta__sub" set:html={c.get.sub} />
         <div class="hero__cta">
-          <a class="btn btn--primary" href={site.appStoreUrl} set:html={getContent(lang).buttons.iphone} />
-          <a class="btn btn--ghost" href={site.playStoreUrl} set:html={getContent(lang).buttons.android} />
+          <a class="btn btn--primary" href={site.appStoreUrl} set:html={getRegionContent(region, lang).buttons.iphone} />
+          <a class="btn btn--ghost" href={site.playStoreUrl} set:html={getRegionContent(region, lang).buttons.android} />
         </div>
         <p class="beta__hint">
           {c.get.hintLabel} <a href={`mailto:${site.email}`}>{site.email}</a>

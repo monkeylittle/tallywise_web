@@ -27,29 +27,43 @@ export const fr: SiteContent = {
 
   legalNote: 'Cette traduction est fournie à titre indicatif ; en cas de divergence, la version anglaise prévaut.',
 
+  region: {
+    label: 'Région',
+    menuLabel: 'Changer de région',
+    suggest: 'Il semble que vous soyez en %COUNTRY%. Passer à Tallywise %COUNTRY% ?',
+    switchBtn: 'Changer',
+    stay: 'Rester ici',
+    alsoIn: 'Aussi disponible en',
+    illustrative: 'Écrans illustratifs, construits à partir de vrais prix récents.',
+  },
+
+  couponsElsewhere: {
+    title: 'Bons de réduction — Tallywise',
+    description: 'Enregistrer et partager des bons de réduction dans Tallywise fonctionne avec les bons Dunnes Stores et SuperValu, qui sont irlandais.',
+    h1: 'Les bons sont une fonction irlandaise — pour l’instant.',
+    p: 'Enregistrer, scanner et partager des bons de réduction dans Tallywise fonctionne avec les bons Dunnes Stores et SuperValu, et ceux-ci sont irlandais. Tout le reste — scanner des codes-barres et des tickets, composer un panier et le comparer entre les supermarchés %MKT_OF% — fonctionne ici.',
+    link: 'Voir comment fonctionnent les bons en Irlande',
+  },
+
   home: {
-    title: 'Tallywise — comparez votre panier de courses entre supermarchés',
+    title: 'Tallywise — comparez votre panier de courses entre supermarchés %MKT_IN%',
     hero: {
       h1: 'Arrêtez de deviner où votre panier est le moins cher.',
-      sub: 'Scannez un code-barres ou photographiez votre ticket de caisse, composez votre panier, et Tallywise vous montre ce qu’il coûterait dans les grands supermarchés d’Irlande, du Royaume-Uni, de Belgique et des Pays-Bas — et ce que vous avez économisé.',
+      sub: 'Scannez un code-barres ou photographiez votre ticket de caisse, composez votre panier, et Tallywise vous montre ce qu’il coûterait dans les grands supermarchés %MKT_OF% — et ce que vous avez économisé.',
       ctaGet: 'Télécharger l’app',
       ctaHow: 'Voir comment ça marche',
       note: 'Gratuite sur iPhone &amp; Android',
       compare: {
-        basket: 'Votre panier · 14 articles',
+        basket: 'Votre panier · %ITEMS% articles',
+        example: 'Panier d’exemple',
         caption: 'Comparé dans chaque enseigne où vous pouvez l’acheter.',
         cheapest: 'Le moins cher',
-        save: 'Vous économisez <b>4,20 €</b> ce coup-ci',
-        shops: [
-          { code: 'CO', name: 'Colruyt', price: '48,30 €', color: '#E20613', best: true },
-          { code: 'DE', name: 'Delhaize', price: '50,15 €', color: '#B01E2E', best: false },
-          { code: 'CA', name: 'Carrefour', price: '52,50 €', color: '#004E9F', best: false },
-        ],
+        save: 'Vous économisez <b>%SAVED%</b> ce coup-ci',
       },
     },
     why: {
       h2: 'Pourquoi Tallywise, et pourquoi maintenant ?',
-      lead: 'Les prix des courses ont fortement grimpé ces dernières années, et un même panier hebdomadaire peut coûter sensiblement plus ou moins cher selon le seul endroit où vous l’achetez. Chaque euro et chaque livre vaut moins qu’avant — alors payer trop cher pour les mêmes produits fait plus mal que jamais.',
+      lead: 'Les prix des courses ont fortement grimpé ces dernières années, et un même panier hebdomadaire peut coûter sensiblement plus ou moins cher selon le seul endroit où vous l’achetez. Chaque %CUR% vaut moins qu’avant — alors payer trop cher pour les mêmes produits fait plus mal que jamais.',
       cards: [
         {
           h: 'Les prix ne restent jamais figés',
@@ -123,14 +137,14 @@ export const fr: SiteContent = {
       items: [
         { alt: 'Écran de scan Tallywise — scannez un code-barres ou photographiez un ticket de caisse.', caption: 'Scannez un code-barres, ou photographiez un ticket.' },
         { alt: 'Liste de courses Tallywise — partagée, chaque article chiffré avec un total en direct.', caption: 'Une liste de courses partagée, chiffrée au fur et à mesure.' },
-        { alt: 'Écran produit Tallywise — un produit chiffré dans chaque supermarché.', caption: 'Le prix de chaque enseigne, côte à côte.' },
-        { alt: 'Offres Tallywise — récentes baisses de prix dans les supermarchés près de chez vous.', caption: 'Les offres près de chez vous, repérées pour vous.' },
+        { alt: 'Écran produit Tallywise — un produit chiffré chez %SHOT_STORES%.', caption: 'Le prix de chaque enseigne, côte à côte.' },
+        { alt: 'Offres Tallywise — récentes baisses de prix chez %SHOT_STORES% et d’autres supermarchés près de chez vous.', caption: 'Les offres près de chez vous, repérées pour vous.' },
       ],
     },
     stores: {
       h2: 'Où que vous fassiez vos courses.',
-      pickLabel: 'Choisissez votre pays',
-      countryNames: { IE: 'Irlande', UK: 'Royaume-Uni', BE: 'Belgique', NL: 'Pays-Bas' },
+      lead: 'Supermarchés pris en charge par Tallywise %MKT_IN% :',
+      loyalty: 'Vous avez une carte de fidélité ? Vous pouvez aussi enregistrer les prix carte fidélité — comme %LOYALTY%.',
       note1: 'Les produits de marque distributeur n’affichent un prix que là où ils sont vendus — nous ne retirons jamais discrètement un magasin, pour que les totaux restent toujours honnêtes.',
       note3: 'Tallywise est disponible en anglais, néerlandais, français et allemand, pour parler la langue de votre magasin où que vous soyez.',
     },
@@ -152,7 +166,7 @@ export const fr: SiteContent = {
       intro: 'Chaque client commence au niveau <strong>Bronze</strong>. Scannez vos courses et étiquetez les produits au fil de l’eau, et vous grimperez au niveau <strong>Argent</strong> — les deux gratuits. (Or, un niveau payant, arrive bientôt.)',
       bronzeH: 'Bronze — votre point de départ',
       bronze: [
-        'Comparez votre panier entre les supermarchés d’Irlande, du Royaume-Uni, de Belgique et des Pays-Bas',
+        'Comparez votre panier entre les supermarchés %MKT_OF%',
         'Scannez des codes-barres pour vérifier et enregistrer des prix',
         '<strong>Aidez à identifier les produits</strong> — ajoutez un nom, une marque ou un format manquant',
         '<strong>Enregistrez &amp; partagez des bons de réduction</strong> à scanner en caisse',
@@ -172,7 +186,7 @@ export const fr: SiteContent = {
     },
     get: {
       h2: 'Obtenez Tallywise.',
-      sub: 'Tallywise est gratuite sur iPhone et Android, en Irlande, au Royaume-Uni, en Belgique et aux Pays-Bas. Touchez votre plateforme pour l’installer et commencer à comparer vos courses.',
+      sub: 'Tallywise est gratuite sur iPhone et Android, %MKT_IN%. Touchez votre plateforme pour l’installer et commencer à comparer vos courses.',
       hintLabel: 'Des questions ?',
     },
   },
@@ -211,8 +225,8 @@ export const fr: SiteContent = {
       items: [
         { alt: 'Écran de scan Tallywise — commencez par un code-barres ou un ticket de caisse.', caption: 'Commencez par un code-barres ou un ticket.' },
         { alt: 'Liste de courses Tallywise — ajoutez par scan, recherche ou texte libre ; cochez au fur et à mesure.', caption: 'Composez une liste — scannez, cherchez ou tapez.' },
-        { alt: 'Écran produit Tallywise — le même produit chiffré dans chaque enseigne qui le vend.', caption: 'Voyez qui est le moins cher pour chaque article.' },
-        { alt: 'Offres Tallywise — récentes baisses de prix dans les magasins à proximité.', caption: 'Attrapez les baisses de prix près de chez vous.' },
+        { alt: 'Écran produit Tallywise — le même produit chiffré chez %SHOT_STORES% et dans chaque autre enseigne qui le vend.', caption: 'Voyez qui est le moins cher pour chaque article.' },
+        { alt: 'Offres Tallywise — récentes baisses de prix chez %SHOT_STORES% et dans d’autres magasins à proximité.', caption: 'Attrapez les baisses de prix près de chez vous.' },
       ],
     },
     ctaHeading: 'Essayez-la lors de vos prochaines courses.',
@@ -275,7 +289,7 @@ export const fr: SiteContent = {
       cards: [
         {
           h: 'Les promotions ne restent pas figées',
-          p: 'Le « 3 pour 5 € » de ce soir devient le « 2 pour 4 € » la semaine prochaine. Chaque enseigne suit son propre cycle, donc le magasin le moins cher pour votre panier habituel change sans cesse, d’une manière que personne ne suit à la main.',
+          p: 'Le « 3 pour %P5% » de ce soir devient le « 2 pour %P4% » la semaine prochaine. Chaque enseigne suit son propre cycle, donc le magasin le moins cher pour votre panier habituel change sans cesse, d’une manière que personne ne suit à la main.',
         },
         {
           h: 'Marque distributeur vs. grande marque',
@@ -301,7 +315,7 @@ export const fr: SiteContent = {
     covered: {
       h2: 'Quels supermarchés sont couverts ?',
       list: [
-        '<strong>Tesco</strong> — lecteur de tickets calibré, comparaison complète (Royaume-Uni &amp; Irlande).',
+        '<strong>Tesco</strong> — lecteur de tickets calibré, comparaison complète.',
         '<strong>Dunnes Stores</strong> — calibré, avec prise en charge des bons.',
         '<strong>SuperValu</strong> — calibré.',
         '<strong>Aldi</strong> et <strong>Lidl</strong> — calibrés (papier + Lidl Plus numérique).',
@@ -309,6 +323,7 @@ export const fr: SiteContent = {
         '<strong>Enseignes britanniques</strong> — Sainsbury’s, Asda, Morrisons et d’autres.',
       ],
       p: 'Tallywise est disponible en Irlande, au Royaume-Uni, en Belgique et aux Pays-Bas — Delhaize, Carrefour et Jumbo en Belgique, et Albert Heijn, Jumbo et Plus aux Pays-Bas, aux côtés d’Aldi et Lidl partout. De nouvelles enseignes arrivent dès que nous avons assez de tickets d’exemple pour calibrer le lecteur. Si un magasin que vous utilisez n’y figure pas, photographiez tout de même un ticket et touchez « Signaler un problème » — c’est ainsi que nous en ajoutons un.',
+      pRegion: 'Tallywise est disponible %MKT_IN% avec les supermarchés ci-dessus. De nouvelles enseignes arrivent dès que nous avons assez de tickets d’exemple pour calibrer le lecteur. Si un magasin que vous utilisez n’y figure pas, photographiez tout de même un ticket et touchez « Signaler un problème » — c’est ainsi que nous en ajoutons un.',
     },
     ctaHeading: 'Trouvez votre panier le moins cher.',
   },
@@ -318,7 +333,7 @@ export const fr: SiteContent = {
     description: 'Qui construit Tallywise, pourquoi elle existe, comment nous contacter, et comment obtenir l’app sur iOS ou Android.',
     hero: {
       h1: 'À propos de Tallywise.',
-      sub: 'Une petite app indépendante, conçue à Dublin pour rendre les courses en Irlande, au Royaume-Uni, en Belgique et aux Pays-Bas plus équitables pour ceux qui les font.',
+      sub: 'Une petite app indépendante, conçue à Dublin pour rendre les courses %MKT_IN% plus équitables pour ceux qui les font.',
     },
     why: {
       h2: 'Pourquoi nous l’avons créée.',

@@ -1,0 +1,40 @@
+---
+// Region selector: a native <details> menu (no JavaScript needed) that links to
+// the SAME page in each other region, keeping the language where that region
+// offers it and falling back to the region's default language otherwise. The
+// menu click handler in BaseLayout only remembers the choice.
+import { REGION_CODES, REGIONS, regionHref, type Lang, type PageKey, type RegionOrAll } from '../i18n/config';
+import { getRegionContent } from '../i18n/content';
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+  /** The current region; 'ALL'/undefined on the legacy German pages and the chooser. */
+  region?: RegionOrAll;
+}
+const { lang, page, region } = Astro.props;
+const c = getRegionContent(region ?? 'ALL', lang);
+const current = region && region !== 'ALL' ? region : null;
+const label = current ? REGIONS[current].names[lang] : c.region.label;
+---
+<details class="lang region" aria-label={c.region.menuLabel}>
+  <summary class="lang__btn" title={c.region.menuLabel}>
+    <svg class="lang__globe" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"
+         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z" />
+      <circle cx="12" cy="10" r="2.6" />
+    </svg>
+    <span>{label}</span>
+  </summary>
+  <ul class="lang__menu">
+    {REGION_CODES.map((r) => (
+      <li>
+        <a href={regionHref(page, lang, r)} data-tw-region={r}
+           aria-current={r === current ? 'true' : undefined}
+           class={r === current ? 'is-current' : undefined}>
+          {REGIONS[r].names[lang]}
+        </a>
+      </li>
+    ))}
+  </ul>
+</details>

@@ -2,13 +2,17 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AppCta from '../../components/AppCta.astro';
 import CompareCard from '../../components/CompareCard.astro';
-import type { Lang } from '../../i18n/config';
-import { getContent, resolve } from '../../i18n/content';
+import type { Lang, RegionOrAll } from '../../i18n/config';
+import { getRegionContent, resolve } from '../../i18n/content';
+import { REGIONS } from '../../i18n/regions';
+import { pathFor } from '../../i18n/config';
 
-interface Props { lang: Lang }
-const { lang } = Astro.props;
-const c = getContent(lang).coupons;
-const r = (s: string) => resolve(s, lang);
+interface Props { lang: Lang; region: RegionOrAll }
+const { lang, region } = Astro.props;
+const all = getRegionContent(region, lang);
+const c = all.coupons;
+const elsewhere = region !== 'ALL' && !REGIONS[region].coupons;
+const r = (s: string) => resolve(s, lang, region);
 
 // Positional icons for the coupon feature cards (snap · scan at till · share).
 const couponIcons = [
@@ -17,7 +21,19 @@ const couponIcons = [
   '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>',
 ];
 ---
-<BaseLayout lang={lang} page="coupons" title={c.title} description={c.description}>
+{elsewhere ? (
+<BaseLayout lang={lang} region={region} page="coupons" title={all.couponsElsewhere.title} description={all.couponsElsewhere.description} noindex>
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 set:html={all.couponsElsewhere.h1} />
+      <p class="hero__sub" set:html={all.couponsElsewhere.p} />
+      <p><a class="btn btn--ghost" href={pathFor('coupons', 'en', 'IE')}>{all.couponsElsewhere.link}</a></p>
+    </div>
+  </section>
+  <AppCta lang={lang} region={region} heading={all.home.get.h2} />
+</BaseLayout>
+) : (
+<BaseLayout lang={lang} region={region} page="coupons" title={c.title} description={c.description}>
   <section class="hero">
     <div class="container">
       <div class="hero__grid">
@@ -25,7 +41,7 @@ const couponIcons = [
           <h1 set:html={c.hero.h1} />
           <p class="hero__sub" set:html={c.hero.sub} />
         </div>
-        <CompareCard lang={lang} />
+        <CompareCard lang={lang} region={region} />
       </div>
     </div>
   </section>
@@ -66,5 +82,6 @@ const couponIcons = [
     </div>
   </section>
 
-  <AppCta lang={lang} heading={c.ctaHeading} />
+  <AppCta lang={lang} region={region} heading={c.ctaHeading} />
 </BaseLayout>
+)}

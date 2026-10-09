@@ -1,0 +1,24 @@
+---
+// Region chooser at "/": the one page that is not in a region. A returning
+// visitor with a stored choice is sent on by BaseLayout's script; a first-time
+// visitor sees a SUGGESTION banner (never an automatic redirect).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { REGION_CODES, REGIONS, pathFor } from '../../i18n/config';
+
+const lang = 'en' as const;
+---
+<BaseLayout lang={lang} region="ALL" page="home" chooser
+  title="Tallywise — compare your basket across supermarkets"
+  description="Scan barcodes, build a basket and see which supermarket is cheapest. Choose your country: Ireland, the UK, Belgium or the Netherlands.">
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1>Compare your supermarket basket.</h1>
+      <p class="hero__sub">Choose where you shop.</p>
+      <ul class="stores__grid choose">
+        {REGION_CODES.map((r) => (
+          <li><a class="btn btn--primary" href={pathFor('home', REGIONS[r].langs[0], r)} data-tw-region={r}>{REGIONS[r].names.en}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

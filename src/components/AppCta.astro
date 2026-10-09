@@ -1,15 +1,16 @@
 ---
 import { site } from '../site';
-import type { Lang } from '../i18n/config';
-import { getContent } from '../i18n/content';
+import type { Lang, RegionOrAll } from '../i18n/config';
+import { getRegionContent } from '../i18n/content';
 
 interface Props {
   lang: Lang;
+  region?: RegionOrAll;
   heading: string;
   sub?: string;
 }
-const { lang, heading, sub } = Astro.props;
-const c = getContent(lang);
+const { lang, region, heading, sub } = Astro.props;
+const c = getRegionContent(region ?? 'ALL', lang);
 const subLine = sub ?? c.ctaSub;
 ---
 <section class="beta" id="get">
