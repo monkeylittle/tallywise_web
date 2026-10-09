@@ -44,7 +44,7 @@ const c = getRegionContent(region, lang).howItWorks;
       <div class="shots__grid">
         {['scan', 'list', 'compare', 'deals'].map((name, i) => (
           <figure class="shot">
-            <img src={shotPath(region, name)} width="592" height="1280"
+            <img src={shotPath(region, lang, name)} width="592" height="1280"
                  loading="lazy" alt={c.shots.items[i].alt} />
             <figcaption>{c.shots.items[i].caption}</figcaption>
           </figure>

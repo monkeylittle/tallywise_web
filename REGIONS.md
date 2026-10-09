@@ -37,21 +37,33 @@ Slugs stay English (`how-it-works`, `coupons`, `savings`, `about`, `support`, `p
 - Old URLs (`/how-it-works/`, `/fr/…`) are static meta-refresh + canonical stubs
   into `/ie/…` and `/be/fr/…`. `/nl/…` is now the Netherlands region.
 
+## Store lists (BE, NL)
+
+BE and NL list only chains we hold recent prices for. `scripts/refresh-priced-chains.py`
+(read-only scan of `zavvy-prod-pricing`) counts distinct products priced in the last 45
+days per **country + chain** (loyalty-only and outlier rows excluded) and writes
+`scripts/data/priced-chains.json`; a chain is `included` at >= 500 products. `regions.ts`
+derives the BE/NL store lists from that file (`pricedIn`). Re-run the script, rebuild, done.
+IE and UK lists are hand-maintained and unchanged.
+
 ## Screenshots
 
-`public/assets/screenshots/<region>/{scan,list,compare,deals}.png` are
-**illustrative mock-ups**, not device screenshots: HTML recreations of the four
-app screens filled with real recent prices, rendered by
-`scripts/screenshots/render.py` from `scripts/screenshots/data/<region>.json`
-(produced from a read-only pull of the pricing table). Each region page says so.
-The root-level `scan/list/compare/deals.png` are the original real Irish app
-screenshots and still serve the legacy German pages.
+`public/assets/screenshots/<region>/<lang>/{scan,list,compare,deals}.png` for UK (en),
+BE (nl, fr, en), NL (nl, en) are **illustrative mock-ups**: HTML recreations of the four app
+screens with real recent prices (`scripts/screenshots/data/<region>.json`), rendered by
+`scripts/screenshots/render.py`. UI strings come from the app's own ARBs
+(`zavvy_app/lib/l10n/app_{en,nl,fr}.arb`); money is formatted like the app (`€3.69`, dot, in
+every language). The only non-ARB string is the user-named list title. Each image carries a
+localised "Illustrative" pill. IE uses the original real English captures in
+`public/assets/screenshots/ie/`; the legacy German pages use the root-level originals.
+`shotPath(region, lang, name)` picks the file (falls back to the region's default language).
 
 ## Checks
 
 ```bash
-npm run build && npm run check && node scripts/leak-test.mjs
+npm run build && npm run check && node scripts/leak-test.mjs && python3 scripts/layout-check.py
 ```
 
 `leak-test.mjs` fails if a built region page names another region's supermarket
-or uses the wrong currency symbol.
+or uses the wrong currency symbol. BE/NL may only name chains in `priced-chains.json` (so no
+Aldi/Lidl/Carrefour/PLUS there); `layout-check.py` checks the phone header at 320-768px.
