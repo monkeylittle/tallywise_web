@@ -79,26 +79,64 @@ def logo(chain, size=27):
             f'display:grid;place-items:center;font:600 {size*0.4:.0f}px Fredoka">{e(t)}</span>')
 
 
+# Lucide icon paths (the app uses Lucide), drawn inline.
+ICONS = {
+    "receipt": '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/>',
+    "ticket": '<path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/>',
+    "grid": '<rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>',
+    "checks": '<path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/>',
+    "camera": '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
+    "bag": '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+    "bell": '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+    "kebab": '<circle cx="12" cy="5" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="12" cy="19" r="1.3"/>',
+    "dots": '<circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/>',
+    "scan": '<path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/>',
+    "zap": '<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',
+    "plus": '<path d="M5 12h14"/><path d="M12 5v14"/>',
+    "back": '<path d="m15 18-6-6 6-6"/>',
+    "down": '<path d="m6 9 6 6 6-6"/>',
+    "arrow": '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+    "userplus": '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/>',
+    "listplus": '<path d="M11 12H3"/><path d="M16 6H3"/><path d="M16 18H3"/><path d="M18 9v6"/><path d="M21 12h-6"/>',
+}
+
+
+def ic(name, size=18, color="currentColor", sw=2):
+    return (f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="{color}" stroke-width="{sw}" '
+            f'stroke-linecap="round" stroke-linejoin="round" style="flex:none;display:block">{ICONS[name]}</svg>')
+
+
+def badge(n):
+    return (f'<span style="position:absolute;top:-6px;right:-7px;min-width:13px;height:13px;border-radius:7px;background:#4a9ff5;'
+            f'color:#fff;font:600 7.5px/13px \'DM Sans\';text-align:center;padding:0 3px">{n}</span>')
+
+
+STATUS = ('<span style="display:flex;align-items:center;gap:5px">'
+          '<svg width="17" height="11" viewBox="0 0 17 11"><rect x="0" y="7" width="3" height="4" rx=".8" fill="#111"/><rect x="4.7" y="5" width="3" height="6" rx=".8" fill="#111"/>'
+          '<rect x="9.4" y="2.5" width="3" height="8.5" rx=".8" fill="#111"/><rect x="14" y="0" width="3" height="11" rx=".8" fill="#111"/></svg>'
+          '<svg width="16" height="11" viewBox="0 0 16 11" fill="none" stroke="#111" stroke-width="1.7" stroke-linecap="round"><path d="M1.2 4a9.5 9.5 0 0 1 13.6 0"/><path d="M3.6 6.5a6 6 0 0 1 8.8 0"/><circle cx="8" cy="9.4" r="1" fill="#111" stroke="none"/></svg>'
+          '<span style="display:inline-block;width:22px;height:11px;border-radius:3.5px;background:#111;color:#fff;font:700 7.5px/11px \'DM Sans\';text-align:center">86</span></span>')
+
 CSS = """
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 body{width:296px;height:640px;overflow:hidden;background:#f6f8fc;font-family:'DM Sans',system-ui;color:#1b2142;position:relative}
 .sb{display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0 30px;font-weight:600;font-size:11px;height:34px}
 .card{overflow-wrap:anywhere}
-.sb i{display:inline-block;width:19px;height:9px;border-radius:3px;background:#111;margin-left:6px}
+
 h1,h2,h3,.f{font-family:'Fredoka',system-ui}
 .card{background:#fff;border:1px solid #e2e7f3;border-radius:16px}
 .mut{color:#7a82a3}
 .nav{position:absolute;left:0;right:0;bottom:0;height:60px;background:#f6f8fc;display:flex;justify-content:space-around;align-items:center}
-.nav b{width:18px;height:18px;border:2px solid #2a3158;border-radius:4px}
-.fab{position:absolute;left:110px;bottom:20px;width:76px;height:76px;border-radius:50%;background:#4a9ff5;box-shadow:0 6px 14px #4a9ff566;color:#fff;font:300 40px/74px sans-serif;text-align:center}
+.nav svg{color:#2a3158}
+.fab{position:absolute;left:110px;bottom:20px;width:76px;height:76px;border-radius:50%;background:#4a9ff5;box-shadow:0 6px 14px #4a9ff566;color:#fff;display:grid;place-items:center;}
 .ill{position:absolute;top:11px;left:50%;transform:translateX(-50%);font:600 7.5px "DM Sans";letter-spacing:.06em;text-transform:uppercase;color:#6b7391;background:#fff;border:1px solid #d8def0;border-radius:9px;padding:2px 8px;z-index:9;white-space:nowrap}
 """
 
 
 def shell(body):
     return f'<!doctype html><meta charset="utf-8"><style>{CSS}</style><body>' \
-           f'<div class="sb"><span>9:41</span><span>●●●● <i></i></span></div>{body}</body>'
+           f'<div class="sb"><span>9:41</span>{STATUS}</div>{body}</body>'
 
 
 
@@ -108,13 +146,15 @@ def stamp(lang):
 
 def header():
     return (f'<div style="display:flex;align-items:center;padding:12px 16px 0"><img src="{(SITE/'public'/'app-icon.png').as_uri()}" '
-            'style="width:26px;height:26px;margin-right:10px"><h1 style="font-size:23px;font-weight:500;flex:1">Tallywise</h1><span class="mut">⋮</span></div>')
+            'style="width:26px;height:26px;margin-right:10px"><h1 style="font-size:23px;font-weight:500;flex:1">Tallywise</h1>'
+            f'<span style="position:relative;margin-right:14px;color:#1b2142">{ic("bag",19)}{badge(12)}</span>'
+            f'<span style="position:relative;margin-right:10px;color:#1b2142">{ic("bell",19)}{badge(1)}</span><span style="color:#1b2142">{ic("kebab",17)}</span></div>')
 
 
 def actions(t, top="14px"):
     return f'''<div style="display:flex;gap:10px;padding:{top} 16px 0">
- <div class="card" style="flex:1;padding:12px 11px;min-height:100px"><div style="color:#4a9ff5;font-size:18px">⛶</div><div class="f" style="font-weight:600;font-size:11.5px;margin-top:10px;line-height:1.2">{e(t("homeScanBarcode"))}</div><div class="mut" style="font-size:9.5px;margin-top:3px;line-height:1.25">{e(t("homeScanBarcodeSubtitle"))}</div></div>
- <div class="card" style="flex:1;padding:12px 11px;min-height:100px"><div style="color:#4a9ff5;font-size:18px">▤</div><div class="f" style="font-weight:600;font-size:11.5px;margin-top:10px;line-height:1.2">{e(t("homeSnapReceipt"))}</div><div class="mut" style="font-size:9.5px;margin-top:3px;line-height:1.25">{e(t("homeSnapReceiptSubtitle"))}</div></div></div>'''
+ <div class="card" style="flex:1;padding:12px 11px;min-height:100px"><div style="color:#4a9ff5">{ic("scan",20)}</div><div class="f" style="font-weight:600;font-size:11.5px;margin-top:10px;line-height:1.2">{e(t("homeScanBarcode"))}</div><div class="mut" style="font-size:9.5px;margin-top:3px;line-height:1.25">{e(t("homeScanBarcodeSubtitle"))}</div></div>
+ <div class="card" style="flex:1;padding:12px 11px;min-height:100px"><div style="color:#4a9ff5">{ic("receipt",20)}</div><div class="f" style="font-weight:600;font-size:11.5px;margin-top:10px;line-height:1.2">{e(t("homeSnapReceipt"))}</div><div class="mut" style="font-size:9.5px;margin-top:3px;line-height:1.25">{e(t("homeSnapReceiptSubtitle"))}</div></div></div>'''
 
 
 def screen_scan(d, t, lang):
@@ -126,10 +166,10 @@ def screen_scan(d, t, lang):
  <div style="font-size:9.5px;letter-spacing:.08em;color:#1b3a6e;text-transform:uppercase">{e(t("basketTitle"))}</div>
  <div class="f" style="font-size:25px;font-weight:600;margin:10px 0 6px">{e(t("homeItemCount", count=s["items"]))}</div>
  <div style="font-size:10.5px;line-height:1.35;margin-bottom:12px">{e(t("homeGatheringPrices"))}</div>
- <span style="background:#1b2142;color:#fff;border-radius:20px;padding:8px 14px;font-size:11px;font-weight:600">{e(t("homeViewBasket"))} →</span></div>
+ <span style="display:inline-flex;align-items:center;gap:6px;background:#1b2142;color:#fff;border-radius:20px;padding:8px 14px;font-size:11px;font-weight:600">{e(t("homeViewBasket"))} {ic("arrow",12,"#fff",2.5)}</span></div>
 ''' + actions(t, "0") + f'''
 <h2 style="padding:20px 16px 0;font-size:15px;font-weight:600">{e(t("dealsTitle"))}</h2>
-<div class="nav"><b></b><b></b><span style="width:70px"></span><b></b><b></b></div><div class="fab">+</div>''' + stamp(lang))
+<div class="nav">{ic("receipt",22)}{ic("ticket",22)}<span style="width:70px"></span>{ic("grid",22)}{ic("checks",22)}</div><div class="fab">{ic("plus",34,"#fff",2)}</div>''' + stamp(lang))
 
 
 def screen_list(d, t, lang):
@@ -143,8 +183,8 @@ def screen_list(d, t, lang):
  <div class="mut" style="font-size:11px;white-space:nowrap">− &nbsp;{i["qty"]}&nbsp; +</div></div>''' for i in L["items"])
     total = sum(i["qty"] * i["price"] for i in L["items"])
     return shell(f'''
-<div style="display:flex;align-items:center;padding:12px 16px 0"><span style="font-size:18px">‹</span>
-<h1 style="flex:1;text-align:center;font-size:15.5px;font-weight:600">{e(LIST_TITLE[lang])}</h1><span class="mut">⋯</span></div>
+<div style="display:flex;align-items:center;padding:12px 16px 0"><span style="color:#1b2142">{ic("back",20)}</span>
+<h1 style="flex:1;text-align:center;font-size:15.5px;font-weight:600">{e(LIST_TITLE[lang])}</h1><span style="display:flex;gap:10px;color:#1b2142">{ic("userplus",19)}{ic("dots",19)}</span></div>
 <div class="mut" style="padding:18px 13px 6px;font-size:10px">{e(t("listProgressTicked", done=0, total=len(L["items"])))}</div>
 <div style="margin:0 13px 6px;height:5px;border-radius:3px;background:#eaeefa"></div>
 {rows}
@@ -155,7 +195,7 @@ def screen_list(d, t, lang):
 
 def screen_compare(d, t, lang):
     cur = d["cur"]
-    C = d["compare"]
+    C = d["compare_fr"] if lang == "fr" and "compare_fr" in d else d["compare"]  # fr: a product whose Belgian name is neutral, not Dutch
     rows = C["rows"]
     best = min(r["price"] for r in rows)
     top = [r for r in rows if r["price"] == best][0]
@@ -168,7 +208,7 @@ def screen_compare(d, t, lang):
  <span class="f" style="font-size:14px;font-weight:600">{money(r["price"],cur)}</span></div>''' for r in rows)
     return shell(f'''
 <div style="background:#eaeffb;height:30px"></div>
-<div style="padding:0 16px"><span style="display:inline-block;background:#d5f0e0;color:#1c8a4c;border-radius:16px;padding:6px 12px;font-size:11px;font-weight:700">⚡ {e(t("productCheapestAt", chain=top["label"]))}</span>
+<div style="padding:0 16px"><span style="display:inline-block;background:#d5f0e0;color:#1c8a4c;border-radius:16px;padding:6px 12px;font-size:11px;font-weight:700"><span style="display:inline-flex;align-items:center;gap:5px">{ic("zap",13,"#1c8a4c",2.2)}{e(t("productCheapestAt", chain=top["label"]))}</span></span>
 <h1 style="font-size:19px;font-weight:600;margin-top:10px;line-height:1.15">{e(C["name"])}</h1>
 <div class="mut" style="font-size:11px">{e(C["brand"])} · {e(C["size"])}</div>
 <div class="f" style="font-size:31px;font-weight:600;margin:22px 0 8px">{money(best,cur)}</div>
@@ -176,8 +216,8 @@ def screen_compare(d, t, lang):
 <div class="mut" style="font-size:9.5px;letter-spacing:.08em;margin:22px 0 8px;text-transform:uppercase">{e(t("productPricesNearby"))}</div>
 <div class="card" style="overflow:hidden">{lis}</div></div>
 <div style="position:absolute;bottom:0;left:0;right:0;height:70px;background:#f6f8fc;border-top:1px solid #e2e7f3;display:flex;gap:10px;padding:8px 16px">
- <div style="flex:1;background:#4a9ff5;color:#fff;border-radius:26px;display:grid;place-items:center;font-weight:600;font-size:11.5px;text-align:center;padding:0 8px;line-height:1.15">{e(t("productAddToBasket"))}</div>
- <div style="flex:1;border:1.5px solid #4a9ff5;color:#2a7fd8;border-radius:26px;display:grid;place-items:center;font-weight:500;font-size:10.5px;text-align:center;padding:0 6px;line-height:1.15">{e(t("productAddToListBtn"))}&nbsp;⌄</div></div>''' + stamp(lang))
+ <div style="flex:1;background:#4a9ff5;color:#fff;border-radius:26px;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:600;font-size:11px;text-align:center;padding:0 10px;line-height:1.15">{ic("bag",15)}<span>{e(t("productAddToBasket"))}</span></div>
+ <div style="flex:1;border:1.5px solid #4a9ff5;color:#2a7fd8;border-radius:26px;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:500;font-size:10.5px;text-align:center;padding:0 8px;line-height:1.15">{ic("listplus",15)}<span>{e(t("productAddToListBtn"))}</span>{ic("down",12)}</div></div>''' + stamp(lang))
 
 
 def screen_deals(d, t, lang):
@@ -194,7 +234,7 @@ def screen_deals(d, t, lang):
     return shell(header() + actions(t) + f'''
 <h2 style="padding:22px 16px 10px;font-size:15px;font-weight:600">{e(t("dealsTitle"))}</h2>
 <div style="display:flex;gap:10px;padding:0 0 0 16px;overflow:hidden">{cards}</div>
-<div class="nav"><b></b><b></b><span style="width:70px"></span><b></b><b></b></div><div class="fab" style="font-size:26px">◉</div>''' + stamp(lang))
+<div class="nav">{ic("receipt",22)}{ic("ticket",22)}<span style="width:70px"></span>{ic("grid",22)}{ic("checks",22)}</div><div class="fab">{ic("camera",32,"#fff",2)}</div>''' + stamp(lang))
 
 
 SCREENS = {"scan": screen_scan, "list": screen_list, "compare": screen_compare, "deals": screen_deals}

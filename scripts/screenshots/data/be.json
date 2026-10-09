@@ -160,6 +160,36 @@
     "delhaize": "2026-10-02",
     "colruyt": "2026-09-30"
    }
+  },
+  "compare_fr_observed": {
+   "Colruyt": "2026-09-28",
+   "Jumbo": "2026-10-03",
+   "Delhaize": "2026-10-04"
   }
+ },
+ "compare_fr": {
+  "name": "Alpro Dairy Free Coconut Milk",
+  "brand": "Alpro",
+  "size": "1l",
+  "rows": [
+   {
+    "chain": "colruyt",
+    "label": "Colruyt",
+    "price": 2.59,
+    "km": 2.2
+   },
+   {
+    "chain": "delhaize",
+    "label": "Delhaize",
+    "price": 2.75,
+    "km": 1.5
+   },
+   {
+    "chain": "jumbo",
+    "label": "Jumbo",
+    "price": 3.29,
+    "km": 2.8
+   }
+  ]
  }
 }
