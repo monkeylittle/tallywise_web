@@ -4,7 +4,7 @@ import { fr } from './fr';
 import { de } from './de';
 import type { Lang } from '../config';
 import { pathFor } from '../config';
-import { REGIONS, applyTokens, tokensFor, type RegionOrAll } from '../regions';
+import { REGIONS, REGION_CODES, applyTokens, tokensFor, type RegionOrAll } from '../regions';
 import { site } from '../../site';
 
 // English is the source of truth for the content shape; nl/fr/de are annotated
@@ -42,20 +42,22 @@ export function getRegionContent(region: RegionOrAll, lang: Lang): SiteContent {
   const tokens = tokensFor(region, lang);
   const c = mapStrings(RAW[lang], (s) => applyTokens(s, tokens));
 
+  const strong = (x: string) => `<strong>${x.replaceAll('&', '&amp;')}</strong>`;
   if (region !== 'ALL') {
     const def = REGIONS[region];
     if (!def.coupons) {
       // Bronze bullet #4 is "Save & share money-off coupons" in every language.
       c.home.membership.bronze = c.home.membership.bronze.filter((_, i) => i !== 3);
     }
-    const original = c.savings.covered.list;
-    c.savings.covered.list =
-      region === 'IE'
-        ? original.slice(0, -1) // drop the "UK chains" bullet — Irish region lists Irish stores
-        : def.stores.map((s) => `<strong>${s.replaceAll('&', '&amp;')}</strong>`);
+    // The covered list is the region's priced-chain list (scripts/data/priced-chains.json).
+    c.savings.covered.list = def.stores.map(strong);
     c.savings.covered.p = c.savings.covered.pRegion;
-    // No loyalty scheme to name (BE): drop the sentence rather than leave it empty.
+    // No loyalty scheme to name: drop the sentence rather than leave it empty.
     if (def.loyalty.length === 0) c.home.stores.loyalty = '';
+  } else {
+    // Legacy German pages: one line per region, from the same lists.
+    c.savings.covered.list = REGION_CODES.map((r) => `${strong(REGIONS[r].names[lang])} — ${REGIONS[r].stores.join(', ').replaceAll('&', '&amp;')}`);
+    c.savings.covered.p = c.savings.covered.pRegion;
   }
   return c;
 }

@@ -37,15 +37,21 @@ export interface CompareShop {
 import priced from '../../scripts/data/priced-chains.json';
 
 /**
- * BE and NL list only chains we actually hold recent prices for: the ones the
+ * Every region lists only chains we actually hold recent prices for: the ones the
  * refresh script (scripts/refresh-priced-chains.py) marked `included` for that
  * country in scripts/data/priced-chains.json (>= threshold products priced in
  * the last 45 days, loyalty-only and outlier rows excluded, keyed by chain AND
  * country). Candidates keep their display order; unlisted chains are dropped.
  */
-function pricedIn(country: 'BE' | 'NL', candidates: string[]): string[] {
+function pricedIn(country: Region, candidates: string[]): string[] {
   const ok = new Set(priced.chains.filter((c) => c.country === country && c.included).map((c) => c.chain));
   return candidates.filter((c) => ok.has(c));
+}
+
+/** Loyalty schemes, only for chains that made the priced list: [chain, scheme]. */
+function loyaltyFor(country: Region, schemes: [string, string][]): string[] {
+  const kept = new Set(pricedIn(country, schemes.map(([c]) => c)));
+  return schemes.filter(([c]) => kept.has(c)).map(([, s]) => s);
 }
 
 export interface RegionDef {
@@ -85,8 +91,8 @@ export const REGIONS: Record<Region, RegionDef> = {
     locale: { en: 'en-IE' },
     currency: { code: 'EUR', symbol: '€' },
     names: { en: 'Ireland', nl: 'Ierland', fr: 'Irlande', de: 'Irland' },
-    stores: ['Tesco', 'SuperValu', 'Dunnes Stores', 'Aldi', 'Lidl', 'M&S', 'Centra', 'Spar'],
-    loyalty: ['Tesco Clubcard', 'SuperValu Real Rewards', 'Dunnes Rewards', 'Lidl Plus'],
+    stores: pricedIn('IE', ['Tesco', 'SuperValu', 'Dunnes Stores', 'Aldi', 'Lidl', 'M&S', 'Centra', 'Spar']),
+    loyalty: loyaltyFor('IE', [['Tesco', 'Tesco Clubcard'], ['SuperValu', 'SuperValu Real Rewards'], ['Dunnes Stores', 'Dunnes Rewards'], ['Lidl', 'Lidl Plus']]),
     coupons: true,
     basketItems: 8,
     compare: [
@@ -94,8 +100,8 @@ export const REGIONS: Record<Region, RegionDef> = {
       { code: 'DN', name: 'Dunnes', price: 19.19, color: '#1A1A1A' },
       { code: 'TE', name: 'Tesco', price: 19.19, color: '#00539F' },
     ],
-    shotStores: ['SuperValu', 'Dunnes Stores', 'Lidl', 'Aldi', 'Tesco'],
-    illustrativeScreens: false, // the original real app screenshots
+    shotStores: ['SuperValu', 'Dunnes Stores', 'Tesco'],
+    illustrativeScreens: true,
     timezones: ['Europe/Dublin'],
   },
   UK: {
@@ -105,8 +111,8 @@ export const REGIONS: Record<Region, RegionDef> = {
     locale: { en: 'en-GB' },
     currency: { code: 'GBP', symbol: '£' },
     names: { en: 'United Kingdom', nl: 'Verenigd Koninkrijk', fr: 'Royaume-Uni', de: 'Vereinigtes Königreich' },
-    stores: ['Tesco', "Sainsbury's", 'Asda', 'Morrisons', 'Aldi', 'Lidl', 'M&S', 'Waitrose', 'Co-op', 'EuroSpar', 'Iceland'],
-    loyalty: ['Tesco Clubcard', "Sainsbury's Nectar", 'Asda Rewards', 'Morrisons More Card', 'Lidl Plus'],
+    stores: pricedIn('UK', ['Tesco', "Sainsbury's", 'Asda', 'Morrisons', 'Aldi', 'Lidl', 'M&S', 'Waitrose', 'Co-op', 'EuroSpar', 'Iceland']),
+    loyalty: loyaltyFor('UK', [['Tesco', 'Tesco Clubcard'], ['Sainsbury\'s', "Sainsbury's Nectar"], ['Asda', 'Asda Rewards'], ['Morrisons', 'Morrisons More Card'], ['Lidl', 'Lidl Plus']]),
     coupons: false,
     basketItems: 8,
     compare: [
@@ -126,7 +132,7 @@ export const REGIONS: Record<Region, RegionDef> = {
     currency: { code: 'EUR', symbol: '€' },
     names: { en: 'Belgium', nl: 'België', fr: 'Belgique', de: 'Belgien' },
     stores: pricedIn('BE', ['Colruyt', 'Delhaize', 'Carrefour', 'Jumbo', 'Aldi', 'Lidl']),
-    loyalty: [], // no loyalty-card price is held for a chain listed here
+    loyalty: loyaltyFor('BE', [['Lidl', 'Lidl Plus']]), // none of the listed BE chains has a loyalty scheme we record
     coupons: false,
     basketItems: 6,
     compare: [
@@ -146,7 +152,7 @@ export const REGIONS: Record<Region, RegionDef> = {
     currency: { code: 'EUR', symbol: '€' },
     names: { en: 'Netherlands', nl: 'Nederland', fr: 'Pays-Bas', de: 'Niederlande' },
     stores: pricedIn('NL', ['Albert Heijn', 'Jumbo', 'Plus', 'Aldi', 'Lidl']),
-    loyalty: ['Albert Heijn Bonuskaart'],
+    loyalty: loyaltyFor('NL', [['Albert Heijn', 'Albert Heijn Bonuskaart'], ['Lidl', 'Lidl Plus']]),
     coupons: false,
     basketItems: 7,
     compare: [
@@ -267,10 +273,18 @@ export function savedAmount(region: RegionOrAll): number {
   return Math.round((Math.max(...prices) - Math.min(...prices)) * 100) / 100;
 }
 
+/** A region's store list; the legacy German pages (ALL) get the de-duplicated union of all four. */
+export function storesFor(region: RegionOrAll): string[] {
+  return region === 'ALL' ? [...new Set(REGION_CODES.flatMap((r) => REGIONS[r].stores))] : REGIONS[region].stores;
+}
+export function loyaltyOf(region: RegionOrAll): string[] {
+  return region === 'ALL' ? [...new Set(REGION_CODES.flatMap((r) => REGIONS[r].loyalty))] : REGIONS[region].loyalty;
+}
+
 export function tokensFor(region: RegionOrAll, lang: Lang): Tokens {
   const r = REGIONS[dataRegion(region)];
-  const stores = r.stores;
-  const loyalty = r.loyalty;
+  const stores = storesFor(region);
+  const loyalty = loyaltyOf(region);
   return {
     '%MKT%': MKT[region][lang],
     '%MKT_IN%': lang === 'fr' ? MKT_IN_FR[region] : MKT[region][lang],

@@ -37,25 +37,25 @@ Slugs stay English (`how-it-works`, `coupons`, `savings`, `about`, `support`, `p
 - Old URLs (`/how-it-works/`, `/fr/…`) are static meta-refresh + canonical stubs
   into `/ie/…` and `/be/fr/…`. `/nl/…` is now the Netherlands region.
 
-## Store lists (BE, NL)
+## Store lists (all four regions)
 
-BE and NL list only chains we hold recent prices for. `scripts/refresh-priced-chains.py`
+Every region lists only chains we hold recent prices for. `scripts/refresh-priced-chains.py`
 (read-only scan of `zavvy-prod-pricing`) counts distinct products priced in the last 45
 days per **country + chain** (loyalty-only and outlier rows excluded) and writes
 `scripts/data/priced-chains.json`; a chain is `included` at >= 500 products. `regions.ts`
 derives the BE/NL store lists from that file (`pricedIn`). Re-run the script, rebuild, done.
-IE and UK lists are hand-maintained and unchanged.
+Loyalty examples are derived the same way (only schemes of kept chains). The German legacy pages show the union of the four lists.
 
 ## Screenshots
 
-`public/assets/screenshots/<region>/<lang>/{scan,list,compare,deals}.png` for UK (en),
+`public/assets/screenshots/<region>/<lang>/{scan,list,compare,deals}.png` for IE (en), UK (en),
 BE (nl, fr, en), NL (nl, en) are **illustrative mock-ups**: HTML recreations of the four app
 screens with real recent prices (`scripts/screenshots/data/<region>.json`), rendered by
 `scripts/screenshots/render.py`. UI strings come from the app's own ARBs
 (`zavvy_app/lib/l10n/app_{en,nl,fr}.arb`); money is formatted like the app (`€3.69`, dot, in
 every language). The only non-ARB string is the user-named list title. Each image carries a
-localised "Illustrative" pill. IE uses the original real English captures in
-`public/assets/screenshots/ie/`; the legacy German pages use the root-level originals.
+localised "Illustrative" pill. IE is generated too (`ie/en/`); the original REAL IE captures are kept in `ie/real/` but not used, because
+they show Lidl/Aldi/Centra, which are not in the priced list. The legacy German pages use the IE set.
 `shotPath(region, lang, name)` picks the file (falls back to the region's default language).
 
 ## Checks
@@ -65,5 +65,5 @@ npm run build && npm run check && node scripts/leak-test.mjs && python3 scripts/
 ```
 
 `leak-test.mjs` fails if a built region page names another region's supermarket
-or uses the wrong currency symbol. BE/NL may only name chains in `priced-chains.json` (so no
-Aldi/Lidl/Carrefour/PLUS there); `layout-check.py` checks the phone header at 320-768px.
+or uses the wrong currency symbol. every region may only name chains in `priced-chains.json` (so no
+Lidl/Aldi/Centra/Spar/M&S on IE, none of those on UK, no Carrefour/PLUS on BE/NL); `layout-check.py` checks the phone header at 320-768px.

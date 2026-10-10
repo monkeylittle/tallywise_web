@@ -4,7 +4,7 @@ import CompareCard from '../../components/CompareCard.astro';
 import { site } from '../../site';
 import type { Lang, RegionOrAll } from '../../i18n/config';
 import { shotPath } from '../../i18n/config';
-import { REGIONS } from '../../i18n/regions';
+import { REGIONS, storesFor } from '../../i18n/regions';
 import { getRegionContent } from '../../i18n/content';
 
 interface Props { lang: Lang; region: RegionOrAll }
@@ -12,7 +12,7 @@ const { lang, region } = Astro.props;
 const c = getRegionContent(region, lang).home;
 
 // The region's own store list (the legacy German pages list the Irish one).
-const stores = REGIONS[region === 'ALL' ? 'IE' : region].stores;
+const stores = storesFor(region);
 const hasCoupons = region === 'ALL' || REGIONS[region].coupons;
 
 // Decorative icons for the three "why" cards (positional, so no translation).
@@ -114,7 +114,7 @@ const whyIcons = [
           </figure>
         ))}
       </div>
-      {region !== 'ALL' && REGIONS[region].illustrativeScreens && <p class="shots__note">{getRegionContent(region, lang).region.illustrative}</p>}
+      <p class="shots__note">{getRegionContent(region, lang).region.illustrative}</p>
     </div>
   </section>
 

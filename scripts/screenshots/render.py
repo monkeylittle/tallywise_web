@@ -10,9 +10,10 @@ UI strings are the app's REAL translations, read from zavvy_app/lib/l10n/app_{en
 (keys listed in STRINGS), so the mock-ups use the app's own wording. Money is formatted the way
 the app does it (symbol + toStringAsFixed(2): "EUR 3.69" style with a dot, in every language).
 Output: public/assets/screenshots/<region>/<lang>/<screen>.png for UK (en), BE (nl, fr, en), NL (nl, en).
-IE keeps the original real captures (public/assets/screenshots/ie/).
+IE is generated too (ie/en); the original real IE captures are kept in ie/real/ (they show Lidl/Aldi/Centra,
+which are not in the priced-chain list) and are not used by the site.
 
-Usage: python3 scripts/screenshots/render.py [uk be nl]
+Usage: python3 scripts/screenshots/render.py [ie uk be nl]
 """
 import html, json, pathlib, re, sys
 import cloakbrowser
@@ -36,7 +37,7 @@ CHIPS = {"asda": ("#78BE20", "#fff", "A"), "iceland": ("#E0001B", "#fff", "I"),
 
 e = html.escape
 ARB = SITE.parent / "zavvy_app" / "lib" / "l10n"
-LANGS = {"uk": ["en"], "be": ["nl", "fr", "en"], "nl": ["nl", "en"]}
+LANGS = {"ie": ["en"], "uk": ["en"], "be": ["nl", "fr", "en"], "nl": ["nl", "en"]}
 STRINGS = ["homeGreeting", "homeScanBarcode", "homeScanBarcodeSubtitle", "homeSnapReceipt",
            "homeSnapReceiptSubtitle", "homeViewBasket", "homeGatheringPrices", "dealsTitle",
            "productPricesNearby", "productCheapestAt", "productSavingVs", "productCheapest",
@@ -223,7 +224,7 @@ def screen_compare(d, t, lang):
 def screen_deals(d, t, lang):
     cur = d["cur"]
     cards = "".join(f'''<div class="card" style="flex:none;width:135px;overflow:hidden;min-height:200px">
- <div style="background:#eaeffb;height:68px;position:relative;display:grid;place-items:center;font:400 22px Fredoka;color:#aab">{e(x["name"][0])}
+ <div style="background:#eaeffb;height:68px;position:relative;display:grid;place-items:center;font:400 22px Fredoka;color:#aab">{e((x.get("brand") or x["name"])[0].upper())}
  <span style="position:absolute;top:8px;right:8px;background:#4a9ff5;color:#fff;border-radius:12px;padding:3px 8px;font:600 9.5px 'DM Sans'">−{x["pct"]}%</span></div>
  <div style="padding:10px 10px"><div class="mut" style="font-size:9px">{e(x["label"])} · {x["km"]} km</div>
  {f'<div style="color:#1f7ae0;font-weight:600;font-size:9.5px;margin-top:5px">{e(x["brand"])}</div>' if x.get("brand") else ""}
@@ -262,4 +263,4 @@ def main(regions):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:] or ["uk", "be", "nl"])
+    main(sys.argv[1:] or ["ie", "uk", "be", "nl"])

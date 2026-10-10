@@ -1,0 +1,165 @@
+{
+ "region": "ie",
+ "cur": "€",
+ "dec": ".",
+ "scan": {
+  "weekday": "Friday",
+  "store": "Tesco",
+  "items": 5
+ },
+ "list": {
+  "title": "Family Shopping List",
+  "items": [
+   {
+    "name": "10 Wholegrain Premium Bread Slices",
+    "brand": "Brennan's",
+    "size": "390g",
+    "qty": 1,
+    "price": 1.79
+   },
+   {
+    "name": "Barry's Tea Loose Leaf Master Blend",
+    "brand": "Barry's Tea",
+    "size": "250g",
+    "qty": 1,
+    "price": 4.35
+   },
+   {
+    "name": "Batchelors Beans In Tomato Sauce",
+    "brand": "Batchelors",
+    "size": "420g",
+    "qty": 2,
+    "price": 1.89
+   },
+   {
+    "name": "Tayto Cheese & Onion Crisps",
+    "brand": "Tayto",
+    "size": "35g",
+    "qty": 3,
+    "price": 1.45
+   },
+   {
+    "name": "Filippo Berio Extra Virgin Olive Oil",
+    "brand": "Filippo Berio",
+    "size": "250ml",
+    "qty": 1,
+    "price": 4.9
+   }
+  ]
+ },
+ "compare": {
+  "name": "Biona Organic Red Kidney Beans",
+  "brand": "Biona Organic",
+  "size": "400g",
+  "rows": [
+   {
+    "chain": "supervalu",
+    "label": "SuperValu",
+    "price": 1.69,
+    "km": 1.8
+   },
+   {
+    "chain": "dunnes",
+    "label": "Dunnes Stores",
+    "price": 2.09,
+    "km": 3.1
+   },
+   {
+    "chain": "tesco",
+    "label": "Tesco",
+    "price": 2.1,
+    "km": 2.0
+   }
+  ]
+ },
+ "deals": [
+  {
+   "chain": "dunnes",
+   "label": "Dunnes Stores",
+   "km": 3.1,
+   "brand": "Clonakilty",
+   "name": "0% Fat Greek Style Live Yoghurt Mango & Passionfruit",
+   "size": "",
+   "pct": 15,
+   "price": 2.7,
+   "was": 3.19,
+   "loyalty": false,
+   "observed": "2026-10-07"
+  },
+  {
+   "chain": "supervalu",
+   "label": "SuperValu",
+   "km": 1.8,
+   "brand": "McCain",
+   "name": "McCain Crispy French Fries",
+   "size": "",
+   "pct": 30,
+   "price": 3.5,
+   "was": 4.99,
+   "loyalty": true,
+   "observed": "2026-10-03"
+  }
+ ],
+ "basket_totals": {
+  "supervalu": 19.95,
+  "tesco": 19.19,
+  "dunnes": 19.19
+ },
+ "provenance": {
+  "source": "read-only pull of the production pricing + deals tables, 2026-10-09; latest observed price per (product, chain), loyalty-only rows excluded; distances (km) are illustrative",
+  "item_prices": {
+   "10 Wholegrain Premium Bread Slices": {
+    "tesco": 1.79,
+    "dunnes": 1.79,
+    "supervalu": 1.83
+   },
+   "Barry's Tea Loose Leaf Master Blend": {
+    "supervalu": 4.65,
+    "dunnes": 4.35,
+    "tesco": 4.35
+   },
+   "Batchelors Beans In Tomato Sauce": {
+    "tesco": 1.9,
+    "supervalu": 1.89,
+    "dunnes": 1.9
+   },
+   "Tayto Cheese & Onion Crisps": {
+    "supervalu": 1.5,
+    "dunnes": 1.45,
+    "tesco": 1.45
+   },
+   "Filippo Berio Extra Virgin Olive Oil": {
+    "supervalu": 5.19,
+    "dunnes": 4.9,
+    "tesco": 4.9
+   }
+  },
+  "item_observed": {
+   "10 Wholegrain Premium Bread Slices": {
+    "tesco": "2026-10-05",
+    "dunnes": "2026-10-01",
+    "supervalu": "2026-09-29"
+   },
+   "Barry's Tea Loose Leaf Master Blend": {
+    "supervalu": "2026-09-28",
+    "dunnes": "2026-09-29",
+    "tesco": "2026-09-30"
+   },
+   "Batchelors Beans In Tomato Sauce": {
+    "tesco": "2026-09-30",
+    "supervalu": "2026-09-28",
+    "dunnes": "2026-09-29"
+   },
+   "Tayto Cheese & Onion Crisps": {
+    "supervalu": "2026-09-28",
+    "dunnes": "2026-10-02",
+    "tesco": "2026-09-30"
+   },
+   "Filippo Berio Extra Virgin Olive Oil": {
+    "supervalu": "2026-09-30",
+    "dunnes": "2026-10-01",
+    "tesco": "2026-10-06"
+   }
+  }
+ }
+}

@@ -16,13 +16,14 @@ const ALL = {
   // 'Plus' used as a store in a list (<strong>Plus<, ", Plus", "en Plus"), counts.
   PLUS: /\bPLUS\b|<strong>Plus<|(?:,|\b(?:en|and|et|und)\b) Plus(?![\w-])(?! ?(?:card|kaart|Retail))/,
 };
-const ALLOWED = {
-  ie: ['Tesco', 'SuperValu', 'Dunnes', 'Aldi', 'Lidl', 'M&S', 'Centra', 'Spar'],
-  uk: ['Tesco', 'Sainsbury', 'Asda', 'Morrisons', 'Aldi', 'Lidl', 'M&S', 'Co-op', 'Waitrose', 'Iceland', 'Spar'],
-  // BE/NL: only chains with priced products (scripts/data/priced-chains.json); trimmed chains must not appear.
-  be: ['Colruyt', 'Delhaize', 'Jumbo'],
-  nl: ['Albert Heijn', 'Jumbo'],
-};
+// Allowed chains per region = the chains marked `included` for that country in
+// scripts/data/priced-chains.json (the same file regions.ts derives its lists from),
+// so a trimmed chain (Lidl/Aldi/Centra/... ) must not be named on any page of the region.
+const KEY = { 'Dunnes Stores': 'Dunnes', "Sainsbury's": 'Sainsbury', 'Albert Heijn': 'Albert Heijn' };
+const priced = JSON.parse(readFileSync('scripts/data/priced-chains.json', 'utf8'));
+const ALLOWED = Object.fromEntries(['ie', 'uk', 'be', 'nl'].map((r) => [r,
+  priced.chains.filter((c) => c.country === r.toUpperCase() && c.included).map((c) => KEY[c.chain] ?? c.chain)
+    .filter((k) => k in ALL)]));
 const CURRENCY = { ie: /£|\bGBP\b/, uk: /€|\bEUR\b/, be: /£|\bGBP\b/, nl: /£|\bGBP\b/ };
 
 function* walk(d) {

@@ -1,5 +1,5 @@
 {
- "computed": "2026-10-09",
+ "computed": "2026-10-10",
  "window_days": 45,
  "threshold": 500,
  "source": "zavvy-prod-pricing",
@@ -7,19 +7,19 @@
   {
    "country": "BE",
    "chain": "Jumbo",
-   "products": 15711,
+   "products": 15717,
    "included": true
   },
   {
    "country": "BE",
    "chain": "Delhaize",
-   "products": 5280,
+   "products": 5282,
    "included": true
   },
   {
    "country": "BE",
    "chain": "Colruyt",
-   "products": 3687,
+   "products": 3695,
    "included": true
   },
   {
@@ -31,7 +31,7 @@
   {
    "country": "DE",
    "chain": "Edeka",
-   "products": 4411,
+   "products": 4412,
    "included": true
   },
   {
@@ -49,13 +49,13 @@
   {
    "country": "IE",
    "chain": "Tesco",
-   "products": 19791,
+   "products": 19824,
    "included": true
   },
   {
    "country": "IE",
    "chain": "Dunnes Stores",
-   "products": 6555,
+   "products": 6560,
    "included": true
   },
   {
@@ -67,13 +67,13 @@
   {
    "country": "IE",
    "chain": "SuperValu",
-   "products": 2079,
+   "products": 2093,
    "included": true
   },
   {
    "country": "IE",
    "chain": "Molloys",
-   "products": 1655,
+   "products": 1656,
    "included": true
   },
   {
@@ -139,25 +139,25 @@
   {
    "country": "NL",
    "chain": "Jumbo",
-   "products": 15696,
+   "products": 15723,
    "included": true
   },
   {
    "country": "NL",
    "chain": "Albert Heijn",
-   "products": 15481,
+   "products": 15627,
    "included": true
   },
   {
    "country": "UK",
    "chain": "Asda",
-   "products": 59117,
+   "products": 59118,
    "included": true
   },
   {
    "country": "UK",
    "chain": "Tesco",
-   "products": 29580,
+   "products": 29586,
    "included": true
   },
   {

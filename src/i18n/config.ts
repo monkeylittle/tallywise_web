@@ -119,15 +119,13 @@ export { REGIONS, REGION_CODES, defaultLangFor, regionSupportsLang };
 export type { Region, RegionOrAll };
 
 /**
- * Path of an app-screen image. IE uses the original real (English) captures in
- * /ie/; UK/BE/NL use the generated mock-ups, one set per language the region
- * offers (<slug>/<lang>/), falling back to the region's default language.
- * The legacy German pages use the root-level originals.
+ * Path of an app-screen image: the generated mock-ups, one set per language the
+ * region offers (<slug>/<lang>/), falling back to the region's default language.
+ * The legacy German pages use the Irish set. The original real captures (they
+ * show stores outside the priced list) are kept in /ie/real/, not used by pages.
  */
 export function shotPath(region: RegionOrAll | undefined, lang: Lang, name: string): string {
-  if (!region || region === 'ALL') return `/assets/screenshots/${name}.png`;
-  const r = REGIONS[region];
-  if (!r.illustrativeScreens) return `/assets/screenshots/${r.slug}/${name}.png`;
+  const r = REGIONS[!region || region === 'ALL' ? 'IE' : region];
   const l = r.langs.includes(lang) ? lang : r.langs[0];
   return `/assets/screenshots/${r.slug}/${l}/${name}.png`;
 }
