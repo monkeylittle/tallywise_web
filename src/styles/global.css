@@ -697,9 +697,8 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
 /* ── Blog ────────────────────────────────────────── */
 .container--narrow { max-width: 740px; }
 
-.blog-hero { padding: 56px 0 24px; }
-.blog-hero h1 { margin: 0 0 12px; overflow-wrap: break-word; }
-.blog-list { padding: 8px 0 56px; }
+.blog-list { padding: 40px 0 56px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .blog-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
 .blog-card {
   display: flex; flex-direction: column; height: 100%;

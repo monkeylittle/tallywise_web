@@ -14,16 +14,9 @@ const fmt = (d: Date) => d.toLocaleDateString('en-IE', { day: 'numeric', month: 
   title={`Blog | ${site.name}`}
   description="Price comparisons and shopping insights from Tallywise: what the same products really cost across Ireland, the UK, Belgium and the Netherlands."
 >
-  <section class="blog-hero">
-    <div class="container">
-      <p class="eyebrow">Blog</p>
-      <h1>Price notes from Tallywise</h1>
-      <p class="hero__sub">What the same products really cost in Ireland, the UK, Belgium and the Netherlands, and how we checked.</p>
-    </div>
-  </section>
-
   <section class="blog-list">
     <div class="container">
+      <h1 class="visually-hidden">Blog</h1>
       <ul class="blog-cards">
         {posts.map((post) => (
           <li>
